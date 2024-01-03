@@ -80,14 +80,18 @@ function CategoryList(props: Props) {
   return (
     <div
       id={id}
-      class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10"
+      class="container py-8 flex flex-col gap-8 lg:gap-0 text-base-content  lg:py-10"
     >
-      <Header
+      {
+        /* <Header
         title={header.title}
         description={header.description || ""}
         alignment={layout.headerAlignment || "center"}
-      />
-
+      /> */
+      }
+      <h3 class="text-xl font-semibold mb-8 pl-6 sm:pl-0 ">
+        {header.title}
+      </h3>
       <Slider class="carousel carousel-start gap-4 lg:gap-8 row-start-2 row-end-5">
         {list.map((
           { tag, label, description, href, image, buttonText },
@@ -95,24 +99,20 @@ function CategoryList(props: Props) {
         ) => (
           <Slider.Item
             index={index}
-            class="flex flex-col gap-4 carousel-item first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+            class="flex gap-4 carousel-item w-[260px] sm:w-1/3 first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
           >
             <a
               href={href}
-              class="flex flex-col gap-4 lg:w-[280px] w-40 lg:h-auto"
+              class="flex flex-col gap-4 lg:w-[450px] w-80 lg:h-auto"
             >
-              {layout.categoryCard?.textPosition === "top" &&
-                (
-                  <CardText
-                    tag={tag}
-                    label={label}
-                    description={description}
-                    alignment={layout?.categoryCard?.textAlignment}
-                  />
-                )}
               {image &&
                 (
-                  <figure>
+                  <figure class="relative">
+                    <div class="absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
+                      <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
+                        {label}
+                      </h3>
+                    </div>
                     <Image
                       class="card w-full"
                       src={image}
@@ -122,15 +122,6 @@ function CategoryList(props: Props) {
                       loading="lazy"
                     />
                   </figure>
-                )}
-              {layout.categoryCard?.textPosition === "bottom" &&
-                (
-                  <CardText
-                    tag={tag}
-                    label={label}
-                    description={description}
-                    alignment={layout?.categoryCard?.textAlignment}
-                  />
                 )}
             </a>
             {buttonText &&
