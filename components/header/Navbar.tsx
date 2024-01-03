@@ -27,23 +27,23 @@ function Navbar({ items, searchbar, logo, buttons }: {
     <>
       {/* Mobile Version */}
       <div
-        style={{ height: navbarHeight }}
-        class="md:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 gap-2"
+        style={{ height: "73px" }}
+        class="lg:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 gap-2"
       >
         <MenuButton />
 
         {logo && (
           <a
             href="/"
-            class="flex-grow inline-flex items-center"
+            class="inline-flex items-center"
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={logo.width || 126}
-              height={logo.height || 16}
+              width={83}
+              height={60}
             />
           </a>
         )}
@@ -56,7 +56,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
+      <div class="hidden lg:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
         <div class="flex-none w-44">
           {logo && (
             <a
@@ -95,7 +95,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
               href="/wishlist"
               aria-label="Wishlist"
             >
-              <Icon id="Heart" size={24} strokeWidth={0.4} />
+              <Icon id="Heart" size={24} strokeWidth={1.4} fill="none" />
             </a>
           )}
           {!buttons?.hideCartButton && (

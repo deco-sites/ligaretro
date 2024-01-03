@@ -75,8 +75,7 @@ const manifest = {
     "deco-sites/ligaretro/sections/Miscellaneous/CampaignTimer.tsx": $$$$$$28,
     "deco-sites/ligaretro/sections/Miscellaneous/CookieConsent.tsx": $$$$$$29,
     "deco-sites/ligaretro/sections/Newsletter/Newsletter.tsx": $$$$$$35,
-    "deco-sites/ligaretro/sections/Product/ImageGalleryFrontBack.tsx":
-      $$$$$$25,
+    "deco-sites/ligaretro/sections/Product/ImageGalleryFrontBack.tsx": $$$$$$25,
     "deco-sites/ligaretro/sections/Product/ImageGallerySlider.tsx": $$$$$$24,
     "deco-sites/ligaretro/sections/Product/NotFound.tsx": $$$$$$27,
     "deco-sites/ligaretro/sections/Product/NotFoundChallenge.tsx": $$$$$$20,
