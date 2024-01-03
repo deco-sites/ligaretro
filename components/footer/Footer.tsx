@@ -355,7 +355,7 @@ function Footer({
           ? <></>
           : <BackToTop content={backToTheTop?.text} />}
       </footer>
-      <div class="h-[73px] flex flex-col lg:flex-row items-center lg:justify-between bg-white text-xs container text-center px-3 pt-3 gap-3 lg:text-left">
+      <div class="h-[73px] flex flex-col lg:flex-row items-center lg:justify-between bg-white text-xs container text-center px-3 pt-3 gap-3 lg:px-0 lg:pt-0 lg:gap-0 lg:text-left">
         <span>{bottomText.firstText}</span>
         <span>{bottomText.secondText}</span>
       </div>
