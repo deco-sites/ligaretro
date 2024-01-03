@@ -17,6 +17,7 @@ export type AvailableIcons =
   | "Facebook"
   | "FilterList"
   | "Heart"
+  | "LetsEncrypt"
   | "HollowHeart"
   | "Profile"
   | "Bag"
