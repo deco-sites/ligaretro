@@ -81,13 +81,35 @@ function Navbar({ items, searchbar, logo, buttons }: {
 
           <Searchbar searchbar={searchbar} />
           {!buttons?.hideAccountButton && (
-            <a
-              class="btn btn-circle btn-sm btn-ghost"
-              href="/account"
-              aria-label="Account"
-            >
-              <Icon id="User" size={24} strokeWidth={0.4} />
-            </a>
+            <div class="dropdown dropdown-end">
+              {/* <div role="button" class="btn btn-ghost rounded-btn">Dropdown</div> */}
+              <button
+                tabindex={0}
+                role="button"
+                class="btn btn-circle btn-sm btn-ghost"
+                aria-label="Account"
+              >
+                <Icon id="User" size={24} strokeWidth={0.4} />
+              </button>
+              <ul
+                tabindex={0}
+                class="menu dropdown-content z-[1] p-4 shadow-sm shadow-[#9c9c9c] bg-base-100 rounded-box w-52 mt-4 gap-3"
+              >
+                <li>
+                  <a
+                    href="#"
+                    class="btn btn-primary bg-[#252525] text-xs font-normal items-center flex-col justify-center pt-[15px]"
+                  >
+                    Acessar minha conta
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="inline text-[9px] no-underline">
+                    Não tem cadastro? <span class="underline">Criar conta</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           )}
           {!buttons?.hideWishlistButton && (
             <a
