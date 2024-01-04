@@ -1,6 +1,5 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import Icon from "deco-sites/ligaretro/components/ui/Icon.tsx";
 
 /**
  * @titleBy alt
@@ -16,8 +15,6 @@ export interface Banner {
    * @description When you click you go to
    */
   href: string;
-  gridColumns?: number;
-  gridRows?: number;
 }
 
 export type BorderRadius =
@@ -127,11 +124,11 @@ export default function BannnerGrid(props: Props) {
   } = { ...DEFAULT_PROPS, ...props };
 
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto mb-20">
+    <section class="container w-full px-4 md:px-0 mx-auto">
       {title &&
         (
           <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
-            <h2 class="w-[20%] text-xl leading-5 font-semibold ">
+            <h2 class="text-lg leading-5 font-semibold uppercase">
               {title}
             </h2>
 
@@ -139,41 +136,32 @@ export default function BannnerGrid(props: Props) {
           </div>
         )}
       <div
-        class={`grid gap-2 ${MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]} ${
-          DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 4]
-        }`}
+        class={`grid gap-4 md:gap-6 ${
+          MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
+        } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 4]}`}
       >
-        {banners.map((
-          { href, srcMobile, srcDesktop, alt, gridColumns, gridRows },
-        ) => (
+        {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
           <a
             href={href}
-            class={`relative overflow-hidden grid-flow-row col-span-full row-span-1 ${
+            class={`overflow-hidden ${
               RADIUS_MOBILE[borderRadius.mobile ?? "none"]
-            } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} ${
-              gridColumns && "sm:col-span-" + gridColumns
-            } ${gridRows && "sm:row-span-" + gridRows}`}
+            } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} `}
           >
-            <div class="h-4 w-4 bg-white absolute left-0 right-0 top-0 bottom-0 m-auto">
-              <div class="h-4 w-4 bg-white">
-                <Icon size={24} id="ShoppingCart" />
-              </div>
-            </div>
             <Picture>
               <Source
                 media="(max-width: 767px)"
                 src={srcMobile}
                 width={100}
-                height={65}
+                height={100}
               />
               <Source
                 media="(min-width: 768px)"
                 src={srcDesktop ? srcDesktop : srcMobile}
                 width={250}
-                height={163}
+                height={250}
               />
               <img
-                class="w-full h-full"
+                class="w-full"
                 sizes="(max-width: 640px) 100vw, 30vw"
                 src={srcMobile}
                 alt={alt}
