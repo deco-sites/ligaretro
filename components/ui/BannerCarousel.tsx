@@ -130,14 +130,16 @@ function BannerItem(
         />
       </Picture>
       {action && (
-        <div class="absolute h-min top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[400px] flex flex-col gap-4 p-4 rounded glass">
-          <span class="text-6xl font-medium text-base-100">
+        <div class="absolute h-min top-0 bottom-0 m-auto left-0 right-0 max-h-min max-w-[400px] flex flex-col gap-4 p-4 items-center">
+          <span class="text-3xl font-medium text-base-100">
             {action.title}
           </span>
-          <span class="font-medium text-xl text-base-100">
+          <span class="font-medium text-base text-base-100">
             {action.subTitle}
           </span>
-          <Button class="glass">{action.label}</Button>
+          <Button class="btn rounded-full bg-white w-fit px-10">
+            {action.label}
+          </Button>
         </div>
       )}
     </a>
@@ -236,7 +238,7 @@ function BannerCarousel(props: Props) {
         })}
       </Slider>
 
-      <Buttons />
+      {/* <Buttons /> */}
 
       <Dots images={images} interval={interval} />
 
