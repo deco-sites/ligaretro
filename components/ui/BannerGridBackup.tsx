@@ -1,7 +1,5 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import Icon from "deco-sites/ligaretro/components/ui/Icon.tsx";
-import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
 
 /**
  * @titleBy alt
@@ -17,15 +15,6 @@ export interface Banner {
    * @description When you click you go to
    */
   href: string;
-  gridColumns?: number;
-  gridRows?: number;
-  /**
-   * @description Selo de camisa histórica
-   */
-  camisaHistorica?: {
-    status: boolean;
-    colorPreset: "black" | "brown";
-  };
 }
 
 export type BorderRadius =
@@ -135,11 +124,11 @@ export default function BannnerGrid(props: Props) {
   } = { ...DEFAULT_PROPS, ...props };
 
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto mb-40">
+    <section class="container w-full px-4 md:px-0 mx-auto">
       {title &&
         (
           <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
-            <h2 class="w-[20%] text-xl leading-5 font-semibold ">
+            <h2 class="text-lg leading-5 font-semibold uppercase">
               {title}
             </h2>
 
@@ -147,73 +136,39 @@ export default function BannnerGrid(props: Props) {
           </div>
         )}
       <div
-        class={`grid gap-2 ${MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]} ${
-          DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 4]
-        }`}
+        class={`grid gap-4 md:gap-6 ${
+          MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
+        } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 4]}`}
       >
-        {banners.map((
-          {
-            href,
-            srcMobile,
-            srcDesktop,
-            alt,
-            gridColumns,
-            gridRows,
-            camisaHistorica,
-          },
-        ) => (
+        {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
           <a
             href={href}
-            class={`overflow-hidden grid-flow-row col-span-full row-span-1 ${
+            class={`overflow-hidden ${
               RADIUS_MOBILE[borderRadius.mobile ?? "none"]
-            } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} ${
-              gridColumns && "sm:col-span-" + gridColumns
-            } ${gridRows && "sm:row-span-" + gridRows}`}
+            } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} `}
           >
-            <div class="w-full h-full relative">
-              <div class="h-12 w-12 flex items-center justify-center rounded-full bg-white absolute left-0 right-0 top-0 bottom-0 m-auto">
-                <div>
-                  <Icon size={24} id="ShoppingBag" />
-                </div>
-              </div>
-              {camisaHistorica?.status && (
-                <div
-                  class={`h-[55px] w-fit flex items-center justify-center rounded-lg border-2 border-white text-white  ${
-                    camisaHistorica?.colorPreset === "black" && "bg-black"
-                  } ${
-                    camisaHistorica?.colorPreset === "brown" && "bg-[#673e2e]"
-                  } absolute lg:left-[56%] xl:left-[66%] right-[12%] top-[70%] gap-4 px-3 bottom-0 m-auto`}
-                >
-                  <Icon size={36} id="Camisa10" />
-                  <div class="flex flex-col align-top text-xs">
-                    <span>Camisa</span>
-                    <span class="font-bold">Histórica</span>
-                  </div>
-                </div>
-              )}
-              <Picture>
-                <Source
-                  media="(max-width: 767px)"
-                  src={srcMobile}
-                  width={100}
-                  height={65}
-                />
-                <Source
-                  media="(min-width: 768px)"
-                  src={srcDesktop ? srcDesktop : srcMobile}
-                  width={250}
-                  height={163}
-                />
-                <img
-                  class="w-full h-full"
-                  sizes="(max-width: 640px) 100vw, 30vw"
-                  src={srcMobile}
-                  alt={alt}
-                  decoding="async"
-                  loading="lazy"
-                />
-              </Picture>
-            </div>
+            <Picture>
+              <Source
+                media="(max-width: 767px)"
+                src={srcMobile}
+                width={100}
+                height={100}
+              />
+              <Source
+                media="(min-width: 768px)"
+                src={srcDesktop ? srcDesktop : srcMobile}
+                width={250}
+                height={250}
+              />
+              <img
+                class="w-full"
+                sizes="(max-width: 640px) 100vw, 30vw"
+                src={srcMobile}
+                alt={alt}
+                decoding="async"
+                loading="lazy"
+              />
+            </Picture>
           </a>
         ))}
       </div>
