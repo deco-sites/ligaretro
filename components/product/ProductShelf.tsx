@@ -39,12 +39,16 @@ function ProductShelf({
 
   return (
     <div class="w-full container  py-8 flex flex-col gap-12 lg:gap-16 lg:py-10">
-      <Header
+      {
+        /* <Header
         title={title || ""}
         description={description || ""}
         fontSize={layout?.headerfontSize || "Large"}
         alignment={layout?.headerAlignment || "center"}
-      />
+      /> */
+      }
+
+      <h3 class="text-xl font-semibold pl-6 sm:pl-0">{title || ""}</h3>
 
       <div
         id={id}
@@ -54,7 +58,7 @@ function ProductShelf({
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              class="carousel-item w-[270px] sm:w-[292px] md:w-[400px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
             >
               <ProductCard
                 product={product}
@@ -67,7 +71,17 @@ function ProductShelf({
           ))}
         </Slider>
 
-        <>
+        <div class="hidden lg:flex lg:flex-row z-50 mt-[-100px] ml-[130px]">
+          <Slider.PrevButton class="btn btn-circle btn-outline bg-base-100 mr-3">
+            <Icon size={24} id="ChevronLeft" strokeWidth={3} />
+          </Slider.PrevButton>
+          <Slider.NextButton class="btn btn-circle btn-outline bg-base-100">
+            <Icon size={24} id="ChevronRight" strokeWidth={3} />
+          </Slider.NextButton>
+        </div>
+
+        {
+          /* <>
           <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
             <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-base-100">
               <Icon size={24} id="ChevronLeft" strokeWidth={3} />
@@ -78,7 +92,8 @@ function ProductShelf({
               <Icon size={24} id="ChevronRight" strokeWidth={3} />
             </Slider.NextButton>
           </div>
-        </>
+        </> */
+        }
         <SliderJS rootId={id} />
         <SendEventOnView
           id={id}
