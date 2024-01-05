@@ -18,6 +18,8 @@ export type AvailableIcons =
   | "FilterList"
   | "Heart"
   | "LetsEncrypt"
+  | "ShoppingBag"
+  | "Camisa10"
   | "HollowHeart"
   | "Profile"
   | "Bag"
