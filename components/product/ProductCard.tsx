@@ -57,7 +57,8 @@ const relative = (url: string) => {
   return `${link.pathname}${link.search}`;
 };
 
-const WIDTH = 200;
+// const WIDTH = 200;
+const WIDTH = 279;
 const HEIGHT = 279;
 
 function ProductCard(
@@ -69,6 +70,7 @@ function ProductCard(
     name,
     image: images,
     offers,
+    additionalProperty,
     isVariantOf,
   } = product;
   const id = `product-card-${productID}`;
@@ -79,6 +81,9 @@ function ProductCard(
   const { listPrice, price, installments } = useOffer(offers);
   const possibilities = useVariantPossibilities(hasVariant, product);
   const variants = Object.entries(Object.values(possibilities)[0] ?? {});
+  const categoryArray = additionalProperty?.filter((p) => p.name === "category")
+    .map((obj) => obj.value);
+  const category = categoryArray?.join(" | ");
 
   const l = layout;
   const align =
@@ -99,11 +104,28 @@ function ProductCard(
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block"
+      class="btn btn-bloc bg-[#252525] text-white border-none"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
   );
+
+  const splittedPrice =
+    formatPrice(price, offers?.priceCurrency)?.split("\u00a0") ||
+    ["Price", "undefined"];
+  const formattedPrice = (
+    <div>
+      <span class="text-[#bcbcbc] text-base mr-2">{splittedPrice[0]}</span>
+      <span class="text-[#252525] text-base font-semibold">
+        {splittedPrice[1]}
+      </span>
+    </div>
+  );
+
+  const discount = price && listPrice ? listPrice - price : 0;
+  const percentageDiscount = listPrice
+    ? Math.round((discount / listPrice) * 100)
+    : 0;
 
   return (
     <div
@@ -147,11 +169,6 @@ function ProductCard(
               ? "left-2"
               : "right-2"
           }
-          ${
-            l?.onMouseOver?.showFavoriteIcon
-              ? "lg:hidden lg:group-hover:block"
-              : "lg:hidden"
-          }
         `}
         >
           {platform === "vtex" && (
@@ -165,8 +182,13 @@ function ProductCard(
         <a
           href={url && relative(url)}
           aria-label="view product"
-          class="grid grid-cols-1 grid-rows-1 w-full"
+          class="relative grid grid-cols-1 grid-rows-1 w-full"
         >
+          <div class="absolute top-2 left-2 m-auto text-[#252525]">
+            <span class="text-base font-semibold mt-7">
+              {percentageDiscount}% OFF
+            </span>
+          </div>
           <Image
             src={front.url!}
             alt={front.alternateName}
@@ -237,16 +259,11 @@ function ProductCard(
             <div class="flex flex-col gap-0">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class="truncate text-base lg:text-lg text-base-content"
+                  class="text-base lg:text-base font-semibold text-base-content"
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}
-              {l?.hide?.productDescription ? "" : (
-                <div
-                  class="truncate text-sm lg:text-sm text-neutral"
-                  dangerouslySetInnerHTML={{ __html: description ?? "" }}
-                />
-              )}
+              <span class="mt-4 text-sm text-[#bcbcbc]">{category}</span>
             </div>
           )}
         {l?.hide?.allPrices ? "" : (
@@ -265,15 +282,15 @@ function ProductCard(
               >
                 {formatPrice(listPrice, offers?.priceCurrency)}
               </div>
-              <div class="text-accent text-base lg:text-xl">
-                {formatPrice(price, offers?.priceCurrency)}
+              <div class="text-[#252525] text-base">
+                {formattedPrice}
               </div>
             </div>
             {l?.hide?.installments
               ? ""
               : (
-                <div class="text-base-300 text-sm lg:text-base truncate">
-                  ou {installments}
+                <div class="text-[#bcbcbc] text-sm truncate">
+                  até {installments}
                 </div>
               )}
           </div>

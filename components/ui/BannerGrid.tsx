@@ -168,7 +168,9 @@ export default function BannnerGrid(props: Props) {
               RADIUS_MOBILE[borderRadius.mobile ?? "none"]
             } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} ${
               gridColumns && "sm:col-span-" + gridColumns
-            } ${gridRows && "sm:row-span-" + gridRows}`}
+            } ${
+              gridRows && "sm:row-span-" + gridRows
+            }  hover:brightness-75 transition`}
           >
             <div class="w-full h-full relative">
               <div class="h-12 w-12 flex items-center justify-center rounded-full bg-white absolute left-0 right-0 top-0 bottom-0 m-auto">
