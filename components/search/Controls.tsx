@@ -2,6 +2,7 @@ import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Filters from "$store/components/search/Filters.tsx";
 import Sort from "$store/components/search/Sort.tsx";
+import PageTitle from "$store/components/search/PageTitle.tsx";
 import Drawer from "$store/components/ui/Drawer.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 import { useSignal } from "@preact/signals";
@@ -11,10 +12,11 @@ export type Props =
   & Pick<ProductListingPage, "filters" | "breadcrumb" | "sortOptions">
   & {
     displayFilter?: boolean;
+    records?: number;
   };
 
 function SearchControls(
-  { filters, breadcrumb, displayFilter, sortOptions }: Props,
+  { filters, breadcrumb, displayFilter, sortOptions, records = 0 }: Props,
 ) {
   const open = useSignal(false);
 
@@ -41,9 +43,13 @@ function SearchControls(
         </>
       }
     >
-      <div class="flex flex-col justify-between mb-4 p-4 sm:mb-0 sm:p-0 sm:gap-4 sm:flex-row sm:h-[53px] sm:border-b sm:border-base-200">
+      <div class="w-full text-xs text-[#bcbcbc]">
+        <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
+      </div>
+      <div class="flex flex-col justify-between mb-4 sm:mb-10 sm:gap-4 sm:flex-row sm:items-center sm:h-[53px] bg-[#f5f5f5] rounded-xl p-5">
         <div class="flex flex-row items-center sm:p-0 mb-2">
-          <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
+          <PageTitle breadCrumbs={breadcrumb?.itemListElement} />
+          <span class="text-sm ml-2">({records} produtos)</span>
         </div>
 
         <div class="flex flex-row items-center justify-between border-b border-base-200 sm:gap-4 sm:border-none">

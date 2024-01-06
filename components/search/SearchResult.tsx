@@ -54,12 +54,13 @@ function Result({
 
   return (
     <>
-      <div class="container px-4 sm:py-10">
+      <div class="container px-4 sm:py-10 mt-24">
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
+          records={pageInfo.records}
         />
 
         <div class="flex flex-row">
