@@ -39,14 +39,16 @@ export interface Style {
     desktop: ImageWidget;
     /** @description Image for small screens */
     mobile: ImageWidget;
+    link: string;
     /** @description image alt text */
-    alt?: string;
+    alt: string;
   };
   bottomBanner?: {
     /** @description Image for big screens */
     desktop: ImageWidget;
     /** @description Image for small screens */
     mobile: ImageWidget;
+    link: string;
     /** @description image alt text */
     alt?: string;
   };
@@ -93,7 +95,10 @@ function Result({
     <>
       <div class="container px-4 sm:py-10 mt-16">
         {style?.topBanner && (
-          <div class="grid grid-cols-1 grid-rows-1">
+          <a
+            href={style?.topBanner.link || "#"}
+            class="grid grid-cols-1 grid-rows-1"
+          >
             <Picture
               preload
               class="col-start-1 col-span-1 row-start-1 row-span-1"
@@ -116,7 +121,7 @@ function Result({
                 alt={style?.topBanner.alt}
               />
             </Picture>
-          </div>
+          </a>
         )}
         <SearchControls
           sortOptions={sortOptions}
@@ -166,6 +171,37 @@ function Result({
           </div>
         </div>
       </div>
+      {style?.bottomBanner && (
+        <div class="container mb-20">
+          <a
+            href={style?.bottomBanner.link || "#"}
+            class="grid grid-cols-1 grid-rows-1"
+          >
+            <Picture
+              preload
+              class="col-start-1 col-span-1 row-start-1 row-span-1"
+            >
+              <Source
+                src={style?.bottomBanner.mobile}
+                width={360}
+                height={159}
+                media="(max-width: 767px)"
+              />
+              <Source
+                src={style?.bottomBanner.desktop}
+                width={1508}
+                height={264}
+                media="(min-width: 767px)"
+              />
+              <img
+                class="w-full rounded-xl"
+                src={style?.bottomBanner.desktop}
+                alt={style?.bottomBanner.alt}
+              />
+            </Picture>
+          </a>
+        </div>
+      )}
       <SendEventOnView
         id={id}
         event={{
