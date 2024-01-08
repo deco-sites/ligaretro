@@ -8,6 +8,7 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
+import type { ImageWidget } from "apps/admin/widgets.ts";
 
 export interface Layout {
   /**
@@ -20,6 +21,32 @@ export interface Layout {
   columns?: Columns;
 }
 
+export interface Style {
+  matcher: string;
+  titleStyle?: {
+    titleBgColor: string;
+    titleTextColor: string;
+    logo?: ImageWidget;
+  };
+  topBanner?: {
+    /** @description Image for big screens */
+    desktop: ImageWidget;
+    /** @description Image for small screens */
+    mobile: ImageWidget;
+    /** @description image alt text */
+    alt?: string;
+  };
+  bottomBanner?: {
+    /** @description Image for big screens */
+    desktop: ImageWidget;
+    /** @description Image for small screens */
+    mobile: ImageWidget;
+    /** @description image alt text */
+    alt?: string;
+  };
+  backgroundColor?: string;
+}
+
 export interface Props {
   /** @title Integration */
   page: ProductListingPage | null;
@@ -28,6 +55,7 @@ export interface Props {
 
   /** @description 0 for ?page=0 as your first page */
   startingPage?: 0 | 1;
+  styles?: Style[];
 }
 
 function NotFound() {
