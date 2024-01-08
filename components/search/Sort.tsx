@@ -36,7 +36,6 @@ const portugueseMappings = {
 
 function Sort({ sortOptions, textColor }: Props) {
   const sort = useSort();
-  console.log({ textColor });
 
   return (
     <select

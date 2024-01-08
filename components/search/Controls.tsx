@@ -51,7 +51,7 @@ function SearchControls(
         <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
       </div>
       <div
-        class={`flex flex-col justify-between sm:mb-20 sm:gap-4 sm:flex-row sm:items-center sm:h-[53px]  rounded-xl p-5 ${
+        class={`flex flex-col justify-between md:mb-20 md:gap-4 md:flex-row md:items-center md:h-[53px]  rounded-xl p-5 ${
           style?.titleStyle?.logo ? "mb-20 relative" : "mb-4"
         }`}
         style={{
@@ -66,7 +66,7 @@ function SearchControls(
         }}
       >
         {style?.titleStyle?.logo && (
-          <div class="absolute left-1/2 transform -translate-x-1/2 top-[90%] sm:top-[20%]">
+          <div class="absolute left-1/2 transform -translate-x-1/2 top-[90%] md:top-[20%]">
             <Image
               src={style?.titleStyle?.logo}
               alt="logomarca"
@@ -80,9 +80,9 @@ function SearchControls(
           <span class="text-sm ml-2">({records} produtos)</span>
         </div>
 
-        <div class="flex flex-row items-center justify-between border-b border-base-200 sm:gap-4 sm:border-none">
+        <div class="flex flex-row items-center justify-between border-b border-base-200 sm:gap-4 md:border-none">
           <Button
-            class={displayFilter ? "btn-ghost" : "btn-ghost sm:hidden"}
+            class={displayFilter ? "btn-ghost" : "btn-ghost md:hidden"}
             onClick={() => {
               open.value = true;
             }}
