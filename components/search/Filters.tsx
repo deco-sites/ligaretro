@@ -1,4 +1,5 @@
 import Avatar from "$store/components/ui/Avatar.tsx";
+import AvatarSquare from "$store/components/ui/AvatarSquare.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import type {
   Filter,
@@ -97,10 +98,21 @@ function FilterValues({ key, values }: FilterToggle) {
       {values.map((item) => {
         const { url, selected, value, quantity } = item;
 
-        if (key === "cor" || key === "tamanho") {
+        if (key === "cor") {
           return (
             <a href={url} rel="nofollow">
               <Avatar
+                content={value}
+                variant={selected ? "active" : "default"}
+              />
+            </a>
+          );
+        }
+
+        if (key === "tamanho") {
+          return (
+            <a href={url} rel="nofollow">
+              <AvatarSquare
                 content={value}
                 variant={selected ? "active" : "default"}
               />
