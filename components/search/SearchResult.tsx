@@ -9,6 +9,7 @@ import type { ProductListingPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
+import type { SectionProps } from "deco/types.ts";
 
 export interface Layout {
   /**
@@ -26,6 +27,9 @@ export interface Style {
   titleStyle?: {
     titleBgColor: string;
     titleTextColor: string;
+    /**
+     * @title Logo (89 x 89)
+     */
     logo?: ImageWidget;
   };
   topBanner?: {
@@ -70,8 +74,11 @@ function Result({
   page,
   layout,
   cardLayout,
+  style,
   startingPage = 0,
-}: Omit<Props, "page"> & { page: ProductListingPage }) {
+}: Omit<Props, "page styles"> & { page: ProductListingPage } & {
+  style: Style;
+}) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
   const perPage = pageInfo.recordPerPage || products.length;
 
@@ -89,6 +96,7 @@ function Result({
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
           records={pageInfo.records}
+          style={style}
         />
 
         <div class="flex flex-row">
@@ -153,12 +161,28 @@ function Result({
   );
 }
 
-function SearchResult({ page, ...props }: Props) {
+function SearchResult(
+  { page, ...props }: SectionProps<ReturnType<typeof loader>>,
+) {
   if (!page) {
     return <NotFound />;
   }
 
-  return <Result {...props} page={page} />;
+  const style = props.style;
+  delete props.style;
+
+  return <Result {...props} page={page} style={style!} />;
 }
+
+export const loader = (
+  { page, layout, cardLayout, startingPage, styles }: Props,
+  req: Request,
+) => {
+  const style = styles?.find(({ matcher }) =>
+    new URLPattern({ pathname: matcher }).test(req.url)
+  );
+
+  return { page, layout, cardLayout, startingPage, style };
+};
 
 export default SearchResult;

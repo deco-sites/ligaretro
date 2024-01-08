@@ -1,4 +1,5 @@
 import SearchResult, {
+  loader,
   Props as SearchResultProps,
 } from "$store/components/search/SearchResult.tsx";
 
@@ -23,7 +24,9 @@ function WishlistGallery(props: Props) {
     );
   }
 
-  return <SearchResult {...props} />;
+  const returnArgs = { ...props } as ReturnType<typeof loader>;
+
+  return <SearchResult {...returnArgs} />;
 }
 
 export default WishlistGallery;
