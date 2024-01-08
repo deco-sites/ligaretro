@@ -1,6 +1,6 @@
 import { SendEventOnView } from "$store/components/Analytics.tsx";
 import { Layout as CardLayout } from "$store/components/product/ProductCard.tsx";
-import Filters from "$store/components/search/Filters.tsx";
+import Filters from "$store/islands/Filters.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
 import { useId } from "$store/sdk/useId.ts";
@@ -89,7 +89,7 @@ function Result({
               <Icon id="ChevronLeft" size={24} strokeWidth={2} />
             </a>
             <span class="btn btn-ghost join-item">
-              Page {zeroIndexedOffsetPage + 1}
+              Página {zeroIndexedOffsetPage + 1}
             </span>
             <a
               aria-label="next page link"
