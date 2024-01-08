@@ -24,6 +24,7 @@ function WishlistGallery(props: Props) {
     );
   }
 
+  //necessary fix after implementing loader in SearchResult, because SearchResults receives a loader return as props...
   const returnArgs = { ...props } as ReturnType<typeof loader>;
 
   return <SearchResult {...returnArgs} />;
