@@ -54,16 +54,20 @@ function Banner(props: SectionProps<ReturnType<typeof loader>>) {
         <Source
           src={image.mobile}
           width={360}
-          height={120}
+          height={159}
           media="(max-width: 767px)"
         />
         <Source
           src={image.desktop}
-          width={1440}
-          height={200}
+          width={1508}
+          height={264}
           media="(min-width: 767px)"
         />
-        <img class="w-full" src={image.desktop} alt={image.alt ?? title} />
+        <img
+          class="w-full rounded-2xl"
+          src={image.desktop}
+          alt={image.alt ?? title}
+        />
       </Picture>
 
       <div class="container flex flex-col items-center justify-center sm:items-start col-start-1 col-span-1 row-start-1 row-span-1 w-full">
