@@ -104,7 +104,7 @@ function ProductCard(
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-bloc bg-[#252525] text-white border-none"
+      class="w-full btn btn-bloc bg-[#252525] text-white border-none"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -238,12 +238,13 @@ function ProductCard(
       {/* Prices & Name */}
       <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4">
         {/* SKU Selector */}
-        {(!l?.elementsPositions?.skuSelector ||
+        {
+          /* {(!l?.elementsPositions?.skuSelector ||
           l?.elementsPositions?.skuSelector === "Top") && (
           <>
             {l?.hide?.skuSelector ? "" : (
               <ul
-                class={`flex items-center gap-2 w-full overflow-auto p-3 ${
+                class={`hidden sm:flex items-center gap-2 w-full overflow-auto p-3 ${
                   align === "center" ? "justify-center" : "justify-start"
                 } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
               >
@@ -251,7 +252,8 @@ function ProductCard(
               </ul>
             )}
           </>
-        )}
+        )} */
+        }
 
         {l?.hide?.productName && l?.hide?.productDescription
           ? ""
