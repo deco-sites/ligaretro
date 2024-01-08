@@ -89,7 +89,7 @@ function Result({
               <Icon id="ChevronLeft" size={24} strokeWidth={2} />
             </a>
             <span class="btn btn-ghost join-item">
-              Page {zeroIndexedOffsetPage + 1}
+              Página {zeroIndexedOffsetPage + 1}
             </span>
             <a
               aria-label="next page link"

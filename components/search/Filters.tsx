@@ -1,4 +1,5 @@
 import Avatar from "$store/components/ui/Avatar.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
 import AvatarSquare from "$store/components/ui/AvatarSquare.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import type {
@@ -17,6 +18,8 @@ interface Props {
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
   filter["@type"] === "FilterToggle";
+
+const isPrice = (filter: Filter) => !["price"].includes(filter.key);
 
 function ValueItem(
   { url, selected, label, quantity }: FilterToggleValue,
@@ -139,16 +142,24 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   return (
-    <ul class="flex flex-col gap-6 p-4">
-      {filters
-        .filter(isToggle)
-        .map((filter) => (
-          <li class="flex flex-col gap-4">
-            <span>{filter.label}</span>
-            <FilterValues {...filter} />
-          </li>
-        ))}
-    </ul>
+    <>
+      <div class="flex gap-3 p-4 mb-5">
+        <Icon id="FilterIcon" size={16} />
+        <span class="font-semibold">Filtros</span>
+      </div>
+      <ul class="flex flex-col gap-6 p-4">
+        {filters
+          .filter(isToggle)
+          .filter((filter: Filter) => filter.key !== "category-1")
+          .filter((filter: Filter) => filter.key !== "category-2")
+          .map((filter) => (
+            <li class="flex flex-col gap-4">
+              {filter.key !== "category-3" && <span>{filter.label}</span>}
+              <FilterValues {...filter} />
+            </li>
+          ))}
+      </ul>
+    </>
   );
 }
 
