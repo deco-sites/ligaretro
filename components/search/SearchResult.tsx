@@ -53,6 +53,7 @@ export interface Style {
     alt?: string;
   };
   backgroundColor?: string;
+  darkBackground?: boolean;
 }
 
 export interface Props {
@@ -135,7 +136,10 @@ function Result({
         <div class="flex flex-row">
           {layout?.variant === "aside" && filters.length > 0 && (
             <aside class="hidden md:block w-min min-w-[250px]">
-              <Filters filters={filters} />
+              <Filters
+                darkBackground={style?.darkBackground}
+                filters={filters}
+              />
             </aside>
           )}
           <div class="flex-grow" id={id}>
@@ -236,7 +240,7 @@ function SearchResult(
   delete props.style;
 
   return (
-    <section class="">
+    <section style={{ background: style?.backgroundColor }}>
       <Result {...props} page={page} style={style!} />;
     </section>
   );
