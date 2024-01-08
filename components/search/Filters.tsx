@@ -152,6 +152,7 @@ function Filters({ filters }: Props) {
           .filter(isToggle)
           .filter((filter: Filter) => filter.key !== "category-1")
           .filter((filter: Filter) => filter.key !== "category-2")
+          .filter((filter: Filter) => filter.key !== "brand")
           .map((filter) => (
             <li class="flex flex-col gap-4">
               {filter.key !== "category-3" && <span>{filter.label}</span>}
