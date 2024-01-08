@@ -51,8 +51,8 @@ function SearchControls(
         <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
       </div>
       <div
-        class={`flex flex-col justify-between mb-4 sm:mb-20 sm:gap-4 sm:flex-row sm:items-center sm:h-[53px]  rounded-xl p-5 ${
-          style?.titleStyle?.logo && "relative"
+        class={`flex flex-col justify-between sm:mb-20 sm:gap-4 sm:flex-row sm:items-center sm:h-[53px]  rounded-xl p-5 ${
+          style?.titleStyle?.logo ? "mb-20 relative" : "mb-4"
         }`}
         style={{
           "background": style?.titleStyle?.titleBgColor &&
@@ -66,7 +66,7 @@ function SearchControls(
         }}
       >
         {style?.titleStyle?.logo && (
-          <div class="absolute left-1/2 transform -translate-x-1/2 top-[20%]">
+          <div class="absolute left-1/2 transform -translate-x-1/2 top-[90%] sm:top-[20%]">
             <Image
               src={style?.titleStyle?.logo}
               alt="logomarca"
