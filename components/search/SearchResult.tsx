@@ -34,21 +34,29 @@ export interface Style {
      */
     logo?: ImageWidget;
   };
+  coverImage?: {
+    /** @description Image for big screens */
+    desktop?: ImageWidget;
+    /** @description Image for small screens */
+    mobile?: ImageWidget;
+    /** @description image alt text */
+    alt?: string;
+  };
   topBanner?: {
     /** @description Image for big screens */
-    desktop: ImageWidget;
+    desktop?: ImageWidget;
     /** @description Image for small screens */
-    mobile: ImageWidget;
-    link: string;
+    mobile?: ImageWidget;
+    link?: string;
     /** @description image alt text */
-    alt: string;
+    alt?: string;
   };
   bottomBanner?: {
     /** @description Image for big screens */
-    desktop: ImageWidget;
+    desktop?: ImageWidget;
     /** @description Image for small screens */
-    mobile: ImageWidget;
-    link: string;
+    mobile?: ImageWidget;
+    link?: string;
     /** @description image alt text */
     alt?: string;
   };
@@ -94,8 +102,34 @@ function Result({
 
   return (
     <>
+      {style?.coverImage?.desktop && style?.coverImage?.mobile && (
+        <div class="relative w-full">
+          <Picture
+            preload
+            class="absolute"
+          >
+            <Source
+              src={style?.coverImage.mobile}
+              width={360}
+              height={159}
+              media="(max-width: 767px)"
+            />
+            <Source
+              src={style?.coverImage.desktop}
+              width={1728}
+              height={489}
+              media="(min-width: 767px)"
+            />
+            <img
+              class="w-full rounded-xl"
+              src={style?.coverImage.desktop}
+              alt={style?.coverImage.alt}
+            />
+          </Picture>
+        </div>
+      )}
       <div class="container px-4 sm:py-10 mt-16">
-        {style?.topBanner && (
+        {style?.topBanner?.desktop && style?.topBanner?.mobile && (
           <a
             href={style?.topBanner.link || "#"}
             class="grid grid-cols-1 grid-rows-1"
@@ -180,7 +214,7 @@ function Result({
           </div>
         </div>
       </div>
-      {style?.bottomBanner && (
+      {style?.bottomBanner?.desktop && style?.bottomBanner?.mobile && (
         <div class="container mb-20">
           <a
             href={style?.bottomBanner.link || "#"}
@@ -191,13 +225,13 @@ function Result({
               class="col-start-1 col-span-1 row-start-1 row-span-1"
             >
               <Source
-                src={style?.bottomBanner.mobile}
+                src={style?.bottomBanner?.mobile}
                 width={360}
                 height={159}
                 media="(max-width: 767px)"
               />
               <Source
-                src={style?.bottomBanner.desktop}
+                src={style?.bottomBanner?.desktop}
                 width={1508}
                 height={264}
                 media="(min-width: 767px)"
