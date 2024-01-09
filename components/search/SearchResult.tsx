@@ -103,7 +103,7 @@ function Result({
   return (
     <>
       {style?.coverImage?.desktop && style?.coverImage?.mobile && (
-        <div class="relative w-full">
+        <div class="relative w-full mt-[66px] h-60 flex justify-center">
           <Picture
             preload
             class="absolute"
@@ -121,14 +121,14 @@ function Result({
               media="(min-width: 767px)"
             />
             <img
-              class="w-full rounded-xl"
+              class="w-full rounded-xl max-h-[470px] mx-auto"
               src={style?.coverImage.desktop}
               alt={style?.coverImage.alt}
             />
           </Picture>
         </div>
       )}
-      <div class="container px-4 sm:py-10 mt-16">
+      <div class="container px-4 sm:py-10 lg:mt-16">
         {style?.topBanner?.desktop && style?.topBanner?.mobile && (
           <a
             href={style?.topBanner.link || "#"}
