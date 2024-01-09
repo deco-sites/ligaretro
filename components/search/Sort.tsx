@@ -18,7 +18,9 @@ const applySort = (e: JSX.TargetedEvent<HTMLSelectElement, Event>) => {
   window.location.search = urlSearchParams.toString();
 };
 
-export type Props = Pick<ProductListingPage, "sortOptions">;
+export type Props = Pick<ProductListingPage, "sortOptions"> & {
+  textColor?: string;
+};
 
 // TODO: move this to the loader
 const portugueseMappings = {
@@ -32,7 +34,7 @@ const portugueseMappings = {
   "discount:desc": "Maior desconto",
 };
 
-function Sort({ sortOptions }: Props) {
+function Sort({ sortOptions, textColor }: Props) {
   const sort = useSort();
 
   return (
@@ -40,7 +42,9 @@ function Sort({ sortOptions }: Props) {
       id="sort"
       name="sort"
       onInput={applySort}
-      class="w-min h-[36px] px-1 rounded m-2 text-base-content cursor-pointer outline-none bg-transparent"
+      class={`w-min h-[36px] px-1 rounded m-2 ${
+        textColor ? `text-[textColor]` : "text-base-content"
+      } cursor-pointer outline-none bg-transparent`}
     >
       {sortOptions.map(({ value, label }) => ({
         value,

@@ -1,7 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 
 const MultiRangeSlider = (
-  { min, max, onChange, currentMin = min, currentMax = max }: {
+  {
+    min,
+    max,
+    onChange,
+    currentMin = min,
+    currentMax = max,
+    darkBackground = false,
+  }: {
+    darkBackground: boolean;
     min: number;
     max: number;
     onChange: (props: { min: number; max: number }) => void;
@@ -84,9 +92,23 @@ const MultiRangeSlider = (
 
       <div class="slider_">
         <div class="slider__track" />
-        <div ref={range} class="slider__range" />
-        <div class="slider__left-value">{"R$ " + minVal + ",00"}</div>
-        <div class="slider__right-value">{"R$ " + maxVal + ",00"}</div>
+        <div
+          ref={range}
+          class="slider__range"
+          style={{ background: darkBackground ? "#f5f5f5" : "#1e1e1e" }}
+        />
+        <div
+          class="slider__left-value"
+          style={{ color: darkBackground ? "#ffffff" : "inherit" }}
+        >
+          {"R$ " + minVal + ",00"}
+        </div>
+        <div
+          class="slider__right-value"
+          style={{ color: darkBackground ? "#ffffff" : "inherit" }}
+        >
+          {"R$ " + maxVal + ",00"}
+        </div>
       </div>
     </div>
   );

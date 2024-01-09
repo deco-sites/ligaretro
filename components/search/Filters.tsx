@@ -14,6 +14,7 @@ import MultiRangeSlider from "$store/components/ui/PriceSlider.tsx";
 
 interface Props {
   filters: ProductListingPage["filters"];
+  darkBackground?: boolean;
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -33,7 +34,10 @@ function ValueItem(
   );
 }
 
-function FilterValues({ key, values }: FilterToggle) {
+function FilterValues(
+  { filter, darkBackground }: { filter: FilterToggle; darkBackground: boolean },
+) {
+  const { values, key } = filter;
   const flexDirection = key === "tamanho" || key === "cor"
     ? "flex-row"
     : "flex-col";
@@ -72,6 +76,7 @@ function FilterValues({ key, values }: FilterToggle) {
     return (
       <div class={`h-16 mt-4`}>
         <MultiRangeSlider
+          darkBackground={darkBackground}
           min={minRange}
           max={maxRange}
           currentMin={currentMaxMin.min}
@@ -140,14 +145,16 @@ function FilterValues({ key, values }: FilterToggle) {
   );
 }
 
-function Filters({ filters }: Props) {
+function Filters({ filters, darkBackground }: Props) {
   return (
     <>
-      <div class="flex gap-3 p-4 mb-5">
+      <div class={`flex gap-3 p-4 mb-5 ${darkBackground && "md:text-white"}`}>
         <Icon id="FilterIcon" size={16} />
         <span class="font-semibold">Filtros</span>
       </div>
-      <ul class="flex flex-col gap-6 p-4">
+      <ul
+        class={`flex flex-col gap-6 p-4 ${darkBackground && "md:text-white"}`}
+      >
         {filters
           .filter(isToggle)
           .filter((filter: Filter) => filter.key !== "category-1")
@@ -156,7 +163,10 @@ function Filters({ filters }: Props) {
           .map((filter) => (
             <li class="flex flex-col gap-4">
               {filter.key !== "category-3" && <span>{filter.label}</span>}
-              <FilterValues {...filter} />
+              <FilterValues
+                filter={{ ...filter }}
+                darkBackground={darkBackground!}
+              />
             </li>
           ))}
       </ul>

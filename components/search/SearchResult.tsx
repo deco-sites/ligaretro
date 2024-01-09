@@ -8,6 +8,9 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
+import type { ImageWidget } from "apps/admin/widgets.ts";
+import type { SectionProps } from "deco/types.ts";
+import { Picture, Source } from "apps/website/components/Picture.tsx";
 
 export interface Layout {
   /**
@@ -20,6 +23,47 @@ export interface Layout {
   columns?: Columns;
 }
 
+/** @titleBy matcher */
+export interface Style {
+  matcher: string;
+  titleStyle?: {
+    titleBgColor: string;
+    titleTextColor: string;
+    /**
+     * @title Logo (89 x 89)
+     */
+    logo?: ImageWidget;
+  };
+  coverImage?: {
+    /** @description Image for big screens */
+    desktop?: ImageWidget;
+    /** @description Image for small screens */
+    mobile?: ImageWidget;
+    /** @description image alt text */
+    alt?: string;
+  };
+  topBanner?: {
+    /** @description Image for big screens */
+    desktop?: ImageWidget;
+    /** @description Image for small screens */
+    mobile?: ImageWidget;
+    link?: string;
+    /** @description image alt text */
+    alt?: string;
+  };
+  bottomBanner?: {
+    /** @description Image for big screens */
+    desktop?: ImageWidget;
+    /** @description Image for small screens */
+    mobile?: ImageWidget;
+    link?: string;
+    /** @description image alt text */
+    alt?: string;
+  };
+  backgroundColor?: string;
+  darkBackground?: boolean;
+}
+
 export interface Props {
   /** @title Integration */
   page: ProductListingPage | null;
@@ -28,6 +72,7 @@ export interface Props {
 
   /** @description 0 for ?page=0 as your first page */
   startingPage?: 0 | 1;
+  styles?: Style[];
 }
 
 function NotFound() {
@@ -42,8 +87,11 @@ function Result({
   page,
   layout,
   cardLayout,
+  style,
   startingPage = 0,
-}: Omit<Props, "page"> & { page: ProductListingPage }) {
+}: Omit<Props, "page styles"> & { page: ProductListingPage } & {
+  style: Style;
+}) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
   const perPage = pageInfo.recordPerPage || products.length;
 
@@ -54,19 +102,78 @@ function Result({
 
   return (
     <>
-      <div class="container px-4 sm:py-10 mt-24">
+      {style?.coverImage?.desktop && style?.coverImage?.mobile && (
+        <div class="relative w-full mt-[66px] h-60 flex justify-center">
+          <Picture
+            preload
+            class="absolute"
+          >
+            <Source
+              src={style?.coverImage.mobile}
+              width={360}
+              height={159}
+              media="(max-width: 767px)"
+            />
+            <Source
+              src={style?.coverImage.desktop}
+              width={1728}
+              height={489}
+              media="(min-width: 767px)"
+            />
+            <img
+              class="w-full rounded-xl max-h-[470px] mx-auto"
+              src={style?.coverImage.desktop}
+              alt={style?.coverImage.alt}
+            />
+          </Picture>
+        </div>
+      )}
+      <div class="container px-4 sm:py-10 lg:mt-16">
+        {style?.topBanner?.desktop && style?.topBanner?.mobile && (
+          <a
+            href={style?.topBanner.link || "#"}
+            class="grid grid-cols-1 grid-rows-1"
+          >
+            <Picture
+              preload
+              class="col-start-1 col-span-1 row-start-1 row-span-1"
+            >
+              <Source
+                src={style?.topBanner.mobile}
+                width={360}
+                height={159}
+                media="(max-width: 767px)"
+              />
+              <Source
+                src={style?.topBanner.desktop}
+                width={1508}
+                height={264}
+                media="(min-width: 767px)"
+              />
+              <img
+                class="w-full rounded-xl"
+                src={style?.topBanner.desktop}
+                alt={style?.topBanner.alt}
+              />
+            </Picture>
+          </a>
+        )}
         <SearchControls
           sortOptions={sortOptions}
           filters={filters}
           breadcrumb={breadcrumb}
           displayFilter={layout?.variant === "drawer"}
           records={pageInfo.records}
+          style={style}
         />
 
         <div class="flex flex-row">
           {layout?.variant === "aside" && filters.length > 0 && (
             <aside class="hidden md:block w-min min-w-[250px]">
-              <Filters filters={filters} />
+              <Filters
+                darkBackground={style?.darkBackground}
+                filters={filters}
+              />
             </aside>
           )}
           <div class="flex-grow" id={id}>
@@ -74,11 +181,16 @@ function Result({
               products={products}
               offset={offset}
               layout={{ card: cardLayout, columns: layout?.columns }}
+              darkBackground={style?.darkBackground}
             />
           </div>
         </div>
 
-        <div class="flex justify-center my-4">
+        <div
+          class={`flex justify-center my-4 ${
+            style?.darkBackground && "text-white"
+          }`}
+        >
           <div class="join">
             <a
               aria-label="previous page link"
@@ -102,6 +214,37 @@ function Result({
           </div>
         </div>
       </div>
+      {style?.bottomBanner?.desktop && style?.bottomBanner?.mobile && (
+        <div class="container mb-20">
+          <a
+            href={style?.bottomBanner.link || "#"}
+            class="grid grid-cols-1 grid-rows-1"
+          >
+            <Picture
+              preload
+              class="col-start-1 col-span-1 row-start-1 row-span-1"
+            >
+              <Source
+                src={style?.bottomBanner?.mobile}
+                width={360}
+                height={159}
+                media="(max-width: 767px)"
+              />
+              <Source
+                src={style?.bottomBanner?.desktop}
+                width={1508}
+                height={264}
+                media="(min-width: 767px)"
+              />
+              <img
+                class="w-full rounded-xl"
+                src={style?.bottomBanner.desktop}
+                alt={style?.bottomBanner.alt}
+              />
+            </Picture>
+          </a>
+        </div>
+      )}
       <SendEventOnView
         id={id}
         event={{
@@ -125,12 +268,32 @@ function Result({
   );
 }
 
-function SearchResult({ page, ...props }: Props) {
+function SearchResult(
+  { page, ...props }: SectionProps<ReturnType<typeof loader>>,
+) {
   if (!page) {
     return <NotFound />;
   }
 
-  return <Result {...props} page={page} />;
+  const style = props.style;
+  delete props.style;
+
+  return (
+    <section style={{ background: style?.backgroundColor }}>
+      <Result {...props} page={page} style={style!} />;
+    </section>
+  );
 }
+
+export const loader = (
+  { page, layout, cardLayout, startingPage, styles }: Props,
+  req: Request,
+) => {
+  const style = styles?.find(({ matcher }) =>
+    new URLPattern({ pathname: matcher }).test(req.url)
+  );
+
+  return { page, layout, cardLayout, startingPage, style };
+};
 
 export default SearchResult;
