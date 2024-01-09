@@ -50,6 +50,7 @@ interface Props {
 
   layout?: Layout;
   platform?: Platform;
+  darkBackground?: boolean;
 }
 
 const relative = (url: string) => {
@@ -62,7 +63,8 @@ const WIDTH = 279;
 const HEIGHT = 279;
 
 function ProductCard(
-  { product, preload, itemListName, layout, platform, index }: Props,
+  { product, preload, itemListName, layout, platform, index, darkBackground }:
+    Props,
 ) {
   const {
     url,
@@ -115,8 +117,18 @@ function ProductCard(
     ["Price", "undefined"];
   const formattedPrice = (
     <div>
-      <span class="text-[#bcbcbc] text-base mr-2">{splittedPrice[0]}</span>
-      <span class="text-[#252525] text-base font-semibold">
+      <span
+        class={`${
+          darkBackground ? "text-white" : "text-[#bcbcbc]"
+        } text-base mr-2`}
+      >
+        {splittedPrice[0]}
+      </span>
+      <span
+        class={`${
+          darkBackground ? "text-white" : "text-[#252525]"
+        } text-base font-semibold`}
+      >
         {splittedPrice[1]}
       </span>
     </div>
@@ -261,7 +273,9 @@ function ProductCard(
             <div class="flex flex-col gap-0">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class="text-base lg:text-base font-semibold text-base-content"
+                  class={`text-base lg:text-base font-semibold ${
+                    darkBackground ? "text-white" : "text-base-content"
+                  }`}
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
               )}

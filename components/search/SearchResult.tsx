@@ -147,11 +147,16 @@ function Result({
               products={products}
               offset={offset}
               layout={{ card: cardLayout, columns: layout?.columns }}
+              darkBackground={style?.darkBackground}
             />
           </div>
         </div>
 
-        <div class="flex justify-center my-4">
+        <div
+          class={`flex justify-center my-4 ${
+            style?.darkBackground && "text-white"
+          }`}
+        >
           <div class="join">
             <a
               aria-label="previous page link"

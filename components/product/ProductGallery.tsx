@@ -16,6 +16,7 @@ export interface Props {
     card?: CardLayout;
     columns?: Columns;
   };
+  darkBackground?: boolean;
 }
 
 const MOBILE_COLUMNS = {
@@ -30,7 +31,7 @@ const DESKTOP_COLUMNS = {
   5: "lg:grid-cols-5",
 };
 
-function ProductGallery({ products, layout, offset }: Props) {
+function ProductGallery({ products, layout, offset, darkBackground }: Props) {
   const platform = usePlatform();
   const mobile = MOBILE_COLUMNS[layout?.columns?.mobile ?? 2];
   const desktop = DESKTOP_COLUMNS[layout?.columns?.desktop ?? 4];
@@ -46,6 +47,7 @@ function ProductGallery({ products, layout, offset }: Props) {
           index={offset + index}
           layout={layout?.card}
           platform={platform}
+          darkBackground={darkBackground}
         />
       ))}
     </div>
