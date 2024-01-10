@@ -6,9 +6,9 @@ interface Props {
 
 function Gallery({ children: { Component, props } }: Props) {
   return (
-    <>
+    <section class="mt-[43px]">
       <Component {...props} />
-    </>
+    </section>
   );
 }
 
