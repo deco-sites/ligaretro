@@ -52,12 +52,12 @@ export default function TabbedContent({ tabs }: Props) {
             {tabs[tabOpen].accordion?.map((qna, i) => (
               <div class="collapse collapse-arrow bg-base-200">
                 <input type="radio" name="my-accordion-2" checked={i === 0} />
-                <div class="collapse-title text-lg font-semibold border-b border-[#cecece] mb-4">
+                <div class="collapse-title text-lg font-semibold">
                   {qna.question}
                 </div>
-                <div class="collapse-content">
+                <div class="collapse-content border-t border-[#cecece]">
                   <div
-                    class="text-sm"
+                    class="text-sm mt-4"
                     dangerouslySetInnerHTML={{ __html: qna.answer }}
                   />
                 </div>

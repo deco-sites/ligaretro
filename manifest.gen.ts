@@ -42,7 +42,8 @@ import * as $$$$$$34 from "./sections/Theme/Theme.tsx";
 import * as $$$$$$35 from "./sections/Links/LinkTree.tsx";
 import * as $$$$$$36 from "./sections/Links/Shortcuts.tsx";
 import * as $$$$$$37 from "./sections/Newsletter/Newsletter.tsx";
-import * as $$$$$$38 from "./sections/Header/Header.tsx";
+import * as $$$$$$38 from "./sections/Header/CleanHeader.tsx";
+import * as $$$$$$39 from "./sections/Header/Header.tsx";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
@@ -65,7 +66,8 @@ const manifest = {
     "deco-sites/ligaretro/sections/Content/Testimonials.tsx": $$$$$$15,
     "deco-sites/ligaretro/sections/Footer/Footer.tsx": $$$$$$1,
     "deco-sites/ligaretro/sections/Gallery.tsx": $$$$$$0,
-    "deco-sites/ligaretro/sections/Header/Header.tsx": $$$$$$38,
+    "deco-sites/ligaretro/sections/Header/CleanHeader.tsx": $$$$$$38,
+    "deco-sites/ligaretro/sections/Header/Header.tsx": $$$$$$39,
     "deco-sites/ligaretro/sections/Images/BannerGrid.tsx": $$$$$$5,
     "deco-sites/ligaretro/sections/Images/Carousel.tsx": $$$$$$7,
     "deco-sites/ligaretro/sections/Images/ImageGallery.tsx": $$$$$$6,
