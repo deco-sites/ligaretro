@@ -49,7 +49,7 @@ function Header({
   const items = navItems ?? [];
 
   return (
-    <header style={{ height: 111 }}>
+    <header class="mb-[43px]" style={{ height: 111 }}>
       <Drawers
         menu={{ items }}
         searchbar={searchbar}
