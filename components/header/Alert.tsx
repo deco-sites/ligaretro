@@ -18,7 +18,7 @@ function Alert() {
   return (
     <div id={id}>
       <div class="h-[38px] w-screen bg-black flex items-center">
-        <div class="container gap-6 flex justify-end text-white text-xs items-center">
+        <div class="container gap-6 flex justify-end text-white text-xs items-center mx-10 sm: mx-0">
           <a href="#" target="_blank">
             <span>Clube de Assinatura</span>
           </a>
