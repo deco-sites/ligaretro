@@ -103,7 +103,7 @@ function Result({
   return (
     <>
       {style?.coverImage?.desktop && style?.coverImage?.mobile && (
-        <div class="relative w-full mt-[66px] h-60 flex justify-center">
+        <div class="relative w-full lg:mt-[43px] h-60 flex justify-center">
           <Picture
             preload
             class="absolute"
