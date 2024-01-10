@@ -24,7 +24,7 @@ function CleanHeader({
 }: Props) {
   return (
     <header class="border-b border-[#cecece]" style={{ height: 91 }}>
-      <div class="h-full container flex justify-between items-center ">
+      <div class="h-full container px-4 sm:px-0 flex justify-between items-center ">
         <a
           href="/"
           class="inline-flex items-center"

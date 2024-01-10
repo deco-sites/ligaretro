@@ -21,7 +21,7 @@ export interface Props {
 
 export default function ExchangesAndReturns({ pageTitle, terms, faq }: Props) {
   return (
-    <div class="container py-8 mb-16 flex flex-col items-center justify-center gap-14">
+    <div class="container px-4 sm:px-0 py-8 mb-16 flex flex-col items-center justify-center gap-14">
       <div class="w-full flex justify-start">
         <span class="font-semibold text-2xl">{pageTitle}</span>
       </div>
