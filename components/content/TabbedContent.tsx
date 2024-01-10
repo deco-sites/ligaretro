@@ -22,8 +22,8 @@ export default function TabbedContent({ tabs }: Props) {
   const [tabOpen, setTabOpen] = useState(0);
 
   return (
-    <div class="flex flex-row w-full gap-16">
-      <div class=" w-full sm:w-min sm:min-w-[250px] flex flex-row sm:flex-col">
+    <div class="flex flex-col sm:flex-row w-full gap-16">
+      <div class=" w-full sm:w-min sm:min-w-[250px] flex flex-col">
         {tabs.map((t, i) => (
           <div class="w-full py-2">
             <button
