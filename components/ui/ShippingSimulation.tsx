@@ -125,6 +125,7 @@ function ShippingSimulation({ items }: Props) {
         </Button>
       </form>
       <a
+        target="_blank"
         class="font-semibold text-sm underline"
         href="https://buscacepinter.correios.com.br/app/endereco/index.php"
       >
