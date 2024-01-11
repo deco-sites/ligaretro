@@ -8,9 +8,10 @@ export interface Props {
   /** @description: sku name */
   eventParams: AddToCartParams;
   onAddItem: () => Promise<void>;
+  classes?: string;
 }
 
-const useAddToCart = ({ eventParams, onAddItem }: Props) => {
+const useAddToCart = ({ eventParams, onAddItem, classes }: Props) => {
   const [loading, setLoading] = useState(false);
   const { displayCart } = useUI();
 
@@ -39,9 +40,10 @@ const useAddToCart = ({ eventParams, onAddItem }: Props) => {
 
 export default function AddToCartButton(props: Props) {
   const btnProps = useAddToCart(props);
+  const { classes } = props;
 
   return (
-    <Button {...btnProps} class="btn-primary">
+    <Button {...btnProps} class={`btn-primary ${classes || ""}`}>
       Adicionar à Sacola
     </Button>
   );

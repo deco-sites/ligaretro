@@ -9,12 +9,14 @@ export interface Props {
   productID: string;
   productGroupID?: string;
   variant?: "icon" | "full";
+  classes?: string;
 }
 
 function WishlistButton({
   variant = "icon",
   productGroupID,
   productID,
+  classes,
 }: Props) {
   const { user } = useUser();
   const { loading, addItem, removeItem, getItem } = useWishlist();
@@ -28,9 +30,11 @@ function WishlistButton({
 
   return (
     <Button
-      class={variant === "icon"
-        ? "btn-circle btn-ghost gap-2"
-        : "btn-primary btn-outline gap-2"}
+      class={`${
+        variant === "icon"
+          ? "btn-circle btn-ghost gap-2"
+          : "btn-primary btn-outline gap-2"
+      } ${classes || ""}`}
       loading={fetching.value}
       aria-label="Add to wishlist"
       onClick={async (e) => {

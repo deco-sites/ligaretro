@@ -14,7 +14,8 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
-import ProductSelector from "./ProductVariantSelector.tsx";
+import ProductSelector from "./ProductSizeSelector.tsx";
+import RatingStars from "$store/components/ui/RatingStars.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -45,6 +46,7 @@ function ProductInfo({ page, layout }: Props) {
     offers,
     name = "",
     gtin,
+    sku,
     isVariantOf,
     additionalProperty = [],
   } = product;
@@ -57,6 +59,10 @@ function ProductInfo({ page, layout }: Props) {
     availability,
   } = useOffer(offers);
   const productGroupID = isVariantOf?.productGroupID ?? "";
+  const discount = price && listPrice ? listPrice - price : 0;
+  const percentageDiscount = listPrice
+    ? Math.round((discount / listPrice) * 100)
+    : 0;
   const breadcrumb = {
     ...breadcrumbList,
     itemListElement: breadcrumbList?.itemListElement.slice(0, -1),
@@ -74,15 +80,8 @@ function ProductInfo({ page, layout }: Props) {
     <div class="flex flex-col" id={id}>
       {/* Code and name */}
       <div class="mt-4 sm:mt-8">
-        <div>
-          {gtin && (
-            <span class="text-sm text-base-300">
-              Cod. {gtin}
-            </span>
-          )}
-        </div>
         <h1>
-          <span class="font-medium text-xl capitalize">
+          <span class="font-bold text-2xl capitalize">
             {layout?.name === "concat"
               ? `${isVariantOf?.name} ${name}`
               : layout?.name === "productGroup"
@@ -90,20 +89,39 @@ function ProductInfo({ page, layout }: Props) {
               : name}
           </span>
         </h1>
+        <div>
+          {product.sku && (
+            <span class="text-sm">
+              SKU: {sku}
+            </span>
+          )}
+        </div>
+      </div>
+      {/* Rating */}
+      <div class="my-4">
+        <RatingStars productId={productID} display="detailsPage" size="xs" />
       </div>
       {/* Prices */}
       <div class="mt-4">
-        <div class="flex flex-row gap-2 items-center">
+        <div class="flex flex-col">
           {(listPrice ?? 0) > price && (
             <span class="line-through text-base-300 text-xs">
               {formatPrice(listPrice, offers?.priceCurrency)}
             </span>
           )}
-          <span class="font-medium text-xl text-secondary">
-            {formatPrice(price, offers?.priceCurrency)}
-          </span>
+          <div class="flex gap-2 items-center">
+            <span class="font-semibold text-xl text-[#252525]">
+              {formatPrice(price, offers?.priceCurrency)}
+            </span>
+            {(listPrice ?? 0) > price && (
+              <span class="text-xs text-green-700">
+                ({percentageDiscount}% OFF)
+              </span>
+            )}
+          </div>
         </div>
-        <span class="text-sm text-base-300">
+        <span class="text-sm text-[#252525]">
+          <span class="font-bold">ou{" "}</span>
           {installments}
         </span>
       </div>
@@ -113,6 +131,7 @@ function ProductInfo({ page, layout }: Props) {
       </div>
       {/* Add to Cart and Favorites button */}
       <div class="mt-4 sm:mt-10 flex flex-col gap-2">
+        <button class="btn btn-outline rounded-2xl">Personalize</button>
         {availability === "https://schema.org/InStock"
           ? (
             <>
@@ -124,6 +143,7 @@ function ProductInfo({ page, layout }: Props) {
                     seller={seller}
                   />
                   <WishlistButton
+                    classes="rounded-2xl text-black"
                     variant="full"
                     productID={productID}
                     productGroupID={productGroupID}
@@ -167,6 +187,16 @@ function ProductInfo({ page, layout }: Props) {
           )
           : <OutOfStock productID={productID} />}
       </div>
+      {/* Description card */}
+      {description && (
+        <div class="my-8 flex flex-col gap-3">
+          <span class="text-sm font-semibold">Detalhes do Produto</span>
+          <div
+            class="text-sm ml-2 mt-2"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        </div>
+      )}
       {/* Shipping Simulation */}
       <div class="mt-8">
         {platform === "vtex" && (
@@ -178,20 +208,6 @@ function ProductInfo({ page, layout }: Props) {
             }]}
           />
         )}
-      </div>
-      {/* Description card */}
-      <div class="mt-4 sm:mt-6">
-        <span class="text-sm">
-          {description && (
-            <details>
-              <summary class="cursor-pointer">Descrição</summary>
-              <div
-                class="ml-2 mt-2"
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
-            </details>
-          )}
-        </span>
       </div>
       {/* Analytics Event */}
       <SendEventOnView
