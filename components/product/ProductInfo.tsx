@@ -16,6 +16,7 @@ import { ProductDetailsPage } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductSelector from "./ProductSizeSelector.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
+import PDPShareButtons from "$store/islands/PDPShareButtons.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -78,6 +79,8 @@ function ProductInfo({ page, layout }: Props) {
 
   return (
     <div class="flex flex-col" style={{ maxWidth: "90vw" }} id={id}>
+      {/* Share */}
+      <PDPShareButtons />
       {/* Code and name */}
       <div class="mt-4 sm:mt-0">
         <h1>

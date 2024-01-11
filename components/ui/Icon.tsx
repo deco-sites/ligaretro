@@ -50,6 +50,7 @@ export type AvailableIcons =
   | "WhatsApp"
   | "XMark"
   | "Zoom"
+  | "Copy"
   | "Alert"
   | "AlertInfo"
   | "AlertSuccess"
