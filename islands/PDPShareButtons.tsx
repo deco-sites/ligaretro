@@ -1,1 +1,1 @@
-export {default} from "$store/components/product/PDPShareButtons.tsx";
+export { default } from "$store/components/product/PDPShareButtons.tsx";
