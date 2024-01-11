@@ -22,7 +22,7 @@ function VariantSelector({ product }: Props) {
               <Icon id="Ruler" size={24} class="mr-1" />
               <span class="text-sm font-normal">Tabela de Medidas</span>
             </button>
-            <ul class="flex flex-row gap-2">
+            <ul class="flex flex-row gap-2 flex-wrap">
               {Object.entries(possibilities["TAMANHO"]).map(([value, link]) => (
                 <li>
                   <button f-partial={link} f-client-nav>
