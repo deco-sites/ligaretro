@@ -44,7 +44,7 @@ export default function GallerySlider(props: Props) {
     <>
       <div class="hidden md:grid md:grid-cols-2 md:grid-flow-row gap-4">
         {images.map((img, index) => (
-          <div class="hidden lg:block lg:col-span-1 max-w-[300px]">
+          <div class="hidden lg:block lg:col-span-1 max-w-[350px]">
             <Image
               class="w-full"
               sizes="(max-width: 640px) 100vw, 40vw"

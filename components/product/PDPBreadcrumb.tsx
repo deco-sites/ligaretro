@@ -14,7 +14,10 @@ export default function PDPBreadcrumb(
   }
 
   return (
-    <div class="container mb-6 mt-20 text-xs font-semibold">
+    <div
+      class="container mb-6 sm:mt-20 text-xs font-semibold"
+      style={{ maxWidth: "90vw" }}
+    >
       <Breadcrumb
         itemListElement={itemListElement.slice(0, -1)}
       />

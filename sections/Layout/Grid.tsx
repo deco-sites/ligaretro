@@ -72,7 +72,7 @@ function Grid({ layout, children }: Props) {
   return (
     <div
       class={clx(
-        "grid",
+        "grid items-start place-items-center",
         grid.gap.mobile[layout?.gap?.mobile ?? "4"],
         grid.gap.desktop[layout?.gap?.desktop ?? "8"],
         grid.cols.mobile[layout?.cols?.mobile ?? "none"],
@@ -81,8 +81,8 @@ function Grid({ layout, children }: Props) {
         grid.rows.desktop[layout?.rows?.desktop ?? "none"],
         grid.flow.mobile[layout?.flow?.mobile ?? "col"],
         grid.flow.desktop[layout?.flow?.desktop ?? "row"],
-        grid.placeItems.mobile[layout?.placeItems?.mobile ?? "center"],
-        grid.placeItems.desktop[layout?.placeItems?.desktop ?? "center"],
+        // grid.placeItems.mobile[layout?.placeItems?.mobile ?? "center"],
+        // grid.placeItems.desktop[layout?.placeItems?.desktop ?? "normal"],
       )}
     >
       {items}

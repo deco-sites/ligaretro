@@ -20,6 +20,7 @@ export type AvailableIcons =
   | "LetsEncrypt"
   | "ShoppingBag"
   | "Camisa10"
+  | "Ruler"
   | "FilterIcon"
   | "HollowHeart"
   | "Profile"

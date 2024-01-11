@@ -6,7 +6,8 @@ interface Props {
 
 function Gallery({ children: { Component, props } }: Props) {
   return (
-    <section class="mt-[43px]">
+    // <section class="mt-[43px]">
+    <section>
       <Component {...props} />
     </section>
   );
