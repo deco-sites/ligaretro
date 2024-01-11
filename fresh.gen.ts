@@ -25,6 +25,7 @@ import * as $PDPShareButtons from "./islands/PDPShareButtons.tsx";
 import * as $ProductImageZoom from "./islands/ProductImageZoom.tsx";
 import * as $SearchControls from "./islands/SearchControls.tsx";
 import * as $ShippingSimulation from "./islands/ShippingSimulation.tsx";
+import * as $ShirtBannerVideo from "./islands/ShirtBannerVideo.tsx";
 import * as $SliderJS from "./islands/SliderJS.tsx";
 import * as $TabbedContent from "./islands/TabbedContent.tsx";
 import * as $WishlistButton from "./islands/WishlistButton.tsx";
@@ -57,6 +58,7 @@ const manifest = {
     "./islands/ProductImageZoom.tsx": $ProductImageZoom,
     "./islands/SearchControls.tsx": $SearchControls,
     "./islands/ShippingSimulation.tsx": $ShippingSimulation,
+    "./islands/ShirtBannerVideo.tsx": $ShirtBannerVideo,
     "./islands/SliderJS.tsx": $SliderJS,
     "./islands/TabbedContent.tsx": $TabbedContent,
     "./islands/WishlistButton.tsx": $WishlistButton,

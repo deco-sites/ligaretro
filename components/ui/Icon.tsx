@@ -36,6 +36,7 @@ export type AvailableIcons =
   | "Phone"
   | "Pix"
   | "Plus"
+  | "Play"
   | "QuestionMarkCircle"
   | "Return"
   | "Ruler"

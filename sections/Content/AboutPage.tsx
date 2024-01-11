@@ -7,7 +7,6 @@ export interface Props {
     image: ImageWidget;
     alt: string;
   };
-  bannerAlt: string;
   /** @format html */
   description: string;
 }
