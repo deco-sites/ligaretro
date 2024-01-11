@@ -59,7 +59,7 @@ function ShippingContent({ simulation }: {
           </span>
         </li>
       ))}
-      <span class="text-base-300">
+      <span class="text-[#a3a3a3]">
         Os prazos de entrega começam a contar a partir da confirmação do
         pagamento e podem variar de acordo com a quantidade de produtos na
         sacola.
@@ -92,12 +92,9 @@ function ShippingSimulation({ items }: Props) {
   }, []);
 
   return (
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-4 bg-[#f7f7f7] p-5 rounded-3xl">
       <div class="flex flex-col">
-        <span>Calcular frete</span>
-        <span>
-          Informe seu CEP para consultar os prazos de entrega
-        </span>
+        <span>Calcular frete e entrega</span>
       </div>
 
       <form
@@ -110,8 +107,8 @@ function ShippingSimulation({ items }: Props) {
         <input
           as="input"
           type="text"
-          class="input input-bordered join-item"
-          placeholder="Seu cep aqui"
+          class="input input-bordered join-item w-full rounded-l-xl border-[#cecece] border-r-0 outline-none focus:outline-none"
+          placeholder="00000-000"
           value={postalCode.value}
           maxLength={8}
           size={8}
@@ -119,10 +116,20 @@ function ShippingSimulation({ items }: Props) {
             postalCode.value = e.currentTarget.value;
           }}
         />
-        <Button type="submit" loading={loading.value} class="join-item">
+        <Button
+          type="submit"
+          loading={loading.value}
+          class="join-item rounded-r-xl border-[#cecece] border-l-0 bg-white"
+        >
           Calcular
         </Button>
       </form>
+      <a
+        class="font-semibold text-sm underline"
+        href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+      >
+        Não sei meu cep
+      </a>
 
       <div>
         <div>
