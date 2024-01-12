@@ -55,62 +55,72 @@ const RatingStars = (
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-1"
+          class="mask mask-star-2 mask-half-1 cursor-default"
           checked={starFilled === 1}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-2 mr-2"
+          class="mask mask-star-2 mask-half-2 mr-2 cursor-default"
           checked={starFilled === 2}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-1"
+          class="mask mask-star-2 mask-half-1 cursor-default"
           checked={starFilled === 3}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-2 mr-2"
+          class="mask mask-star-2 mask-half-2 mr-2 cursor-default"
           checked={starFilled === 4}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-1"
+          class="mask mask-star-2 mask-half-1 cursor-default"
           checked={starFilled === 5}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-2 mr-2"
+          class="mask mask-star-2 mask-half-2 mr-2 cursor-default"
           checked={starFilled === 6}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-1"
+          class="mask mask-star-2 mask-half-1 cursor-default"
           checked={starFilled === 7}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-2 mr-2"
+          class="mask mask-star-2 mask-half-2 mr-2 cursor-default"
           checked={starFilled === 8}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-1"
+          class="mask mask-star-2 mask-half-1 cursor-default"
           checked={starFilled === 9}
+          disabled={display === "detailsPage"}
         />
         <input
           type="radio"
           name={productId}
-          class="mask mask-star-2 mask-half-2 mr-2"
+          class="mask mask-star-2 mask-half-2 mr-2 cursor-default"
           checked={starFilled === 10}
+          disabled={display === "detailsPage"}
         />
       </div>
       {display !== "reviews" && (
