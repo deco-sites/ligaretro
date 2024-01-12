@@ -33,7 +33,7 @@ function WishlistButton({
       class={`${
         variant === "icon"
           ? "btn-circle btn-ghost gap-2"
-          : "btn-primary btn-outline gap-2"
+          : "text-[#252525] btn-outline gap-2"
       } ${classes || ""}`}
       loading={fetching.value}
       aria-label="Add to wishlist"

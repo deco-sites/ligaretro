@@ -146,7 +146,7 @@ function ProductInfo({ page, layout }: Props) {
                     seller={seller}
                   />
                   <WishlistButton
-                    classes="rounded-2xl text-black"
+                    classes="rounded-2xl"
                     variant="full"
                     productID={productID}
                     productGroupID={productGroupID}
