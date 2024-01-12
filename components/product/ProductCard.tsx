@@ -196,7 +196,7 @@ function ProductCard(
           aria-label="view product"
           class="relative grid grid-cols-1 grid-rows-1 w-full"
         >
-          <div class="absolute top-2 left-2 m-auto text-[#252525]">
+          <div class="absolute top-6 left-2 m-auto text-[#252525]">
             <span class="text-base font-semibold mt-7">
               {percentageDiscount}% OFF
             </span>

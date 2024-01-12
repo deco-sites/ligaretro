@@ -21,6 +21,7 @@ export interface Props {
     headerfontSize?: "Normal" | "Large";
   };
   cardLayout?: cardLayout;
+  bottom?: boolean;
 }
 
 function ProductShelf({
@@ -29,6 +30,7 @@ function ProductShelf({
   description,
   layout,
   cardLayout,
+  bottom,
 }: Props) {
   const id = useId();
   const platform = usePlatform();
@@ -38,7 +40,11 @@ function ProductShelf({
   }
 
   return (
-    <div class="w-full container  py-8 flex flex-col gap-12 lg:gap-16 lg:py-10">
+    <div
+      class={`w-full container  py-8 flex flex-col gap-12 lg:gap-16 lg:py-10 ${
+        bottom && "mb-24"
+      }`}
+    >
       {
         /* <Header
         title={title || ""}
@@ -71,7 +77,7 @@ function ProductShelf({
           ))}
         </Slider>
 
-        <div class="hidden lg:flex lg:flex-row z-50 mt-[-100px] ml-[130px]">
+        <div class="hidden lg:flex lg:flex-row mt-[-100px] ml-[230px]">
           <Slider.PrevButton class="btn btn-circle btn-outline bg-base-100 mr-3">
             <Icon size={24} id="ChevronLeft" strokeWidth={3} />
           </Slider.PrevButton>
