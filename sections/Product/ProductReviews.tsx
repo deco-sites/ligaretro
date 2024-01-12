@@ -91,7 +91,7 @@ const ReviewsList = (
 
 const NoReviews = () => {
   return (
-    <div class="flex justify-center items-center bg-[#e5e5e5] mb-4 h-28">
+    <div class="flex p-5 sm:p-0 justify-center items-center bg-[#e5e5e5] mb-4 h-28">
       <h3>Este produto ainda não possui avaliações.</h3>
     </div>
   );
@@ -125,7 +125,7 @@ function ProductReviews(
 
   return (
     <div
-      class={`container bg-white pb-5 pt-[2px] lg:p-12  w-full border border-[#cecece]`}
+      class={`container bg-white max-w-[90%] p-5 lg:pb-5 pt-[2px] lg:p-12  w-full border border-[#cecece]`}
     >
       <h3 class="uppercase my-5">
         Avaliações do produto

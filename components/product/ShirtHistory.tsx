@@ -35,7 +35,7 @@ export default function ShirtHistory(
   const { banner, videoUrl, historyText } = history;
 
   return (
-    <div class="container py-8 my-16 flex flex-col items-center justify-center gap-14">
+    <div class="container max-w-[90%] sm:max-w-[100%] py-8 my-16 flex flex-col items-center justify-center gap-14">
       <ShirtBannerVideo banner={banner} videoUrl={videoUrl} />
       <div class="flex justify-center">
         <span class="text-2xl font-semibold">História da Camisa</span>
