@@ -35,12 +35,15 @@ function ShirtBannerVideo({ banner, videoUrl }: Props) {
           alt={banner.alt}
         />
       </div>
-      <div class={`flex justify-center ${!hideBanner && "hidden"}`}>
+      <div
+        class={`flex justify-center ${
+          !hideBanner && "hidden"
+        } aspect-w-16 aspect-h-8 h-[678px] w-[1360px] max-w-[90vw]`}
+      >
         <iframe
+          class="w-full h-full"
           src={url}
           title="YouTube video player"
-          width={1360}
-          height={678}
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
