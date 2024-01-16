@@ -196,11 +196,13 @@ function ProductCard(
           aria-label="view product"
           class="relative grid grid-cols-1 grid-rows-1 w-full"
         >
-          <div class="absolute top-6 left-2 m-auto text-[#252525]">
-            <span class="text-base font-semibold mt-7">
-              {percentageDiscount}% OFF
-            </span>
-          </div>
+          {listPrice !== price && (
+            <div class="absolute top-6 left-2 m-auto text-[#252525]">
+              <span class="text-base font-semibold mt-7">
+                {percentageDiscount}% OFF
+              </span>
+            </div>
+          )}
           <Image
             src={front.url!}
             alt={front.alternateName}
@@ -291,18 +293,20 @@ function ProductCard(
                   : ""
               } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
-              <div
-                class={`line-through text-base-300 text-xs ${
-                  l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
-                }`}
-              >
-                {formatPrice(listPrice, offers?.priceCurrency)}
-              </div>
+              {listPrice !== price && (
+                <div
+                  class={`line-through text-base-300 text-xs ${
+                    l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
+                  }`}
+                >
+                  {formatPrice(listPrice, offers?.priceCurrency)}
+                </div>
+              )}
               <div class="text-[#252525] text-base">
                 {formattedPrice}
               </div>
             </div>
-            {l?.hide?.installments
+            {l?.hide?.installments || installments === "" || !installments
               ? ""
               : (
                 <div class="text-[#bcbcbc] text-sm truncate">
