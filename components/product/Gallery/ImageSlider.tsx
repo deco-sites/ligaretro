@@ -37,28 +37,30 @@ export default function GallerySlider(props: Props) {
 
   //simulating 4 images
   images[1] = images[1] ? images[1] : images[0];
-  images[2] = images[0];
-  images[3] = images[1] || images[0];
+  images[2] = images[2] ? images[2] : images[0];
+  images[3] = images[3] ? images[3] : (images[1] || images[0]);
 
   return (
     <>
       <div class="hidden md:grid md:grid-cols-2 md:grid-flow-row gap-4">
-        {images.map((img, index) => (
-          <div class="hidden lg:block lg:col-span-1 max-w-[350px]">
-            <Image
-              class="w-full"
-              sizes="(max-width: 640px) 100vw, 40vw"
-              style={{ aspectRatio: "467/548" }}
-              src={img.url!}
-              alt={img.alternateName}
-              width={width}
-              height={height}
-              // Preload LCP image for better web vitals
-              preload={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-            />
-          </div>
-        ))}
+        {images.map((img, index) =>
+          index <= 3 && (
+            <div class="hidden lg:block lg:col-span-1 max-w-[350px]">
+              <Image
+                class="w-full"
+                sizes="(max-width: 640px) 100vw, 40vw"
+                style={{ aspectRatio: "467/548" }}
+                src={img.url!}
+                alt={img.alternateName}
+                width={width}
+                height={height}
+                // Preload LCP image for better web vitals
+                preload={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </div>
+          )
+        )}
       </div>
       <div id={id} class="lg:hidden grid grid-flow-row sm:grid-flow-col">
         {/* Image Slider */}
