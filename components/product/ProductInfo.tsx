@@ -123,10 +123,12 @@ function ProductInfo({ page, layout }: Props) {
             )}
           </div>
         </div>
-        <span class="text-sm text-[#252525]">
-          <span class="font-bold">ou{" "}</span>
-          {installments}
-        </span>
+        {installments && installments !== "" && (
+          <span class="text-sm text-[#252525]">
+            <span class="font-bold">ou{" "}</span>
+            {installments}
+          </span>
+        )}
       </div>
       {/* Sku Selector */}
       <div class="mt-4 sm:mt-6">

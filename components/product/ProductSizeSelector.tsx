@@ -14,7 +14,7 @@ function VariantSelector({ product }: Props) {
 
   return (
     <ul class="flex flex-col gap-4">
-      {Object.keys(possibilities).includes("TAMANHO")
+      {Object.keys(possibilities).includes("Tamanho")
         ? (
           <li class="flex flex-col gap-6">
             <span class="text-lg font-semibold text-[#252525]">Tamanho</span>
@@ -23,7 +23,7 @@ function VariantSelector({ product }: Props) {
               <span class="text-sm font-normal">Tabela de Medidas</span>
             </button>
             <ul class="flex flex-row gap-2 flex-wrap">
-              {Object.entries(possibilities["TAMANHO"]).map(([value, link]) => (
+              {Object.entries(possibilities["Tamanho"]).map(([value, link]) => (
                 <li>
                   <button f-partial={link} f-client-nav>
                     <AvatarSquare
