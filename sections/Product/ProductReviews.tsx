@@ -124,59 +124,61 @@ function ProductReviews(
   // ];
 
   return (
-    <div
-      class={`container bg-white max-w-[90%] p-5 lg:pb-5 pt-[2px] lg:p-12  w-full border border-[#cecece]`}
-    >
-      <h3 class="uppercase my-5">
-        Avaliações do produto
-      </h3>
-      {Boolean(reviews.data?.length) && (
-        <div class="flex justify-start mb-6">
-          <RatingStars
-            productId={"averageReviews-" + productId}
-            display="detailsPage"
-            average={reviews.averageRating!.average}
-            count={reviews.averageRating!.totalCount}
-          />
-          {
-            /* <div class="flex gap-2">
-            <select class="select select-bordered w-full max-w-xs">
-              <option disabled selected>Ordenar</option>
-              <option>Mais Recente</option>
-              <option>Mais Antiga</option>
-              <option>Mais Estrelas</option>
-              <option>Menos Estrelas</option>
-            </select>
-            <select class="select select-bordered w-full max-w-xs">
-              <option disabled selected>Qualificação</option>
-              <option>1 estrela</option>
-              <option>2 estrelas</option>
-              <option>3 estrelas</option>
-              <option>4 estrelas</option>
-              <option>5 estrelas</option>
-            </select>
-          </div> */
-          }
+    <section class="container my-14">
+      <div
+        class={`bg-white max-w-[90%] lg:max-w-[100%] p-5 lg:pb-5 pt-[2px] lg:p-12  border border-[#cecece]`}
+      >
+        <h3 class="uppercase my-5">
+          Avaliações do produto
+        </h3>
+        {Boolean(reviews.data?.length) && (
+          <div class="flex justify-start mb-6">
+            <RatingStars
+              productId={"averageReviews-" + productId}
+              display="detailsPage"
+              average={reviews.averageRating!.average}
+              count={reviews.averageRating!.totalCount}
+            />
+            {
+              /* <div class="flex gap-2">
+              <select class="select select-bordered w-full max-w-xs">
+                <option disabled selected>Ordenar</option>
+                <option>Mais Recente</option>
+                <option>Mais Antiga</option>
+                <option>Mais Estrelas</option>
+                <option>Menos Estrelas</option>
+              </select>
+              <select class="select select-bordered w-full max-w-xs">
+                <option disabled selected>Qualificação</option>
+                <option>1 estrela</option>
+                <option>2 estrelas</option>
+                <option>3 estrelas</option>
+                <option>4 estrelas</option>
+                <option>5 estrelas</option>
+              </select>
+            </div> */
+            }
+          </div>
+        )}
+        <div>
+          {reviews.data?.length
+            ? <ReviewsList productId={productId} reviews={reviews.data} />
+            : <NoReviews />}
         </div>
-      )}
-      <div>
-        {reviews.data?.length
-          ? <ReviewsList productId={productId} reviews={reviews.data} />
-          : <NoReviews />}
+        <div class="flex flex-col gap-2">
+          {
+            /* <span class="text-[#006299] cursor-pointer">
+              Mostrar todas avaliações
+            </span> */
+          }
+          <LoginToReview />
+          <NewReviewForm
+            productId={productId}
+            userHasReviewed={reviews.userHasReviewed || false}
+          />
+        </div>
       </div>
-      <div class="flex flex-col gap-2">
-        {
-          /* <span class="text-[#006299] cursor-pointer">
-            Mostrar todas avaliações
-          </span> */
-        }
-        <LoginToReview />
-        <NewReviewForm
-          productId={productId}
-          userHasReviewed={reviews.userHasReviewed || false}
-        />
-      </div>
-    </div>
+    </section>
   );
 }
 
