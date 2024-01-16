@@ -117,7 +117,7 @@ export const ratingLoader = async (
 
     return averageRating;
   } catch (e) {
-    console.log({ e });
+    console.log({ erroOtherAverageRating: e });
     return null;
   }
 };
