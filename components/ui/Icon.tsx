@@ -38,6 +38,7 @@ export type AvailableIcons =
   | "Plus"
   | "Play"
   | "SecureCircle"
+  | "Stripped"
   | "QuestionMarkCircle"
   | "Return"
   | "Ruler"

@@ -1,3 +1,5 @@
+import Icon from "$store/components/ui/Icon.tsx";
+
 /**
  * This component renders the filter and selectors for skus.
  * TODO: Figure out a better name for this component.
@@ -11,7 +13,17 @@ const colors: Record<string, string> = {
   "cinza-escura": "bg-[#A9A9A9] ring-[#A9A9A9]",
   "laranja": "bg-[#FFA500] ring-[#FFA500]",
   "marrom": "bg-[#A52A2A] ring-[#A52A2A]",
+  "amarelo": "bg-[#FFFF00] ring-[#FFFF00]",
+  "verde-escuro": "bg-[#006400] ring-[#006400]",
+  "vermelho": "bg-[#FF0000] ring-[#FF0000]",
+  "azul-royal": "bg-[#4169E1] ring-[#4169E1]",
+  "azul-celeste": "bg-[#87CEEB] ring-[#87CEEB]",
+  "verde-limao": "bg-[#32CD32] ring-[#32CD32]",
+  "vermelho-bordeaux": "bg-[#800020] ring-[#800020]",
+  "rosa": "bg-[#FFC0CB] ring-[#FFC0CB]",
+  "roxo": "bg-[#800080] ring-[#800080]",
   "preta": "bg-[#161616] ring-[#161616]",
+  "preto": "bg-[#161616] ring-[#161616]",
   "verde-clara": "bg-[#90EE90] ring-[#90EE90]",
   "vermelha": "bg-[#FF0000] ring-[#FF0000]",
 
@@ -41,9 +53,13 @@ function Avatar({ content, variant = "default" }: Props) {
           variants[variant]
         }`}
       >
-        <span class="uppercase">
-          {colors[content] ? "" : content.substring(0, 2)}
-        </span>
+        {content === "listrado"
+          ? <Icon id="Stripped" size={32} />
+          : (
+            <span class="uppercase">
+              {colors[content] ? "" : content.substring(0, 2)}
+            </span>
+          )}
       </div>
     </div>
   );
