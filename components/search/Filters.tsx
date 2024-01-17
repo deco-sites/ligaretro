@@ -15,6 +15,7 @@ import MultiRangeSlider from "$store/components/ui/PriceSlider.tsx";
 interface Props {
   filters: ProductListingPage["filters"];
   darkBackground?: boolean;
+  darkBackgroundColor?: string;
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -35,7 +36,11 @@ function ValueItem(
 }
 
 function FilterValues(
-  { filter, darkBackground }: { filter: FilterToggle; darkBackground: boolean },
+  { filter, darkBackground, darkBackgroundColor }: {
+    filter: FilterToggle;
+    darkBackground: boolean;
+    darkBackgroundColor: string;
+  },
 ) {
   const { values, key } = filter;
   const flexDirection = key === "tamanho" || key === "cor"
@@ -108,7 +113,7 @@ function FilterValues(
 
         if (key === "cor") {
           return (
-            <a href={url} rel="nofollow">
+            <a href={url} rel="nofollow" class="flex items-center">
               <Avatar
                 content={value}
                 variant={selected ? "active" : "default"}
@@ -123,6 +128,8 @@ function FilterValues(
               <AvatarSquare
                 content={value}
                 variant={selected ? "active" : "default"}
+                darkBackground={darkBackground}
+                darkBackgroundColor={darkBackgroundColor}
               />
             </a>
           );
@@ -145,7 +152,7 @@ function FilterValues(
   );
 }
 
-function Filters({ filters, darkBackground }: Props) {
+function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
   return (
     <>
       <div class={`flex gap-3 p-4 mb-5 ${darkBackground && "md:text-white"}`}>
@@ -161,12 +168,22 @@ function Filters({ filters, darkBackground }: Props) {
           .filter((filter: Filter) => filter.key !== "category-2")
           .filter((filter: Filter) => filter.key !== "brand")
           .map((filter) => (
-            <li class="flex flex-col gap-4">
-              {filter.key !== "category-3" && <span>{filter.label}</span>}
-              <FilterValues
-                filter={{ ...filter }}
-                darkBackground={darkBackground!}
-              />
+            <li class="flex flex-col gap-4 border-b border-white last:border-b-0 pb-4">
+              <div
+                tabIndex={0}
+                className="collapse collapse-arrow collapse-open"
+              >
+                <div class="collapse-title">
+                  {filter.key !== "category-3" && <span>{filter.label}</span>}
+                </div>
+                <div class="collapse-content">
+                  <FilterValues
+                    filter={{ ...filter }}
+                    darkBackground={darkBackground!}
+                    darkBackgroundColor={darkBackgroundColor!}
+                  />
+                </div>
+              </div>
             </li>
           ))}
       </ul>

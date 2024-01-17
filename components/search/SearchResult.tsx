@@ -103,7 +103,7 @@ function Result({
   return (
     <>
       {style?.coverImage?.desktop && style?.coverImage?.mobile && (
-        <div class="relative w-full lg:mt-[43px] h-60 flex justify-center">
+        <div class="relative w-full lg:mt-[43px] h-60 flex justify-center z-0">
           <Picture
             preload
             class="absolute"
@@ -120,8 +120,9 @@ function Result({
               height={489}
               media="(min-width: 767px)"
             />
+            {/* p/imagem limitada max-h-[470px] */}
             <img
-              class="w-full rounded-xl max-h-[470px] mx-auto"
+              class="w-full rounded-xl mx-auto"
               src={style?.coverImage.desktop}
               alt={style?.coverImage.alt}
             />
@@ -167,11 +168,12 @@ function Result({
           style={style}
         />
 
-        <div class="flex flex-row">
+        <div class="flex flex-row gap-20">
           {layout?.variant === "aside" && filters.length > 0 && (
-            <aside class="hidden md:block w-min min-w-[250px]">
+            <aside class="hidden md:block w-min min-w-[250px] z-10">
               <Filters
                 darkBackground={style?.darkBackground}
+                darkBackgroundColor={style?.backgroundColor}
                 filters={filters}
               />
             </aside>
