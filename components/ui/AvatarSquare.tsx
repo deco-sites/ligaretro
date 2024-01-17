@@ -24,7 +24,7 @@ const colors: Record<string, string> = {
 interface Props {
   variant?: "active" | "disabled" | "default";
   content: string;
-  size?: "large" | "small";
+  size?: "large" | "small" | "tall";
   darkBackground?: boolean;
   darkBackgroundColor?: string;
 }
@@ -47,8 +47,8 @@ function Avatar(
   return (
     <div class="avatar placeholder text-xs">
       <div
-        class={`rounded-sm ${
-          size === "large" ? "w-[91px] h-[50px]" : "w-10 h-6"
+        class={`rounded-sm ${size === "large" && "w-[91px] h-[50px]"} ${
+          size === "tall" ? "w-10 h-12" : "w-10 h-6"
         } ${colors[content] ?? colors[variant]} ${variants[variant]}`}
       >
         <span class={`uppercase font-semibold`}>

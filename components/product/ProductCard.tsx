@@ -1,6 +1,6 @@
 import type { Platform } from "$store/apps/site.ts";
 import { SendEventOnClick } from "$store/components/Analytics.tsx";
-import Avatar from "$store/components/ui/Avatar.tsx";
+import AvatarSquare from "$store/components/ui/AvatarSquare.tsx";
 import WishlistButton from "$store/islands/WishlistButton.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
@@ -95,9 +95,10 @@ function ProductCard(
   const skuSelector = variants.map(([value, link]) => (
     <li>
       <a href={link}>
-        <Avatar
+        <AvatarSquare
           variant={link === url ? "active" : link ? "default" : "disabled"}
           content={value}
+          size="tall"
         />
       </a>
     </li>
@@ -119,14 +120,18 @@ function ProductCard(
     <div>
       <span
         class={`${
-          darkBackground ? "text-white" : "text-[#bcbcbc]"
+          darkBackground
+            ? "text-white lg:group-hover:text-[#bcbcbc]"
+            : "text-[#bcbcbc]"
         } text-base mr-2`}
       >
         {splittedPrice[0]}
       </span>
       <span
         class={`${
-          darkBackground ? "text-white" : "text-[#252525]"
+          darkBackground
+            ? "text-white lg:group-hover:text-[#252525]"
+            : "text-[#252525]"
         } text-base font-semibold`}
       >
         {splittedPrice[1]}
@@ -144,11 +149,11 @@ function ProductCard(
       id={id}
       class={`card card-compact group w-full ${
         align === "center" ? "text-center" : "text-start"
-      } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
+      } ${l?.onMouseOver?.showCardShadow ? "lg:hover:bg-white" : ""}
         ${
         l?.onMouseOver?.card === "Move up" &&
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
-      }
+      } rounded
       `}
       data-deco="view-product"
     >
@@ -246,7 +251,7 @@ function ProductCard(
               {skuSelector}
             </ul>
           )}
-          {l?.onMouseOver?.showCta && cta}
+          {/* {l?.onMouseOver?.showCta && cta} */}
         </figcaption>
       </figure>
       {/* Prices & Name */}
@@ -276,7 +281,9 @@ function ProductCard(
               {l?.hide?.productName ? "" : (
                 <h2
                   class={`text-base lg:text-base font-semibold ${
-                    darkBackground ? "text-white" : "text-base-content"
+                    darkBackground
+                      ? "text-white lg:group-hover:text-[#252525]"
+                      : "text-base-content"
                   }`}
                   dangerouslySetInnerHTML={{ __html: name ?? "" }}
                 />
@@ -295,21 +302,31 @@ function ProductCard(
             >
               {listPrice !== price && (
                 <div
-                  class={`line-through text-base-300 text-xs ${
+                  class={`line-through  ${
+                    darkBackground
+                      ? "text-white lg:group-hover:text-[#252525]"
+                      : "text-base-300"
+                  }  text-xs ${
                     l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
                   }`}
                 >
                   {formatPrice(listPrice, offers?.priceCurrency)}
                 </div>
               )}
-              <div class="text-[#252525] text-base">
+              <div class={`text-base`}>
                 {formattedPrice}
               </div>
             </div>
             {l?.hide?.installments || installments === "" || !installments
               ? ""
               : (
-                <div class="text-[#bcbcbc] text-sm truncate">
+                <div
+                  class={`${
+                    darkBackground
+                      ? "text-white lg:group-hover:text-[#252525]"
+                      : "text-[#252525]"
+                  } text-sm truncate`}
+                >
                   até {installments}
                 </div>
               )}
