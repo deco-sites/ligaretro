@@ -41,7 +41,7 @@ function ProductShelf({
 
   return (
     <div
-      class={`w-full container  py-8 flex flex-col gap-12 lg:gap-16 lg:py-10 ${
+      class={`w-full container py-8 flex flex-col gap-12 lg:gap-16 lg:py-10 ${
         bottom && "mb-24"
       }`}
     >
@@ -58,7 +58,7 @@ function ProductShelf({
 
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="relative mx-auto max-w-[100%] grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
       >
         <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
           {products?.map((product, index) => (

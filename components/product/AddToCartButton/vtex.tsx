@@ -4,9 +4,10 @@ import Button, { Props as BtnProps } from "./common.tsx";
 export interface Props extends Omit<BtnProps, "onAddItem"> {
   seller: string;
   productID: string;
+  styles?: string;
 }
 
-function AddToCartButton({ seller, productID, eventParams }: Props) {
+function AddToCartButton({ seller, productID, eventParams, styles }: Props) {
   const { addItems } = useCart();
   const onAddItem = () =>
     addItems({
@@ -19,7 +20,7 @@ function AddToCartButton({ seller, productID, eventParams }: Props) {
 
   return (
     <Button
-      classes="rounded-2xl bg-black text-white font-normal"
+      classes={`${styles} rounded-2xl bg-black text-white font-normal`}
       onAddItem={onAddItem}
       eventParams={eventParams}
     />
