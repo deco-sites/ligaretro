@@ -73,6 +73,7 @@ export interface Props {
   /** @description 0 for ?page=0 as your first page */
   startingPage?: 0 | 1;
   styles?: Style[];
+  pageTitle?: string;
 }
 
 function NotFound() {
@@ -88,6 +89,7 @@ function Result({
   layout,
   cardLayout,
   style,
+  pageTitle,
   startingPage = 0,
 }: Omit<Props, "page styles"> & { page: ProductListingPage } & {
   style: Style;
@@ -166,6 +168,7 @@ function Result({
           displayFilter={layout?.variant === "drawer"}
           records={pageInfo.records}
           style={style}
+          pageTitle={pageTitle}
         />
 
         <div class="flex flex-row gap-20">
@@ -288,14 +291,14 @@ function SearchResult(
 }
 
 export const loader = (
-  { page, layout, cardLayout, startingPage, styles }: Props,
+  { page, layout, cardLayout, startingPage, styles, pageTitle }: Props,
   req: Request,
 ) => {
   const style = styles?.find(({ matcher }) =>
     new URLPattern({ pathname: matcher }).test(req.url)
   );
 
-  return { page, layout, cardLayout, startingPage, style };
+  return { page, layout, cardLayout, startingPage, style, pageTitle };
 };
 
 export default SearchResult;

@@ -16,11 +16,19 @@ export type Props =
     displayFilter?: boolean;
     records?: number;
     style?: Style;
+    pageTitle?: string;
   };
 
 function SearchControls(
-  { filters, breadcrumb, displayFilter, sortOptions, records = 0, style }:
-    Props,
+  {
+    filters,
+    breadcrumb,
+    displayFilter,
+    sortOptions,
+    records = 0,
+    style,
+    pageTitle,
+  }: Props,
 ) {
   const open = useSignal(false);
 
@@ -76,7 +84,10 @@ function SearchControls(
           </div>
         )}
         <div class="flex flex-row items-center sm:p-0 mb-2">
-          <PageTitle breadCrumbs={breadcrumb?.itemListElement} />
+          <PageTitle
+            breadCrumbs={breadcrumb?.itemListElement}
+            pageTitle={pageTitle}
+          />
           <span class="text-sm ml-2">({records} produtos)</span>
         </div>
 
