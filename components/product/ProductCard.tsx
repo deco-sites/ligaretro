@@ -269,43 +269,45 @@ function ProductCard(
         </figcaption>
       </figure>
       {/* Prices & Name & cta */}
-      <div class="flex">
-        <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4">
-          {/* SKU Selector */}
-          {
-            /* {(!l?.elementsPositions?.skuSelector ||
-            l?.elementsPositions?.skuSelector === "Top") && (
-            <>
-              {l?.hide?.skuSelector ? "" : (
-                <ul
-                  class={`hidden sm:flex items-center gap-2 w-full overflow-auto p-3 ${
-                    align === "center" ? "justify-center" : "justify-start"
-                  } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
-                >
-                  {skuSelector}
-                </ul>
-              )}
-            </>
-          )} */
-          }
-
-          {l?.hide?.productName && l?.hide?.productDescription
-            ? ""
-            : (
-              <div class="flex flex-col gap-0">
-                {l?.hide?.productName ? "" : (
-                  <h2
-                    class={`text-base lg:text-base font-semibold ${
-                      darkBackground
-                        ? "text-white lg:group-hover:text-[#252525]"
-                        : "text-base-content"
-                    }`}
-                    dangerouslySetInnerHTML={{ __html: name ?? "" }}
-                  />
-                )}
-                <span class="mt-4 text-sm text-[#bcbcbc]">{category}</span>
-              </div>
+      <div class="flex-auto flex flex-col p-2 gap-3 lg:gap-4">
+        {/* SKU Selector */}
+        {
+          /* {(!l?.elementsPositions?.skuSelector ||
+          l?.elementsPositions?.skuSelector === "Top") && (
+          <>
+            {l?.hide?.skuSelector ? "" : (
+              <ul
+                class={`hidden sm:flex items-center gap-2 w-full overflow-auto p-3 ${
+                  align === "center" ? "justify-center" : "justify-start"
+                } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
+              >
+                {skuSelector}
+              </ul>
             )}
+          </>
+        )} */
+        }
+
+        {l?.hide?.productName && l?.hide?.productDescription
+          ? ""
+          : (
+            <div class="flex flex-col gap-0 items-start">
+              {l?.hide?.productName ? "" : (
+                <h2
+                  class={`text-base lg:text-base font-semibold h-12 ${
+                    darkBackground
+                      ? "text-white lg:group-hover:text-[#252525]"
+                      : "text-base-content"
+                  }`}
+                  dangerouslySetInnerHTML={{
+                    __html: isVariantOf?.name ?? "",
+                  }}
+                />
+              )}
+              <span class="mt-4 text-sm text-[#bcbcbc]">{category}</span>
+            </div>
+          )}
+        <div class="flex h-12 justify-between items-center">
           {l?.hide?.allPrices ? "" : (
             <div class="flex flex-col gap-2">
               <div
@@ -347,37 +349,37 @@ function ProductCard(
                 )}
             </div>
           )}
+          <div class="hidden group-hover:lg:flex items-end p-3">
+            {cta}
+          </div>
+        </div>
 
-          {/* SKU Selector */}
-          {l?.elementsPositions?.skuSelector === "Bottom" && (
-            <>
-              {l?.hide?.skuSelector ? "" : (
-                <ul
-                  class={`flex items-center gap-2 w-full ${
-                    align === "center" ? "justify-center" : "justify-start"
-                  } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
-                >
-                  {skuSelector}
-                </ul>
-              )}
-            </>
-          )}
-
-          {!l?.hide?.cta
-            ? (
-              <div
-                class={`flex-auto flex items-end ${
-                  l?.onMouseOver?.showCta ? "lg:hidden" : ""
-                }`}
+        {/* SKU Selector */}
+        {l?.elementsPositions?.skuSelector === "Bottom" && (
+          <>
+            {l?.hide?.skuSelector ? "" : (
+              <ul
+                class={`flex items-center gap-2 w-full ${
+                  align === "center" ? "justify-center" : "justify-start"
+                } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
               >
-                {cta}
-              </div>
-            )
-            : ""}
-        </div>
-        <div class="hidden group-hover:lg:flex items-end p-3">
-          {cta}
-        </div>
+                {skuSelector}
+              </ul>
+            )}
+          </>
+        )}
+
+        {!l?.hide?.cta
+          ? (
+            <div
+              class={`flex-auto flex items-end ${
+                l?.onMouseOver?.showCta ? "lg:hidden" : ""
+              }`}
+            >
+              {cta}
+            </div>
+          )
+          : ""}
       </div>
     </div>
   );
