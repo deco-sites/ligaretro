@@ -1,7 +1,8 @@
 import SearchResult, {
-  loader,
+  loader as searchLoader,
   Props as SearchResultProps,
 } from "$store/components/search/SearchResult.tsx";
+import { AppContext } from "deco-sites/ligaretro/apps/site.ts";
 
 export type Props = SearchResultProps;
 
@@ -13,11 +14,10 @@ function WishlistGallery(props: Props) {
       <div class="container mx-4 sm:mx-auto">
         <div class="mx-10 my-20 flex flex-col gap-4 justify-center items-center">
           <span class="font-medium text-2xl">
-            Your wishlist is empty
+            Sua Lista de Favoritos está vazia
           </span>
           <span>
-            Log in and add items to your wishlist for later. They will show up
-            here
+            Faça login e favorite itens. Eles aparecerão aqui.
           </span>
         </div>
       </div>
@@ -25,9 +25,31 @@ function WishlistGallery(props: Props) {
   }
 
   //necessary fix after implementing loader in SearchResult, because SearchResults receives a loader return as props...
-  const returnArgs = { ...props } as ReturnType<typeof loader>;
+  const returnArgs = { ...props } as ReturnType<typeof searchLoader>;
 
   return <SearchResult {...returnArgs} />;
 }
+
+export const loader = async (props: Props, req: Request, ctx: AppContext) => {
+  const productIds = props.page?.products.map((product) => product.sku);
+  if (!productIds || productIds.length === 0) {
+    return props;
+  }
+
+  const response = await ctx.invoke.vtex.loaders.intelligentSearch.productList({
+    props: {
+      ids: productIds,
+    },
+  });
+
+  if (!props.page || !response) {
+    return props;
+  }
+
+  props.page.products = response;
+  props.pageTitle = "Favoritos";
+
+  return props;
+};
 
 export default WishlistGallery;
