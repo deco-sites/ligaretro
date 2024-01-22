@@ -27,7 +27,7 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                     <span>{node.name}</span>
                   </a>
 
-                  <ul class="flex flex-col gap-1 mt-4">
+                  <ul class="flex flex-col flex-wrap gap-1 mt-4 columns-2">
                     {node.children?.map((leaf) => (
                       <li>
                         <a class="hover:underline" href={leaf.url}>

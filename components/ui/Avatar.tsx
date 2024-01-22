@@ -36,7 +36,7 @@ const colors: Record<string, string> = {
   "preto---vermelho":
     "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-black via-transparent to-red-600",
   "verde---amarelo":
-    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-green-600 via-transparent to-yellow-600",
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-green-600 via-transparent to-yellow-300",
   "tricolor":
     "bg-gradient-to-r from-[#ad0505_0%] via-[#FFFFFF_33%] to-[#000000_100%] ring-[#32CD32]",
   "bege": "bg-[#F5F5DC] ring-[#F5F5DC]",
@@ -45,7 +45,7 @@ const colors: Record<string, string> = {
   "branco---azul-claro":
     "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-transparent to-blue-200",
   "amarelo---verde":
-    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-yellow-600 via-transparent to-green-600",
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-yellow-300 via-transparent to-green-600",
   "bco-pto":
     "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-black via-transparent to-white",
   "verde---vermelho---amarel":
