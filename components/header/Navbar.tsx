@@ -73,7 +73,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
             </a>
           )}
         </div>
-        <div class="flex-auto flex justify-center">
+        <div class="flex-auto flex justify-center lg:h-[115px]">
           {items.map((item) => <NavItem item={item} />)}
         </div>
         <div class="flex-none w-44 flex items-center justify-end gap-2">
