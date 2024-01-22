@@ -97,14 +97,14 @@ function Navbar({ items, searchbar, logo, buttons }: {
               >
                 <li>
                   <a
-                    href="#"
+                    href="/login"
                     class="btn btn-primary bg-[#252525] text-xs font-normal items-center flex-col justify-center pt-[15px]"
                   >
                     Acessar minha conta
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="inline text-[9px] no-underline">
+                  <a href="/login" class="inline text-[9px] no-underline">
                     Não tem cadastro? <span class="underline">Criar conta</span>
                   </a>
                 </li>
@@ -114,8 +114,8 @@ function Navbar({ items, searchbar, logo, buttons }: {
           {!buttons?.hideWishlistButton && (
             <a
               class="btn btn-circle btn-sm btn-ghost"
-              href="/wishlist"
-              aria-label="Wishlist"
+              href="/favoritos"
+              aria-label="Favoritos"
             >
               <Icon id="Heart" size={24} strokeWidth={1.4} fill="none" />
             </a>
