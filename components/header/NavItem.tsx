@@ -27,7 +27,10 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                     <span>{node.name}</span>
                   </a>
 
-                  <ul class="flex flex-col flex-wrap gap-1 mt-4 columns-2">
+                  <ul
+                    class="flex flex-col flex-wrap gap-1 mt-4 columns-2 max-h-[270px]"
+                    style={{ "column-gap": "34px" }}
+                  >
                     {node.children?.map((leaf) => (
                       <li>
                         <a class="hover:underline" href={leaf.url}>
@@ -39,10 +42,10 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                 </li>
               ))}
             </ul>
-            {image?.url && (
+            {image?.contentUrl && (
               <Image
                 class="p-6"
-                src={image.url}
+                src={image.contentUrl}
                 alt={image.alternateName}
                 width={300}
                 height={332}
