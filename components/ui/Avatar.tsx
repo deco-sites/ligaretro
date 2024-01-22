@@ -7,8 +7,13 @@ import Icon from "$store/components/ui/Icon.tsx";
 
 const colors: Record<string, string> = {
   "azul-clara": "bg-[#87CEFA] ring-[#87CEFA]",
+  "azul-claro": "bg-[#87CEFA] ring-[#87CEFA]",
   "azul-marinho": "bg-[#000080] ring-[#000080]",
   "branca": "bg-[#FFFFFF] ring-[#FFFFFF]",
+  "branco": "bg-[#FFFFFF] ring-[#FFFFFF]",
+  "grena": "bg-[#800000] ring-[#800000]",
+  "azul": "bg-blue-600 ring-blue-600",
+  "verde": "bg-green-500 ring-green-500",
   "cinza": "bg-[#808080] ring-[#808080]",
   "cinza-escura": "bg-[#A9A9A9] ring-[#A9A9A9]",
   "laranja": "bg-[#FFA500] ring-[#FFA500]",
@@ -26,7 +31,25 @@ const colors: Record<string, string> = {
   "preto": "bg-[#161616] ring-[#161616]",
   "verde-clara": "bg-[#90EE90] ring-[#90EE90]",
   "vermelha": "bg-[#FF0000] ring-[#FF0000]",
-
+  "verde---preto":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-black via-transparent to-green-600",
+  "preto---vermelho":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-black via-transparent to-red-600",
+  "verde---amarelo":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-green-600 via-transparent to-yellow-600",
+  "tricolor":
+    "bg-gradient-to-r from-[#ad0505_0%] via-[#FFFFFF_33%] to-[#000000_100%] ring-[#32CD32]",
+  "bege": "bg-[#F5F5DC] ring-[#F5F5DC]",
+  "branco-vermelho":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-transparent to-red-600",
+  "branco---azul-claro":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-transparent to-blue-200",
+  "amarelo---verde":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-yellow-600 via-transparent to-green-600",
+  "bco-pto":
+    "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-black via-transparent to-white",
+  "verde---vermelho---amarel":
+    "bg-gradient-to-r from-[#32CD32] via-[#FF0000] to-[#FFFF00] ring-[#32CD32]",
   // Color variants - only applied when no color as content is passed
   "active": "bg-neutral-focus text-neutral-content ring-neutral-focus ",
   "disabled": "bg-neutral-content text-neutral",
@@ -53,6 +76,7 @@ function Avatar({ content, variant = "default" }: Props) {
           variants[variant]
         }`}
       >
+        <span class="hidden">{content}</span>
         {content === "listrado"
           ? <Icon id="Stripped" size={32} />
           : (
