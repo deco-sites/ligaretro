@@ -49,24 +49,31 @@ function CustomizeModal({ productName, skuID }: Props) {
     setPartialValue(partialCount);
   };
 
+  const handleCancel = () => {
+    setShirtNumber("");
+    setShirtName("");
+    setPartialValue(0);
+    displayCustomizePopup.value = false;
+  };
+
   return (
     <Modal
       loading="lazy"
       open={displayCustomizePopup.value}
       onClose={() => displayCustomizePopup.value = false}
     >
-      <div class="absolute container flex bg-white p-5 w-fit gap-6 rounded-lg">
+      <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg">
         <div class="p-10 bg-[#e7e7e7] rounded-lg relative">
-          <span class="absolute left-1/2 transform -translate-x-1/2 top-[1%] text-xs w-full text-center">
+          <span class="absolute left-1/2 transform -translate-x-1/2 bottom-[1%] text-xs w-full text-center">
             Imagem Ilustrativa - Aplicação será no modelo escolhido
           </span>
           {shirtName !== "" && (
-            <span class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-2xl">
+            <span class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl">
               {shirtName}
             </span>
           )}
           {shirtNumber && (
-            <span class="absolute text-6xl left-1/2 transform -translate-x-1/2 uppercase top-[29%] font-bold text-[120px]">
+            <span class="absolute text-6xl left-1/2 transform -translate-x-1/2 uppercase top-[29%] font-bold text-[100px] sm:text-[120px]">
               {shirtNumber}
             </span>
           )}
@@ -79,18 +86,18 @@ function CustomizeModal({ productName, skuID }: Props) {
         </div>
         <div class="flex flex-col justify-between">
           <span>Personalize do seu jeito</span>
-          <div class="flex flex-col">
+          <div class="flex flex-col mb-5 lg:mb-0">
             <span class="font-bold">{productName}</span>
             <span class="text-xs">SKU: {skuID}</span>
           </div>
-          <div class="flex flex-col gap-10">
+          <div class="flex flex-col gap-5 lg:gap-10">
             <div class="flex flex-col gap-4">
               <span class="text-xs">Adicione um nome (R$ 10,00)</span>
               <div class="join">
                 <input
                   name="nameShirt"
                   id="nameShirt"
-                  class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs w-[230px] join-item rounded-l-lg"
+                  class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
                   type="text"
                   value={shirtName}
                   maxLength={10}
@@ -112,7 +119,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                 <input
                   name="numberShirt"
                   id="numberShirt"
-                  class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs w-[230px] join-item rounded-l-lg"
+                  class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
                   type="text"
                   min={0}
                   max={99}
@@ -132,14 +139,22 @@ function CustomizeModal({ productName, skuID }: Props) {
               </div>
             </div>
           </div>
-          <div class="flex justify-between">
+          <div class="flex justify-between mt-5 lg:mt-0">
             <div class="flex flex-col font-semibold">
               <span class="text-xs">Valor Parcial</span>
               <span class="text-xl">R$ {partialValue.toFixed(2)}</span>
             </div>
-            <Button class="bg-black text-white font-normal rounded-lg">
-              Finalizar
-            </Button>
+            <div class="flex">
+              <Button
+                class="btn btn-ghost underline text-xs"
+                onClick={handleCancel}
+              >
+                Cancelar
+              </Button>
+              <Button class="bg-black text-white font-normal rounded-lg">
+                Finalizar
+              </Button>
+            </div>
           </div>
         </div>
       </div>
