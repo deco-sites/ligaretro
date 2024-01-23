@@ -5,11 +5,11 @@ import Button from "deco-sites/ligaretro/components/ui/Button.tsx";
 import { useState } from "preact/hooks";
 
 export interface Props {
-  productName?: string;
-  skuID?: string;
+  productName: string;
+  skuID: string;
 }
 
-function CustomizeModal() {
+function CustomizeModal({ productName, skuID }: Props) {
   const { displayCustomizePopup } = useUI();
   const [shirtName, setShirtName] = useState("");
   const [shirtNumber, setShirtNumber] = useState("");
@@ -57,7 +57,7 @@ function CustomizeModal() {
     >
       <div class="absolute container flex bg-white p-5 w-fit gap-6 rounded-lg">
         <div class="p-10 bg-[#e7e7e7] rounded-lg relative">
-          <span class="absolute left-1/2 transform -translate-x-1/2 bottom-[1%] text-xs w-full text-center">
+          <span class="absolute left-1/2 transform -translate-x-1/2 top-[1%] text-xs w-full text-center">
             Imagem Ilustrativa - Aplicação será no modelo escolhido
           </span>
           {shirtName !== "" && (
@@ -80,8 +80,8 @@ function CustomizeModal() {
         <div class="flex flex-col justify-between">
           <span>Personalize do seu jeito</span>
           <div class="flex flex-col">
-            <span class="font-bold">Cruzeiro 1966 Dirceu Lopes</span>
-            <span class="text-xs">SKU: FLU754G</span>
+            <span class="font-bold">{productName}</span>
+            <span class="text-xs">SKU: {skuID}</span>
           </div>
           <div class="flex flex-col gap-10">
             <div class="flex flex-col gap-4">
@@ -158,7 +158,10 @@ function CustomizeShirt({ productName, skuID }: Props) {
       >
         Personalize
       </button>
-      <CustomizeModal />
+      <CustomizeModal
+        productName={productName}
+        skuID={skuID}
+      />
     </>
   );
 }

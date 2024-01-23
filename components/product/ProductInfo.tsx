@@ -137,7 +137,10 @@ function ProductInfo({ page, layout }: Props) {
       </div>
       {/* Add to Cart and Favorites button */}
       <div class="mt-4 sm:mt-10 flex flex-col gap-2">
-        <CustomizeShirt />
+        <CustomizeShirt
+          productName={`${isVariantOf?.name} ${name}`}
+          skuID={sku}
+        />
         {availability === "https://schema.org/InStock"
           ? (
             <>
