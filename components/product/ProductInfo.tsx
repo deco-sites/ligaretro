@@ -17,6 +17,7 @@ import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalytic
 import ProductSelector from "./ProductSizeSelector.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
 import PDPShareButtons from "$store/islands/PDPShareButtons.tsx";
+import CustomizeShirt from "$store/islands/CustomizeShirt.tsx";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -136,7 +137,10 @@ function ProductInfo({ page, layout }: Props) {
       </div>
       {/* Add to Cart and Favorites button */}
       <div class="mt-4 sm:mt-10 flex flex-col gap-2">
-        <button class="btn btn-outline rounded-2xl">Personalize</button>
+        <CustomizeShirt
+          productName={`${isVariantOf?.name} ${name}`}
+          skuID={sku}
+        />
         {availability === "https://schema.org/InStock"
           ? (
             <>
