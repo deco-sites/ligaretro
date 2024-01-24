@@ -18,6 +18,11 @@ import ProductSelector from "./ProductSizeSelector.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
 import PDPShareButtons from "$store/islands/PDPShareButtons.tsx";
 import CustomizeShirt from "$store/islands/CustomizeShirt.tsx";
+import type { SectionProps } from "deco/mod.ts";
+import {
+  AverageResponse,
+  ratingLoader,
+} from "$store/loaders/Reviews/reviewsandratings.ts";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -31,7 +36,27 @@ interface Props {
   };
 }
 
-function ProductInfo({ page, layout }: Props) {
+export async function loader({ page, layout }: Props) {
+  let rating = { average: 4, totalCount: 3 } as AverageResponse;
+  let debug = {};
+
+  try {
+    rating = (await ratingLoader({
+      productId: page!.product!.productID,
+    })) as AverageResponse;
+    // console.log({ ratinggg: rating });
+  } catch (e) {
+    debug = { ...debug, reviewsError: e };
+    console.log({ e });
+  }
+
+  return ({ page, layout, rating, debug });
+}
+
+function ProductInfo(
+  { page, layout, rating, debug }: SectionProps<typeof loader>,
+) {
+  console.log({ page, rating });
   const platform = usePlatform();
   const id = useId();
 
@@ -103,7 +128,13 @@ function ProductInfo({ page, layout }: Props) {
       </div>
       {/* Rating */}
       <div class="my-4">
-        <RatingStars productId={productID} display="detailsPage" size="xs" />
+        <RatingStars
+          productId={"productInfo-" + productID}
+          display="detailsPage"
+          size="xs"
+          average={rating.average}
+          count={rating.totalCount}
+        />
       </div>
       {/* Prices */}
       <div class="mt-4">
