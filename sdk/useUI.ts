@@ -9,6 +9,7 @@ const displayCart = signal(false);
 const displayMenu = signal(false);
 const displaySearchPopup = signal(false);
 const displayCustomizePopup = signal(false);
+const displaySizeTablePopup = signal(false);
 const displaySearchDrawer = signal(false);
 
 const state = {
@@ -16,6 +17,7 @@ const state = {
   displayMenu,
   displaySearchPopup,
   displayCustomizePopup,
+  displaySizeTablePopup,
   displaySearchDrawer,
 };
 
