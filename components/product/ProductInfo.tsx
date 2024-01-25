@@ -102,6 +102,11 @@ function ProductInfo(
     listPrice,
   });
 
+  const measureTable =
+    product.image?.find((i) => i.alternateName === "tabelaMedida")
+      ? product.image?.find((i) => i.alternateName === "tabelaMedida")
+      : (product.image![0] || { src: "", alt: "" });
+
   return (
     <div class="flex flex-col" style={{ maxWidth: "90vw" }} id={id}>
       {/* Share */}
@@ -163,7 +168,13 @@ function ProductInfo(
       </div>
       {/* Sku Selector */}
       <div class="mt-4 sm:mt-6">
-        <ProductSelector product={product} />
+        <ProductSelector
+          product={product}
+          sizeTableImg={{
+            src: measureTable!.url!,
+            alt: measureTable!.alternateName!,
+          }}
+        />
       </div>
       {/* Add to Cart and Favorites button */}
       <div class="mt-4 sm:mt-10 flex flex-col gap-2">

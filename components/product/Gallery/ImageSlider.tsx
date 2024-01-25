@@ -35,15 +35,15 @@ export default function GallerySlider(props: Props) {
   } = props;
   const aspectRatio = `${width} / ${height}`;
 
-  //simulating 4 images
-  images[1] = images[1] ? images[1] : images[0];
-  images[2] = images[2] ? images[2] : images[0];
-  images[3] = images[3] ? images[3] : (images[1] || images[0]);
+  // removing measure table from images
+  const imagesDisplay = images.filter((i) =>
+    i.alternateName !== "tabelaMedida"
+  );
 
   return (
     <>
       <div class="hidden md:grid md:grid-cols-2 md:grid-flow-row gap-4">
-        {images.map((img, index) =>
+        {imagesDisplay.map((img, index) =>
           index <= 3 && (
             <div class="hidden lg:block lg:col-span-1 max-w-[350px]">
               <Image
