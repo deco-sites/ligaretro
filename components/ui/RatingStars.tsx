@@ -24,8 +24,6 @@ const RatingStars = (
 
   const starFilled = hasHalfStar ? halfStars + 1 : halfStars;
 
-  console.log({ starFilled });
-
   return (
     <div className={`flex text-[#3a3a3a] items-center ${extraClasses}`}>
       {

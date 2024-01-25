@@ -56,7 +56,6 @@ export async function loader({ page, layout }: Props) {
 function ProductInfo(
   { page, layout, rating, debug }: SectionProps<typeof loader>,
 ) {
-  console.log({ page, rating });
   const platform = usePlatform();
   const id = useId();
 
