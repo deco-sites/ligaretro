@@ -23,9 +23,12 @@ export interface Layout {
   columns?: Columns;
 }
 
-/** @titleBy matcher */
+/** @titleBy matcher.mathName */
 export interface Style {
-  matcher: string;
+  matcher: {
+    pathName: string;
+    search?: string;
+  };
   titleStyle?: {
     titleBgColor: string;
     titleTextColor: string;
@@ -294,8 +297,11 @@ export const loader = (
   { page, layout, cardLayout, startingPage, styles, pageTitle }: Props,
   req: Request,
 ) => {
+  const newURL = new URL(req.url);
+
   const style = styles?.find(({ matcher }) =>
-    new URLPattern({ pathname: matcher }).test(req.url)
+    new URLPattern({ pathname: matcher.pathName }).test(req.url) &&
+    (newURL.search ? matcher.search === newURL.search : true)
   );
 
   return { page, layout, cardLayout, startingPage, style, pageTitle };
