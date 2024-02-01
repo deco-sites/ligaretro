@@ -108,7 +108,7 @@ function Result({
   return (
     <>
       {style?.coverImage?.desktop && style?.coverImage?.mobile && (
-        <div class="relative w-full lg:mt-[43px] h-60 flex justify-center z-0">
+        <div class="relative w-full h-60 flex justify-center z-0">
           <Picture
             preload
             class="absolute"
