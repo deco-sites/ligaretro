@@ -122,7 +122,7 @@ function Cart({
                     {formatPrice(total, currency, locale)}
                   </span>
                 </div>
-                <span class="text-sm text-base-300">
+                <span class="text-sm text-[#929292]">
                   Taxas e fretes serão calculados no checkout
                 </span>
               </div>
@@ -131,7 +131,7 @@ function Cart({
                 <a class="inline-block w-full" href={checkoutHref}>
                   <Button
                     data-deco="buy-button"
-                    class="btn-primary btn-block"
+                    class="btn-success btn-block text-white"
                     disabled={loading || isEmtpy}
                     onClick={() => {
                       sendEvent({
