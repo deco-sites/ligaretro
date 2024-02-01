@@ -167,11 +167,12 @@ function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
           .filter((filter: Filter) => filter.key !== "category-1")
           .filter((filter: Filter) => filter.key !== "category-2")
           .filter((filter: Filter) => filter.key !== "brand")
+          .filter((filter: Filter) => filter.key !== "cores-geral---sku")
           .map((filter) => (
             <li class="flex flex-col gap-4 border-b border-white last:border-b-0 pb-4">
               <div
                 tabIndex={0}
-                className="collapse collapse-arrow collapse-open"
+                className="collapse collapse-arrow"
               >
                 <div class="collapse-title">
                   {filter.key !== "category-3" && <span>{filter.label}</span>}
