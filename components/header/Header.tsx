@@ -37,6 +37,7 @@ export interface Props {
   logo?: Logo;
 
   buttons: Buttons;
+  hideAlert?: boolean;
 }
 
 function Header({
@@ -46,12 +47,13 @@ function Header({
   logo,
   freeShippingTarget,
   buttons,
+  hideAlert,
 }: Props) {
   const platform = usePlatform();
   const items = navItems ?? [];
 
   return (
-    <header class="mb-[43px]" style={{ height: 111 }}>
+    <header class="h-[73px] lg:h-[111px]">
       <Drawers
         menu={{ items }}
         searchbar={searchbar}
@@ -60,7 +62,8 @@ function Header({
       >
         <div class="bg-base-100 fixed w-full z-50">
           {/* {alerts.length > 0 && <Alert alerts={alerts} />} */}
-          <Alert />
+          {!hideAlert && <Alert />}
+
           <Navbar
             items={items}
             searchbar={searchbar && { ...searchbar, platform }}
