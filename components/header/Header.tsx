@@ -22,6 +22,7 @@ export interface Buttons {
 
 export interface Props {
   // alerts: string[];
+  freeShippingTarget: number;
 
   /** @title Search Bar */
   searchbar?: Omit<SearchbarProps, "platform">;
@@ -43,6 +44,7 @@ function Header({
   searchbar,
   navItems,
   logo,
+  freeShippingTarget,
   buttons,
 }: Props) {
   const platform = usePlatform();
@@ -54,6 +56,7 @@ function Header({
         menu={{ items }}
         searchbar={searchbar}
         platform={platform}
+        freeShippingTarget={freeShippingTarget}
       >
         <div class="bg-base-100 fixed w-full z-50">
           {/* {alerts.length > 0 && <Alert alerts={alerts} />} */}

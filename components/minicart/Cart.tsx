@@ -11,11 +11,12 @@ const CartNuvemshop = lazy(() => import("./nuvemshop/Cart.tsx"));
 
 export interface Props {
   platform: ReturnType<typeof usePlatform>;
+  freeShippingTarget: number;
 }
 
-function Cart({ platform }: Props) {
+function Cart({ platform, freeShippingTarget }: Props) {
   if (platform === "vtex") {
-    return <CartVTEX />;
+    return <CartVTEX freeShippingTarget={freeShippingTarget} />;
   }
 
   if (platform === "vnda") {

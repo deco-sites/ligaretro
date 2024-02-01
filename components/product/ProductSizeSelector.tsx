@@ -8,7 +8,7 @@ interface Props {
   sizeTableImg: {
     src: string;
     alt: string;
-  }
+  };
 }
 
 function VariantSelector({ product, sizeTableImg }: Props) {
@@ -22,7 +22,7 @@ function VariantSelector({ product, sizeTableImg }: Props) {
         ? (
           <li class="flex flex-col gap-6">
             <span class="text-lg font-semibold text-[#252525]">Tamanho</span>
-            <SizeTableButton img={sizeTableImg}/>
+            <SizeTableButton img={sizeTableImg} />
             <ul class="flex flex-row gap-2 flex-wrap">
               {Object.entries(possibilities["Tamanho"]).map(([value, link]) => (
                 <li>
