@@ -342,7 +342,7 @@ function ProductCard(
                       darkBackground
                         ? "text-white lg:group-hover:text-[#252525]"
                         : "text-[#252525]"
-                    } text-sm truncate`}
+                    } text-[11px] truncate`}
                   >
                     até {installments}
                   </div>
