@@ -299,9 +299,13 @@ export const loader = (
 ) => {
   const newURL = new URL(req.url);
 
+  console.log({ styleMatcher: newURL });
+
   const style = styles?.find(({ matcher }) =>
     new URLPattern({ pathname: matcher.pathName }).test(req.url) &&
-    (newURL.search ? matcher.search === newURL.search : true)
+    (newURL.search && matcher.search
+      ? newURL.search.includes(matcher.search)
+      : true)
   );
 
   return { page, layout, cardLayout, startingPage, style, pageTitle };
