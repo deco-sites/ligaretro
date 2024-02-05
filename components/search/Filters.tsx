@@ -160,7 +160,7 @@ function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
         <span class="font-semibold">Filtros</span>
       </div>
       <ul
-        class={`flex flex-col gap-6 p-4 ${darkBackground && "md:text-white"}`}
+        class={`flex flex-col gap-1 p-4 ${darkBackground && "md:text-white"}`}
       >
         {filters
           .filter(isToggle)
@@ -169,22 +169,24 @@ function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
           .filter((filter: Filter) => filter.key !== "brand")
           .filter((filter: Filter) => filter.key !== "cores-geral---sku")
           .map((filter) => (
-            <li class="flex flex-col gap-4 border-b border-white last:border-b-0 pb-4">
-              <div
-                tabIndex={0}
-                className="collapse collapse-arrow"
-              >
-                <div class="collapse-title">
+            <li class="flex flex-col gap-4 border-b border-white last:border-b-0">
+              <details className="collapse collapse-arrow">
+                {
+                  /* <div class="collapse-title w-[225px]">
                   {filter.key !== "category-3" && <span>{filter.label}</span>}
-                </div>
-                <div class="collapse-content">
+                </div> */
+                }
+                <summary class="collapse-title  w-[225px]">
+                  {filter.label}
+                </summary>
+                <div class="collapse-content  pl-0">
                   <FilterValues
                     filter={{ ...filter }}
                     darkBackground={darkBackground!}
                     darkBackgroundColor={darkBackgroundColor!}
                   />
                 </div>
-              </div>
+              </details>
             </li>
           ))}
       </ul>
