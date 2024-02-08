@@ -78,22 +78,33 @@ function CustomizeModal({ productName, skuID }: Props) {
 
       console.log({ index });
 
-      addItemAttachment({
-        index: 0,
-        attachment: "Nome",
-        content: {
-          Nome: "testenoome",
-        },
-      });
-      // addItemAttachment({
-      //   index: 1,
-      //   attachment: "Nome",
-      //   content: {
-      //     Nome: shirtName,
-      //   },
-      // });
+/*    const options = {
+        method: 'POST',
+        body: JSON.stringify({
+          id: "1408" // offerings.id
+        }),
+      }
 
-      // console.log({items})
+      fetch( 
+      `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
+        options
+      ) */
+
+/*  const options = {
+        method: 'POST',
+        body: JSON.stringify({
+          content: {
+            Nome: 'Guilherme',
+          },
+        }),
+      }
+      
+      fetch( 
+      `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${offerings.id}/attachments/${attachmentName}`,
+        options
+      ) */
+
+
 
       displayCustomizePopup.value = false;
       displayCart.value = true;
