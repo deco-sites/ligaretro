@@ -50,6 +50,7 @@ import * as $$$$$$41 from "./sections/Newsletter/Newsletter.tsx";
 import * as $$$$$$42 from "./sections/Header/CleanHeader.tsx";
 import * as $$$$$$43 from "./sections/Header/Header.tsx";
 import * as $$$$$$$$$0 from "./actions/createReview.ts";
+import * as $$$$$$$$$1 from "./actions/getProductAttachments.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
@@ -107,6 +108,7 @@ const manifest = {
   },
   "actions": {
     "deco-sites/ligaretro/actions/createReview.ts": $$$$$$$$$0,
+    "deco-sites/ligaretro/actions/getProductAttachments.ts": $$$$$$$$$1,
   },
   "apps": {
     "deco-sites/ligaretro/apps/decohub.ts": $$$$$$$$$$$0,
