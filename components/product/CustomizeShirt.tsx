@@ -32,7 +32,6 @@ function CustomizeModal({ productName, skuID }: Props) {
   const [loadingFinish, setLoadingFinish] = useState(false);
 
   const handleApplyName = () => {
-    console.log({ items });
     let partialCount = partialValue;
 
     const nameInput = document.getElementById("nameShirt") as HTMLInputElement;
@@ -78,8 +77,6 @@ function CustomizeModal({ productName, skuID }: Props) {
     if (shirtName !== "" || shirtNumber !== "") {
       const index = items.findIndex((obj) => obj.id === skuID);
 
-      console.log({ index });
-
       //add Name attachment to product
       const optionsAddNameAttachment = {
         method: "POST",
@@ -91,7 +88,7 @@ function CustomizeModal({ productName, skuID }: Props) {
         `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
         optionsAddNameAttachment,
       );
-      console.log({ firstResponse });
+      // console.log({ firstResponse });
 
       //add content to Name attachment
       const optionsAddNameContent = {
@@ -106,7 +103,7 @@ function CustomizeModal({ productName, skuID }: Props) {
         `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNameAttachment.value.id}/attachments/${productNameAttachment.value.name}`,
         optionsAddNameContent,
       );
-      console.log({ secondResponse });
+      // console.log({ secondResponse });
 
       //add Number attachment to product
       const optionsAddNumberAttachment = {
@@ -119,7 +116,7 @@ function CustomizeModal({ productName, skuID }: Props) {
         `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
         optionsAddNumberAttachment,
       );
-      console.log({ firstResponseNumber });
+      // console.log({ firstResponseNumber });
 
       //add content to Number attachment
       const optionsAddContentNumber = {
@@ -134,7 +131,7 @@ function CustomizeModal({ productName, skuID }: Props) {
         `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNumberAttachment.value.id}/attachments/${productNumberAttachment.value.name}`,
         optionsAddContentNumber,
       );
-      console.log({ secondResponseNumber });
+      // console.log({ secondResponseNumber });
 
       displayCustomizePopup.value = false;
       displayCart.value = true;
@@ -294,7 +291,7 @@ function CustomizeShirt({ productName, skuID }: Props) {
         };
       });
 
-      console.log({ offerings });
+      // console.log({ offerings });
 
       productNameAttachment.value = offerings.find((o: O) =>
         o.name === "Nome"
