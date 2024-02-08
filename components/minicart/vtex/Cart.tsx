@@ -21,6 +21,7 @@ function Cart({ freeShippingTarget = 1000 }: { freeShippingTarget: number }) {
           sale: item.sellingPrice / 100,
           list: item.listPrice / 100,
         },
+        attachments: item.bundleItems as { name: string; price: number }[],
       }))}
       total={(total - discounts) / 100}
       subtotal={total / 100}

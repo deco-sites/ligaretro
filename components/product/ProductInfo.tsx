@@ -106,9 +106,6 @@ function ProductInfo(
     product.image?.find((i) => i.alternateName === "tabelaMedida")
       ? product.image?.find((i) => i.alternateName === "tabelaMedida")
       : (product.image![0] || { src: "", alt: "" });
-
-  console.log({ product });
-
   return (
     <div class="flex flex-col" style={{ maxWidth: "90vw" }} id={id}>
       {/* Share */}

@@ -11,6 +11,8 @@ const displaySearchPopup = signal(false);
 const displayCustomizePopup = signal(false);
 const displaySizeTablePopup = signal(false);
 const displaySearchDrawer = signal(false);
+const productNameAttachment = signal({ name: "", price: 0, id: "" });
+const productNumberAttachment = signal({ name: "", price: 0, id: "" });
 
 const state = {
   displayCart,
@@ -19,6 +21,8 @@ const state = {
   displayCustomizePopup,
   displaySizeTablePopup,
   displaySearchDrawer,
+  productNameAttachment,
+  productNumberAttachment,
 };
 
 // Keyboard event listeners

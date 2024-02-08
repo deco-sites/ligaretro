@@ -299,8 +299,6 @@ export const loader = (
 ) => {
   const newURL = new URL(req.url);
 
-  console.log({ styleMatcher: newURL });
-
   const style = styles?.find(({ matcher }) =>
     new URLPattern({ pathname: matcher.pathName }).test(req.url) &&
     (newURL.search && matcher.search
