@@ -23,6 +23,7 @@ function CustomizeModal({ productName, skuID }: Props) {
 
   const {
     items = [],
+    orderFormId,
   } = cart.value ?? {};
 
   const [shirtName, setShirtName] = useState("");
@@ -31,6 +32,7 @@ function CustomizeModal({ productName, skuID }: Props) {
   const [loadingFinish, setLoadingFinish] = useState(false);
 
   const handleApplyName = () => {
+    console.log({ items });
     let partialCount = partialValue;
 
     const nameInput = document.getElementById("nameShirt") as HTMLInputElement;
@@ -71,40 +73,68 @@ function CustomizeModal({ productName, skuID }: Props) {
     displayCustomizePopup.value = false;
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     setLoadingFinish(true);
     if (shirtName !== "" || shirtNumber !== "") {
       const index = items.findIndex((obj) => obj.id === skuID);
 
       console.log({ index });
 
-/*    const options = {
-        method: 'POST',
+      //add Name attachment to product
+      const optionsAddNameAttachment = {
+        method: "POST",
         body: JSON.stringify({
-          id: "1408" // offerings.id
+          id: productNameAttachment.value.id,
         }),
-      }
+      };
+      const firstResponse = await fetch(
+        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
+        optionsAddNameAttachment,
+      );
+      console.log({ firstResponse });
 
-      fetch( 
-      `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
-        options
-      ) */
-
-/*  const options = {
-        method: 'POST',
+      //add content to Name attachment
+      const optionsAddNameContent = {
+        method: "POST",
         body: JSON.stringify({
           content: {
-            Nome: 'Guilherme',
+            Nome: shirtName,
           },
         }),
-      }
-      
-      fetch( 
-      `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${offerings.id}/attachments/${attachmentName}`,
-        options
-      ) */
+      };
+      const secondResponse = await fetch(
+        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNameAttachment.value.id}/attachments/${productNameAttachment.value.name}`,
+        optionsAddNameContent,
+      );
+      console.log({ secondResponse });
 
+      //add Number attachment to product
+      const optionsAddNumberAttachment = {
+        method: "POST",
+        body: JSON.stringify({
+          id: productNumberAttachment.value.id,
+        }),
+      };
+      const firstResponseNumber = await fetch(
+        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
+        optionsAddNumberAttachment,
+      );
+      console.log({ firstResponseNumber });
 
+      //add content to Number attachment
+      const optionsAddContentNumber = {
+        method: "POST",
+        body: JSON.stringify({
+          content: {
+            "Número": shirtNumber,
+          },
+        }),
+      };
+      const secondResponseNumber = await fetch(
+        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNumberAttachment.value.id}/attachments/${productNumberAttachment.value.name}`,
+        optionsAddContentNumber,
+      );
+      console.log({ secondResponseNumber });
 
       displayCustomizePopup.value = false;
       displayCart.value = true;
@@ -242,32 +272,36 @@ function CustomizeShirt({ productName, skuID }: Props) {
   } = useUI();
   const [modalFirstTime, setModalFirstTime] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [attachmentOfferings, setAttachmentOfferings] = useState([]);
+  type O = { name: string; price: number; id: string };
+  const [attachmentOfferings, setAttachmentOfferings] = useState([] as O[]);
 
   const openModal = async () => {
     setIsLoading(true);
     const { addItems } = useCart();
 
     if (!modalFirstTime) {
-      const r: unknown = await invoke["deco-sites/ligaretro"].actions
-        .getProductAttachments({ id: skuID });
+      const r = await invoke["deco-sites/ligaretro"].actions
+        .getProductAttachments({ id: skuID }) as {
+          items: [{ offerings: O[] }];
+        };
       setModalFirstTime(true);
 
-      const offerings = r.items[0].offerings.map((o: unknown) => {
+      const offerings: O[] = r.items[0].offerings.map((o: O) => {
         return {
           name: o.name,
           price: o.price,
+          id: o.id,
         };
       });
 
       console.log({ offerings });
 
-      productNameAttachment.value = offerings.find((o: unknown) =>
+      productNameAttachment.value = offerings.find((o: O) =>
         o.name === "Nome"
-      );
-      productNumberAttachment.value = offerings.find((o: unknown) =>
+      ) || { name: "", price: 0, id: "" };
+      productNumberAttachment.value = offerings.find((o: O) =>
         o.name === "Número"
-      );
+      ) || { name: "", price: 0, id: "" };
 
       //add product to cart
       addItems({
