@@ -37,6 +37,16 @@ export interface Props {
   logo?: Logo;
 
   buttons: Buttons;
+  alertLinks: {
+    firstLink: {
+      text: string;
+      href: string;
+    };
+    secondLink: {
+      text: string;
+      href: string;
+    };
+  };
   hideAlert?: boolean;
 }
 
@@ -47,6 +57,7 @@ function Header({
   logo,
   freeShippingTarget,
   buttons,
+  alertLinks,
   hideAlert,
 }: Props) {
   const platform = usePlatform();
@@ -62,7 +73,7 @@ function Header({
       >
         <div class="bg-base-100 fixed w-full z-50">
           {/* {alerts.length > 0 && <Alert alerts={alerts} />} */}
-          {!hideAlert && <Alert />}
+          {!hideAlert && <Alert links={alertLinks} />}
 
           <Navbar
             items={items}
