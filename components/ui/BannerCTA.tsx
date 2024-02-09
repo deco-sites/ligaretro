@@ -89,14 +89,16 @@ function BannerItem(
         />
       </Picture>
       {action && (
-        <div class="absolute h-min top-0 bottom-0 m-auto left-0 right-0 max-h-min max-w-[560px] flex flex-col gap-4 p-4 items-center">
-          <span class="text-3xl font-medium text-base-100 text-center">
-            {action.title}
-          </span>
-          <Button class="btn rounded-full bg-white w-fit px-10">
-            {action.label}
-          </Button>
-        </div>
+        <a href="#formFranchise">
+          <div class="absolute h-min top-0 bottom-0 m-auto left-0 right-0 max-h-min max-w-[560px] flex flex-col gap-4 p-4 items-center">
+            <span class="text-3xl font-medium text-base-100 text-center">
+              {action.title}
+            </span>
+            <Button class="btn rounded-full bg-white w-fit px-10">
+              {action.label}
+            </Button>
+          </div>
+        </a>
       )}
     </div>
   );
