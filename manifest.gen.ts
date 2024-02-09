@@ -41,16 +41,17 @@ import * as $$$$$$32 from "./sections/Product/ImageGalleryFrontBack.tsx";
 import * as $$$$$$33 from "./sections/Product/ProductShelfTabbed.tsx";
 import * as $$$$$$34 from "./sections/Product/NotFound.tsx";
 import * as $$$$$$35 from "./sections/Miscellaneous/CampaignTimer.tsx";
-import * as $$$$$$36 from "./sections/Miscellaneous/CookieConsent.tsx";
-import * as $$$$$$37 from "./sections/Miscellaneous/BannerCTA.tsx";
-import * as $$$$$$38 from "./sections/Social/WhatsApp.tsx";
-import * as $$$$$$39 from "./sections/Social/InstagramPosts.tsx";
-import * as $$$$$$40 from "./sections/Theme/Theme.tsx";
-import * as $$$$$$41 from "./sections/Links/LinkTree.tsx";
-import * as $$$$$$42 from "./sections/Links/Shortcuts.tsx";
-import * as $$$$$$43 from "./sections/Newsletter/Newsletter.tsx";
-import * as $$$$$$44 from "./sections/Header/CleanHeader.tsx";
-import * as $$$$$$45 from "./sections/Header/Header.tsx";
+import * as $$$$$$36 from "./sections/Miscellaneous/TextForm.tsx";
+import * as $$$$$$37 from "./sections/Miscellaneous/CookieConsent.tsx";
+import * as $$$$$$38 from "./sections/Miscellaneous/BannerCTA.tsx";
+import * as $$$$$$39 from "./sections/Social/WhatsApp.tsx";
+import * as $$$$$$40 from "./sections/Social/InstagramPosts.tsx";
+import * as $$$$$$41 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$42 from "./sections/Links/LinkTree.tsx";
+import * as $$$$$$43 from "./sections/Links/Shortcuts.tsx";
+import * as $$$$$$44 from "./sections/Newsletter/Newsletter.tsx";
+import * as $$$$$$45 from "./sections/Header/CleanHeader.tsx";
+import * as $$$$$$46 from "./sections/Header/Header.tsx";
 import * as $$$$$$$$$0 from "./actions/createReview.ts";
 import * as $$$$$$$$$1 from "./actions/getProductAttachments.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
@@ -78,8 +79,8 @@ const manifest = {
     "deco-sites/ligaretro/sections/Content/Testimonials.tsx": $$$$$$16,
     "deco-sites/ligaretro/sections/Footer/Footer.tsx": $$$$$$1,
     "deco-sites/ligaretro/sections/Gallery.tsx": $$$$$$0,
-    "deco-sites/ligaretro/sections/Header/CleanHeader.tsx": $$$$$$44,
-    "deco-sites/ligaretro/sections/Header/Header.tsx": $$$$$$45,
+    "deco-sites/ligaretro/sections/Header/CleanHeader.tsx": $$$$$$45,
+    "deco-sites/ligaretro/sections/Header/Header.tsx": $$$$$$46,
     "deco-sites/ligaretro/sections/Images/BannerGrid.tsx": $$$$$$5,
     "deco-sites/ligaretro/sections/Images/Carousel.tsx": $$$$$$7,
     "deco-sites/ligaretro/sections/Images/ImageGallery.tsx": $$$$$$6,
@@ -88,12 +89,13 @@ const manifest = {
     "deco-sites/ligaretro/sections/Layout/Flex.tsx": $$$$$$10,
     "deco-sites/ligaretro/sections/Layout/Grid.tsx": $$$$$$9,
     "deco-sites/ligaretro/sections/Layout/GridItem.tsx": $$$$$$11,
-    "deco-sites/ligaretro/sections/Links/LinkTree.tsx": $$$$$$41,
-    "deco-sites/ligaretro/sections/Links/Shortcuts.tsx": $$$$$$42,
-    "deco-sites/ligaretro/sections/Miscellaneous/BannerCTA.tsx": $$$$$$37,
+    "deco-sites/ligaretro/sections/Links/LinkTree.tsx": $$$$$$42,
+    "deco-sites/ligaretro/sections/Links/Shortcuts.tsx": $$$$$$43,
+    "deco-sites/ligaretro/sections/Miscellaneous/BannerCTA.tsx": $$$$$$38,
     "deco-sites/ligaretro/sections/Miscellaneous/CampaignTimer.tsx": $$$$$$35,
-    "deco-sites/ligaretro/sections/Miscellaneous/CookieConsent.tsx": $$$$$$36,
-    "deco-sites/ligaretro/sections/Newsletter/Newsletter.tsx": $$$$$$43,
+    "deco-sites/ligaretro/sections/Miscellaneous/CookieConsent.tsx": $$$$$$37,
+    "deco-sites/ligaretro/sections/Miscellaneous/TextForm.tsx": $$$$$$36,
+    "deco-sites/ligaretro/sections/Newsletter/Newsletter.tsx": $$$$$$44,
     "deco-sites/ligaretro/sections/Product/ImageGalleryFrontBack.tsx": $$$$$$32,
     "deco-sites/ligaretro/sections/Product/ImageGallerySlider.tsx": $$$$$$30,
     "deco-sites/ligaretro/sections/Product/NotFound.tsx": $$$$$$34,
@@ -106,9 +108,9 @@ const manifest = {
     "deco-sites/ligaretro/sections/Product/SearchResult.tsx": $$$$$$27,
     "deco-sites/ligaretro/sections/Product/ShirtHistory.tsx": $$$$$$31,
     "deco-sites/ligaretro/sections/Product/Wishlist.tsx": $$$$$$23,
-    "deco-sites/ligaretro/sections/Social/InstagramPosts.tsx": $$$$$$39,
-    "deco-sites/ligaretro/sections/Social/WhatsApp.tsx": $$$$$$38,
-    "deco-sites/ligaretro/sections/Theme/Theme.tsx": $$$$$$40,
+    "deco-sites/ligaretro/sections/Social/InstagramPosts.tsx": $$$$$$40,
+    "deco-sites/ligaretro/sections/Social/WhatsApp.tsx": $$$$$$39,
+    "deco-sites/ligaretro/sections/Theme/Theme.tsx": $$$$$$41,
   },
   "actions": {
     "deco-sites/ligaretro/actions/createReview.ts": $$$$$$$$$0,

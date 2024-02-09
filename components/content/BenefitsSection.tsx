@@ -27,7 +27,7 @@ export default function BenefitsSection(
         </span>
       </div>
       <div>
-        <div class="grid-cols-3 flex justify-center">
+        <div class="grid-cols-3 flex flex-col sm:flex-row gap-10 sm:gap-0 justify-center">
           {benefits.map((b) => {
             return (
               <div class="col-span-1 flex justify-center">
@@ -45,7 +45,7 @@ export default function BenefitsSection(
       </div>
       <div class="">
         <div
-          class="text-sm text-center max-w-[560px]"
+          class="text-sm text-center max-w-[430px] sm:max-w-[560px]"
           dangerouslySetInnerHTML={{ __html: benefitsText || "" }}
         />
       </div>

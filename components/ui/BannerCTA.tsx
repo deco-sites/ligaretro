@@ -65,7 +65,7 @@ function BannerItem(
   } = image;
 
   return (
-    <div class="relative w-full mt-4 mb-8">
+    <div class="relative w-full sm:mt-8 mb-8">
       <Picture preload={lcp}>
         <Source
           media="(max-width: 767px)"
