@@ -1,4 +1,7 @@
 <svg style="display:none">
+	<symbol fill="none" viewBox="0 0 22 22" id="checkIcon" xmlns="http://www.w3.org/2000/svg">
+	<path d="M11 0a11 11 0 1 0 0 22 11 11 0 0 0 0-22ZM9.429 15.392 5.5 11.464l1.25-1.25 2.679 2.68L15.25 7.07l1.254 1.247-7.076 7.074Z" fill="currentColor"/>
+	</symbol>
 	<symbol fill="none" viewBox="0 0 56 56" id="discountIcon" xmlns="http://www.w3.org/2000/svg">
 	<path d="M35 21 21 35m0-14h.023M35 35h.023M8.983 20.113a9.333 9.333 0 0 1 11.154-11.13 9.334 9.334 0 0 1 15.727 0 9.333 9.333 0 0 1 11.153 11.154 9.333 9.333 0 0 1 0 15.726 9.334 9.334 0 0 1-11.13 11.154 9.334 9.334 0 0 1-15.75 0 9.334 9.334 0 0 1-11.153-11.13 9.334 9.334 0 0 1 0-15.774Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 	</symbol>

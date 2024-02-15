@@ -41,6 +41,7 @@ export type AvailableIcons =
   | "discountIcon"
   | "medalIcon"
   | "planIcon"
+  | "checkIcon"
   | "filterIcon"
   | "shirtIcon"
   | "badgeIcon"
