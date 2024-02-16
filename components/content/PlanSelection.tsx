@@ -21,7 +21,68 @@ export interface Props {
   termsConditionsLink?: string;
 }
 
-export default function TopicsSection(
+function PlanItem({ p }: { p: Plan }) {
+  return (
+    <div
+      class={`col-span-1 ${
+        p.bestOption ? "bg-[#BFB78D]" : ""
+      } w-[90%] md:w-full rounded-3xl flex flex-col justify-end`}
+    >
+      {p.bestOption && (
+        <span class="uppercase text-xl font-bold text-center py-3 text-white">
+          Melhor Custo
+        </span>
+      )}
+      <div class="flex justify-center">
+        <div class="rounded-3xl border-[3px] border-[#BFB78D] bg-[#292929] p-5 flex flex-col text-white gap-6">
+          <div>
+            <span class="font-semibold text-lg">
+              {p.title}
+            </span>
+          </div>
+          <div>
+            <span class="text-[35px] xl:text-[40px] font-semibold">
+              R$ {p.price.toFixed(2)}
+              <span class="text-sm">/{p.recurrencyPeriod}</span>
+            </span>
+          </div>
+          {p.benefits.map((b) => {
+            return (
+              <div class="flex items-start gap-2 text-white">
+                <div>
+                  <Icon size={22} id="checkIcon" />
+                </div>
+                <div
+                  class="text-[14px] xl:text-normal"
+                  dangerouslySetInnerHTML={{ __html: b.text || "" }}
+                />
+              </div>
+            );
+          })}
+          <div class="mt-5">
+            <button class="btn bg-white text-[#292929] rounded-full w-full">
+              Assinar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PlanList({ list }: { list: Plan[] }) {
+  return (
+    <div class="flex justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-2 w-[1200px] place-items-center md:place-items-end">
+        {list.map((p) => {
+          return <PlanItem p={p} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default function PlanSelection(
   { title, oneShirtPlans, twoShirtsPlans, termsConditionsLink }: Props,
 ) {
   return (
@@ -34,7 +95,7 @@ export default function TopicsSection(
           >
           </span>
         </div>
-        <div class="flex gap-3 justify-center">
+        <div class="flex flex-col items-center sm:flex-row gap-5 justify-center">
           <div class="w-fit px-5 py-2 rounded-full bg-[#BFB78D]">
             <span class="font-semibold text-lg">01 camisa por mês</span>
           </div>
@@ -42,58 +103,7 @@ export default function TopicsSection(
             <span class="font-semibold text-lg">02 camisa por mês</span>
           </div>
         </div>
-        <div class="flex justify-center">
-          <div class="grid-cols-4 flex flex-col md:flex-row gap-2 w-[1200px]">
-            {oneShirtPlans.map((p) => {
-              return (
-                <div
-                  class={`${
-                    p.bestOption && "bg-[#BFB78D]"
-                  } rounded-3xl flex flex-col justify-end`}
-                >
-                  {p.bestOption && (
-                    <span class="uppercase text-xl font-bold text-center py-3 text-white">
-                      Melhor Custo
-                    </span>
-                  )}
-                  <div class="col-span-1 flex justify-center">
-                    <div class="rounded-3xl border-[3px] border-[#BFB78D] bg-[#292929] p-5 flex flex-col text-white gap-6">
-                      <div>
-                        <span class="font-semibold text-lg">
-                          {p.title}
-                        </span>
-                      </div>
-                      <div>
-                        <span class="text-[40px] font-semibold">
-                          R$ {p.price.toFixed(2)}
-                          <span class="text-sm">/{p.recurrencyPeriod}</span>
-                        </span>
-                      </div>
-                      {p.benefits.map((b) => {
-                        return (
-                          <div class="flex items-start gap-2 text-white">
-                            <div>
-                              <Icon size={22} id="checkIcon" />
-                            </div>
-                            <div
-                              class=""
-                              dangerouslySetInnerHTML={{ __html: b.text || "" }}
-                            />
-                          </div>
-                        );
-                      })}
-                      <div class="mt-5">
-                        <button class="btn p-5 bg-white text-[#292929] rounded-full w-full">
-                          Assinar
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <PlanList list={oneShirtPlans} />
         <div class="flex justify-center">
           <span class="text-white">
             <a
