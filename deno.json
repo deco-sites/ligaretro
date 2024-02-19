@@ -1,10 +1,9 @@
 {
   "imports": {
     "deco-sites/ligaretro/": "./",
-
     "$store/": "./",
-    "deco/": "https://denopkg.com/deco-cx/deco@1.52.2/",
-    "apps/": "https://denopkg.com/deco-cx/apps@0.31.6/",
+    "deco/": "https://denopkg.com/deco-cx/deco@1.53.9/",
+    "apps/": "https://denopkg.com/deco-cx/apps@0.32.42/",
     "$fresh/": "https://deno.land/x/fresh@1.6.1/",
     "preact": "https://esm.sh/preact@10.18.1",
     "preact/": "https://esm.sh/preact@10.18.1/",
