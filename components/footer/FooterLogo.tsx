@@ -16,7 +16,7 @@ export default function FooterLogo({ logo }: Props) {
             <img
               loading="lazy"
               src={logo?.image}
-              alt={logo?.description}
+              alt={"Logo liga retro"}
               width={200}
               height={200}
             />
