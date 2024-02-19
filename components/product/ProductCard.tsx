@@ -224,7 +224,7 @@ function ProductCard(
           )}
           <Image
             src={front.url!}
-            alt={front.alternateName}
+            alt={isVariantOf?.name ?? "foto produto"}
             width={WIDTH}
             height={HEIGHT}
             class={`bg-base-100 col-span-full row-span-full rounded w-full ${
@@ -241,7 +241,7 @@ function ProductCard(
             l?.onMouseOver?.image == "Change image") && (
             <Image
               src={back?.url ?? front.url!}
-              alt={back?.alternateName ?? front.alternateName}
+              alt={isVariantOf?.name ?? "Foto Produto"}
               width={WIDTH}
               height={HEIGHT}
               class="bg-base-100 col-span-full row-span-full transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"

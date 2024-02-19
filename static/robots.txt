@@ -1,2 +1,5 @@
 User-agent: *
-Allow: *
+Allow: /
+Disallow: /checkout/*
+Sitemap: https://ligaretro.com.br/sitemap/sitemap-index.xml
+Host: https://ligaretro.com.br
