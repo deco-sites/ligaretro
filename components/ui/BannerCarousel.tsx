@@ -137,7 +137,10 @@ function BannerItem(
           <span class="font-medium text-base text-base-100">
             {action.subTitle}
           </span>
-          <Button class="btn rounded-full bg-white w-fit px-10">
+          <Button
+            aria-label="Call to action"
+            class="btn rounded-full bg-white w-fit px-10"
+          >
             {action.label}
           </Button>
         </div>
