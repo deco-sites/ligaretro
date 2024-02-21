@@ -320,6 +320,7 @@ function CustomizeShirt({ productName, skuID }: Props) {
       <button
         class="btn btn-outline rounded-2xl"
         onClick={openModal}
+        aria-label="personalizar produto"
       >
         {isLoading ? "Carregando..." : "Personalize"}
       </button>
