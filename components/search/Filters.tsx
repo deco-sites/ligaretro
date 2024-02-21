@@ -98,20 +98,6 @@ function FilterValues(
 }
 
 function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
-  const noFilters = ["category-1", "category-2", "brand", "cores-geral---sku"];
-  const firstFilters = filters.filter((f) =>
-    ["times", "price"].includes(f.key)
-  );
-  const lastFilters = filters.filter((f) =>
-    !["times", "price"].includes(f.key)
-  );
-
-  const filteredFilters: Filter[] = [
-    firstFilters.find((f) => f.key === "price") || {} as Filter,
-    firstFilters.find((f) => f.key === "times") || {} as Filter,
-    ...lastFilters,
-  ];
-
   return (
     <>
       <div class={`flex gap-3 p-4 mb-5 ${darkBackground && "md:text-white"}`}>
@@ -121,42 +107,33 @@ function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
       <ul
         class={`flex flex-col gap-1 p-4 ${darkBackground && "md:text-white"}`}
       >
-        {filteredFilters
+        {filters
           .filter(isToggle)
-          .filter((filteredFilters: Filter) =>
-            !noFilters.includes(filteredFilters.key)
-          )
-          .map((filter, i) => {
-            const isSelected = filter.values.filter((value) =>
-              value.selected
-            ).length > 0;
-            return (
-              <li class="flex flex-col gap-4 border-b border-white last:border-b-0">
-                <div
-                  className={`collapse collapse-arrow ${
-                    (isSelected || filter.key === "price") && "collapse-open"
-                  }`}
-                >
-                  {
-                    /* <div class="collapse-title w-[225px]">
+          .filter((filter: Filter) => filter.key !== "category-1")
+          .filter((filter: Filter) => filter.key !== "category-2")
+          .filter((filter: Filter) => filter.key !== "brand")
+          .filter((filter: Filter) => filter.key !== "cores-geral---sku")
+          .map((filter) => (
+            <li class="flex flex-col gap-4 border-b border-white last:border-b-0">
+              <details className="collapse collapse-arrow">
+                {
+                  /* <div class="collapse-title w-[225px]">
                   {filter.key !== "category-3" && <span>{filter.label}</span>}
                 </div> */
-                  }
-                  <input type="checkbox" />
-                  <div class="collapse-title  w-[225px]">
-                    {filter.label}
-                  </div>
-                  <div class="collapse-content  pl-0">
-                    <FilterValues
-                      filter={{ ...filter }}
-                      darkBackground={darkBackground!}
-                      darkBackgroundColor={darkBackgroundColor!}
-                    />
-                  </div>
+                }
+                <summary class="collapse-title  w-[225px]">
+                  {filter.label}
+                </summary>
+                <div class="collapse-content  pl-0">
+                  <FilterValues
+                    filter={{ ...filter }}
+                    darkBackground={darkBackground!}
+                    darkBackgroundColor={darkBackgroundColor!}
+                  />
                 </div>
-              </li>
-            );
-          })}
+              </details>
+            </li>
+          ))}
       </ul>
     </>
   );
