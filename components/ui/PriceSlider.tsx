@@ -32,7 +32,8 @@ const MultiRangeSlider = (
   // Set width of the range to decrease from the left side
   useEffect(() => {
     if (maxValRef.current) {
-      const minPercent = getPercent(minVal);
+      let minPercent = getPercent(minVal);
+      minPercent = minPercent < 0 ? 0 : minPercent;
       const maxPercent = getPercent(+maxValRef.current.value); // Preceding with '+' converts the value from type string to type number
 
       if (range.current) {
