@@ -104,27 +104,29 @@ function ProductCard(
       </a>
     </li>
   ));
-  // const cta = (
-  //   <a
-  //     href={url && relative(url)}
-  //     aria-label="view product"
-  //     class="w-full btn btn-bloc bg-[#252525] text-white border-none"
-  //   >
-  //     {l?.basics?.ctaText || "Ver produto"}
-  //   </a>
-  // );
+
   const eventItem = mapProductToAnalyticsItem({
     product,
     price,
     listPrice,
   });
+  // const cta = (
+  //   <AddToCartButtonVTEX
+  //     eventParams={{ items: [eventItem] }}
+  //     productID={productID}
+  //     seller={seller}
+  //     styles="!rounded !bg-[#D56B09] !border-none !w-full"
+  //   />
+  // );
+
   const cta = (
-    <AddToCartButtonVTEX
-      eventParams={{ items: [eventItem] }}
-      productID={productID}
-      seller={seller}
-      styles="!rounded !bg-[#D56B09] !border-none !w-full"
-    />
+    <a
+      href={url && relative(url)}
+      aria-label="view product"
+      class="btn rounded bg-[#D56B09] border-none w-full text-white"
+    >
+      {l?.basics?.ctaText || "Ver produto"}
+    </a>
   );
 
   const splittedPrice =
