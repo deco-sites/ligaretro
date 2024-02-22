@@ -19,7 +19,7 @@ function CustomizeModal({ productName, skuID }: Props) {
     displayCart,
   } = useUI();
 
-  const { addItems, addItemAttachment, cart } = useCart();
+  const { addItems, updateItems, cart } = useCart();
 
   const {
     items = [],
@@ -65,7 +65,16 @@ function CustomizeModal({ productName, skuID }: Props) {
     setPartialValue(partialCount);
   };
 
-  const handleCancel = () => {
+  const handleCancel = async () => {
+    const index = items.findIndex((obj) => obj.id === skuID);
+    //remove product from cart
+    await updateItems({
+      orderItems: [{
+        index,
+        quantity: 0,
+      }],
+    });
+
     setShirtNumber("");
     setShirtName("");
     setPartialValue(0);
