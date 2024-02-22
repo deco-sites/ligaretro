@@ -177,15 +177,15 @@ function ProductInfo(
       </div>
       {/* Add to Cart and Favorites button */}
       <div class="mt-4 sm:mt-10 flex flex-col gap-2">
-        <CustomizeShirt
-          productName={`${isVariantOf?.name} ${name}`}
-          skuID={sku}
-        />
         {availability === "https://schema.org/InStock"
           ? (
             <>
               {platform === "vtex" && (
                 <>
+                  <CustomizeShirt
+                    productName={`${isVariantOf?.name} ${name}`}
+                    skuID={sku}
+                  />
                   <AddToCartButtonVTEX
                     eventParams={{ items: [eventItem] }}
                     productID={productID}
