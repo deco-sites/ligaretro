@@ -65,6 +65,15 @@ function CustomizeModal({ productName, skuID }: Props) {
     setPartialValue(partialCount);
   };
 
+  const handleChangeNumber = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+
+    if (target.value.length > 2) {
+      target.value = target.value.slice(0, 2);
+    }
+    setShirtNumber(target.value);
+  };
+
   const handleCancel = async () => {
     const index = items.findIndex((obj) => obj.id === skuID);
     //remove product from cart
@@ -83,70 +92,74 @@ function CustomizeModal({ productName, skuID }: Props) {
 
   const handleFinish = async () => {
     setLoadingFinish(true);
-    if (shirtName !== "" || shirtNumber !== "") {
-      const index = items.findIndex((obj) => obj.id === skuID);
 
-      //add Name attachment to product
+    const index = items.findIndex((
+      obj,
+    ) => (obj.id === skuID && obj.bundleItems.length === 0));
+    const handleName = async () => {
       const optionsAddNameAttachment = {
         method: "POST",
         body: JSON.stringify({
           id: productNameAttachment.value.id,
         }),
       };
-      const firstResponse = await fetch(
+      await fetch(
         `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
         optionsAddNameAttachment,
-      );
-      // console.log({ firstResponse });
+      ).then((res) => res.json());
 
       //add content to Name attachment
       const optionsAddNameContent = {
         method: "POST",
         body: JSON.stringify({
           content: {
-            Nome: shirtName,
+            [productNameAttachment.value.schema_name]: shirtName,
           },
         }),
       };
-      const secondResponse = await fetch(
-        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNameAttachment.value.id}/attachments/${productNameAttachment.value.name}`,
+      await fetch(
+        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNameAttachment.value.id}/attachments/${productNameAttachment.value.offer_name}`,
         optionsAddNameContent,
-      );
-      // console.log({ secondResponse });
+      ).then((res) => res.json());
+    };
 
-      //add Number attachment to product
+    const handleNumber = async () => {
       const optionsAddNumberAttachment = {
         method: "POST",
         body: JSON.stringify({
           id: productNumberAttachment.value.id,
         }),
       };
-      const firstResponseNumber = await fetch(
+      await fetch(
         `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/offerings`,
         optionsAddNumberAttachment,
-      );
-      // console.log({ firstResponseNumber });
+      ).then((res) => res.json());
 
       //add content to Number attachment
       const optionsAddContentNumber = {
         method: "POST",
         body: JSON.stringify({
           content: {
-            "Número": shirtNumber,
+            [productNumberAttachment.value.schema_name]: shirtNumber,
           },
         }),
       };
-      const secondResponseNumber = await fetch(
-        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNumberAttachment.value.id}/attachments/${productNumberAttachment.value.name}`,
+      await fetch(
+        `/api/checkout/pub/orderForm/${orderFormId}/items/${index}/bundles/${productNumberAttachment.value.id}/attachments/${productNumberAttachment.value.offer_name}`,
         optionsAddContentNumber,
-      );
-      // console.log({ secondResponseNumber });
+      ).then((res) => res.json());
+    };
 
-      displayCustomizePopup.value = false;
-      displayCart.value = true;
-    } else {
-      displayCustomizePopup.value = false;
+    if (shirtName !== "") {
+      await handleName();
     }
+
+    if (shirtNumber !== "") {
+      await handleNumber();
+    }
+
+    displayCustomizePopup.value = false;
+    window.location.reload();
   };
 
   return (
@@ -229,11 +242,12 @@ function CustomizeModal({ productName, skuID }: Props) {
                         name="numberShirt"
                         id="numberShirt"
                         class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
-                        type="text"
+                        type="number"
                         min={0}
                         max={99}
                         maxLength={2}
                         pattern="[0-99]*"
+                        onChange={handleChangeNumber}
                         value={shirtNumber}
                         placeholder={"Máximo 2 caracteres"}
                       />
@@ -289,7 +303,21 @@ function CustomizeShirt({ productName, skuID }: Props) {
   } = useUI();
   const [modalFirstTime, setModalFirstTime] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  type O = { name: string; price: number; id: string };
+  type O = {
+    name: string;
+    price: number;
+    id: string;
+    offer_name: string;
+    schema_name: string;
+    attachmentOfferings?: AttachmentOfferings[];
+  };
+
+  type AttachmentOfferings = {
+    name: string;
+    // deno-lint-ignore no-explicit-any
+    schema: any;
+  };
+
   const [attachmentOfferings, setAttachmentOfferings] = useState([] as O[]);
 
   const openModal = async () => {
@@ -308,17 +336,17 @@ function CustomizeShirt({ productName, skuID }: Props) {
           name: o.name,
           price: o.price,
           id: o.id,
+          offer_name: o.attachmentOfferings![0].name,
+          schema_name: Object.keys(o.attachmentOfferings![0].schema)[0],
         };
       });
 
-      // console.log({ offerings });
-
       productNameAttachment.value = offerings.find((o: O) =>
         o.name === "Nome"
-      ) || { name: "", price: 0, id: "" };
+      ) || { name: "", price: 0, id: "", offer_name: "", schema_name: "" };
       productNumberAttachment.value = offerings.find((o: O) =>
         o.name === "Número"
-      ) || { name: "", price: 0, id: "" };
+      ) || { name: "", price: 0, id: "", offer_name: "", schema_name: "" };
 
       if (
         productNameAttachment.value.name !== "" ||

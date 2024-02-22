@@ -27,7 +27,8 @@ export const getProductAttachments = async (
       },
     );
 
-    return response.json();
+    const res = await response.json();
+    return res;
   } catch (e) {
     // console.log({ e });
     return e;
