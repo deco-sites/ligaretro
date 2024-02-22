@@ -320,14 +320,17 @@ function CustomizeShirt({ productName, skuID }: Props) {
         o.name === "Número"
       ) || { name: "", price: 0, id: "" };
 
-      //add product to cart
-      addItems({
-        orderItems: [{
-          id: skuID,
-          seller: "1",
-          quantity: 1,
-        }],
-      });
+      if(productNameAttachment.value.name !== "" || productNumberAttachment.value.name!==""){
+        //add product to cart
+        addItems({
+          orderItems: [{
+            id: skuID,
+            seller: "1",
+            quantity: 1,
+          }],
+        });
+      }
+
 
       setAttachmentOfferings(offerings);
       setIsLoading(false);
