@@ -51,7 +51,7 @@ function FilterValues(
     if (a.label < b.label) return -1;
     if (a.label > b.label) return 1;
     return 0;
-  }
+  };
 
   if (key === "price") {
     return <PriceFilter values={values} darkBackground={darkBackground} />;

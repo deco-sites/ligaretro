@@ -105,7 +105,11 @@ function ProductInfo(
   const measureTable =
     product.image?.find((i) => i.alternateName === "tabelaMedida")
       ? product.image?.find((i) => i.alternateName === "tabelaMedida")
-      : ({ url: "https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/5b092411-5da9-448c-8ea3-40a5e55b7331___dbfde0d71b47ed07f56c8a4152b88b3a.jpeg", alternateName: "Tabela de Medidas" });
+      : ({
+        url:
+          "https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/5b092411-5da9-448c-8ea3-40a5e55b7331___dbfde0d71b47ed07f56c8a4152b88b3a.jpeg",
+        alternateName: "Tabela de Medidas",
+      });
   return (
     <div class="flex flex-col" style={{ maxWidth: "90vw" }} id={id}>
       {/* Share */}
