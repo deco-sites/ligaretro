@@ -67,17 +67,12 @@ function CustomizeModal({ productName, skuID }: Props) {
 
   const handleChangeNumber = (e: Event) => {
     const target = e.target as HTMLInputElement;
-
     if (target.value.length > 2) {
       target.value = target.value.slice(0, 2);
     }
-    setShirtNumber(target.value);
   };
 
-  const handleChangeName = (e: Event) => {
-    const target = e.target as HTMLInputElement;
-    setShirtName(target.value);
-  };
+  
 
   const handleCancel = async () => {
     const index = items.findIndex((obj) => obj.id === skuID);
@@ -221,7 +216,6 @@ function CustomizeModal({ productName, skuID }: Props) {
                         class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
                         type="text"
                         value={shirtName}
-                        onChange={handleChangeName}
                         maxLength={10}
                         placeholder={"Máximo 10 caracteres"}
                       />
