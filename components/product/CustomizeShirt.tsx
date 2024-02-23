@@ -72,8 +72,6 @@ function CustomizeModal({ productName, skuID }: Props) {
     }
   };
 
-  
-
   const handleCancel = async () => {
     const index = items.findIndex((obj) => obj.id === skuID);
     //remove product from cart
