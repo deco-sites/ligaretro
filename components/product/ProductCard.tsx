@@ -52,6 +52,7 @@ interface Props {
   layout?: Layout;
   platform?: Platform;
   darkBackground?: boolean;
+  hideHoverCTA?: boolean;
 }
 
 const relative = (url: string) => {
@@ -64,8 +65,16 @@ const WIDTH = 279;
 const HEIGHT = 279;
 
 function ProductCard(
-  { product, preload, itemListName, layout, platform, index, darkBackground }:
-    Props,
+  {
+    product,
+    preload,
+    itemListName,
+    layout,
+    platform,
+    index,
+    darkBackground,
+    hideHoverCTA,
+  }: Props,
 ) {
   const {
     url,
@@ -351,7 +360,11 @@ function ProductCard(
                 )}
             </div>
           )}
-          <div class="hidden group-hover:lg:flex items-end p-3">
+          <div
+            class={`hidden ${
+              hideHoverCTA ? "" : "group-hover:lg:flex"
+            } items-end p-3`}
+          >
             {cta}
           </div>
         </div>

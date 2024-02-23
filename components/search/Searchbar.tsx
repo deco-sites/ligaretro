@@ -169,6 +169,7 @@ function Searchbar({
                     platform={platform}
                     index={index}
                     itemListName="Suggeestions"
+                    hideHoverCTA={true}
                   />
                 </Slider.Item>
               ))}
