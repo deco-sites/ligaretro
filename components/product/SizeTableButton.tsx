@@ -32,12 +32,12 @@ const SizeTableModal = ({ img }: Props) => {
         </div>
         <Image
           class=""
-          sizes="(max-width: 640px) 100vw, 40vw"
-          style={{ aspectRatio: "300/370" }}
+          sizes="(max-width: 920px) 100vw, 40vw"
+          style={{ aspectRatio: "858/622" }}
           src={img.src}
           alt={img.alt}
-          width={600}
-          height={740}
+          width={920}
+          height={671}
           // Preload LCP image for better web vitals
           // preload={index === 0}
           loading="lazy"
