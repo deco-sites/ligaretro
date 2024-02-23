@@ -74,6 +74,11 @@ function CustomizeModal({ productName, skuID }: Props) {
     setShirtNumber(target.value);
   };
 
+  const handleChangeName = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    setShirtName(target.value);
+  };
+
   const handleCancel = async () => {
     const index = items.findIndex((obj) => obj.id === skuID);
     //remove product from cart
@@ -216,6 +221,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                         class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
                         type="text"
                         value={shirtName}
+                        onChange={handleChangeName}
                         maxLength={10}
                         placeholder={"Máximo 10 caracteres"}
                       />
@@ -301,7 +307,6 @@ function CustomizeShirt({ productName, skuID }: Props) {
     productNameAttachment,
     productNumberAttachment,
   } = useUI();
-  const [modalFirstTime, setModalFirstTime] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   type O = {
     name: string;
@@ -318,53 +323,46 @@ function CustomizeShirt({ productName, skuID }: Props) {
     schema: any;
   };
 
-  const [attachmentOfferings, setAttachmentOfferings] = useState([] as O[]);
-
   const openModal = async () => {
     setIsLoading(true);
     const { addItems } = useCart();
 
-    if (!modalFirstTime) {
-      const r = await invoke["deco-sites/ligaretro"].actions
-        .getProductAttachments({ id: skuID }) as {
-          items: [{ offerings: O[] }];
-        };
-      setModalFirstTime(true);
+    const r = await invoke["deco-sites/ligaretro"].actions
+      .getProductAttachments({ id: skuID }) as {
+        items: [{ offerings: O[] }];
+      };
 
-      const offerings: O[] = r.items[0].offerings.map((o: O) => {
-        return {
-          name: o.name,
-          price: o.price,
-          id: o.id,
-          offer_name: o.attachmentOfferings![0].name,
-          schema_name: Object.keys(o.attachmentOfferings![0].schema)[0],
-        };
+    const offerings: O[] = r.items[0].offerings.map((o: O) => {
+      return {
+        name: o.name,
+        price: o.price,
+        id: o.id,
+        offer_name: o.attachmentOfferings![0].name,
+        schema_name: Object.keys(o.attachmentOfferings![0].schema)[0],
+      };
+    });
+
+    productNameAttachment.value = offerings.find((o: O) => o.name === "Nome") ||
+      { name: "", price: 0, id: "", offer_name: "", schema_name: "" };
+    productNumberAttachment.value =
+      offerings.find((o: O) => o.name === "Número") ||
+      { name: "", price: 0, id: "", offer_name: "", schema_name: "" };
+
+    if (
+      productNameAttachment.value.name !== "" ||
+      productNumberAttachment.value.name !== ""
+    ) {
+      //add product to cart
+      addItems({
+        orderItems: [{
+          id: skuID,
+          seller: "1",
+          quantity: 1,
+        }],
       });
-
-      productNameAttachment.value = offerings.find((o: O) =>
-        o.name === "Nome"
-      ) || { name: "", price: 0, id: "", offer_name: "", schema_name: "" };
-      productNumberAttachment.value = offerings.find((o: O) =>
-        o.name === "Número"
-      ) || { name: "", price: 0, id: "", offer_name: "", schema_name: "" };
-
-      if (
-        productNameAttachment.value.name !== "" ||
-        productNumberAttachment.value.name !== ""
-      ) {
-        //add product to cart
-        addItems({
-          orderItems: [{
-            id: skuID,
-            seller: "1",
-            quantity: 1,
-          }],
-        });
-      }
-
-      setAttachmentOfferings(offerings);
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
     displayCustomizePopup.value = true;
   };
 
