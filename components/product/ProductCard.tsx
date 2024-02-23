@@ -100,9 +100,9 @@ function ProductCard(
     .map((obj) => obj.value);
   const category = categoryArray?.join(" | ");
   const getSkuByUrl = (url: string) => {
-    const sku = url.split("skuId=")[1]
-    return sku
-  }
+    const sku = url.split("skuId=")[1];
+    return sku;
+  };
 
   const l = layout;
   const align =
@@ -111,9 +111,18 @@ function ProductCard(
       : "center";
   const skuSelector = variants.map(([value, link]) => (
     <li>
-      <div class="cursor-pointer" onClick={() =>{ skuSelected.value = getSkuByUrl(link!) }}>
+      <div
+        class="cursor-pointer"
+        onClick={() => {
+          skuSelected.value = getSkuByUrl(link!);
+        }}
+      >
         <AvatarSquare
-          variant={getSkuByUrl(link!) === skuSelected.value ? "active" : link ? "default" : "disabled"}
+          variant={getSkuByUrl(link!) === skuSelected.value
+            ? "active"
+            : link
+            ? "default"
+            : "disabled"}
           content={value}
           size="tall"
         />
