@@ -10,27 +10,43 @@ function TextForm({ formTitle, apiKey }: Props) {
   const [name, setName] = useState<string>("");
   const [company, setCompany] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleSubmit = async (e: Event) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const data = await invoke["deco-sites/ligaretro"].actions
+        .sendEmail(
+          {
+            name,
+            company,
+            email,
+            apiKey: apiKey || "",
+          },
+        );
+      console.log({ data });
+      alert(
+        "Sua mensagem foi enviada! Em breve, entraremos em contato",
+      );
+      setLoading(false);
+      setEmail("");
+      setCompany("");
+      setName("");
+    } catch (e) {
+      alert(
+        "Sentimos muito! Houve um erro no envio do formulário. Por favor, tente outro método de contato",
+      );
+      console.log({ e });
+      setLoading(false);
+    }
+  };
 
   return (
     <div class="max-w-[480px]">
       <form
         class="form-control justify-start gap-2 py-8 px-10 bg-[#931C31] rounded-xl"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          const data = await invoke["deco-sites/ligaretro"].actions
-            .sendEmail(
-              {
-                name,
-                company,
-                email,
-                apiKey: apiKey || "",
-              },
-            );
-          console.log({ data });
-          alert(
-            "Sua mensagem foi enviada! Em breve, entraremos em contato",
-          );
-        }}
+        onSubmit={(e) => handleSubmit(e)}
       >
         <span class="text-sm text-white font-semibold w-[80%] mb-4">
           {formTitle}
@@ -61,7 +77,7 @@ function TextForm({ formTitle, apiKey }: Props) {
           type={"submit"}
           class="btn bg-[#2B2B30] text-white mt-5 disabled:loading border-none"
         >
-          Enviar
+          {loading ? "Enviando..." : "Enviar"}
         </button>
       </form>
     </div>
