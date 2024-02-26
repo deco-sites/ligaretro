@@ -47,13 +47,19 @@ function FilterValues(
     ? "flex-row"
     : "flex-col";
 
+  const sortLabel = (a: FilterToggleValue, b: FilterToggleValue) => {
+    if (a.label < b.label) return -1;
+    if (a.label > b.label) return 1;
+    return 0;
+  };
+
   if (key === "price") {
     return <PriceFilter values={values} darkBackground={darkBackground} />;
   }
 
   return (
     <ul class={`flex flex-wrap gap-2 ${flexDirection}`}>
-      {values.map((item) => {
+      {values.sort(sortLabel).map((item) => {
         const { url, selected, value, quantity } = item;
 
         if (key === "cor") {

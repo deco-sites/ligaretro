@@ -9,6 +9,7 @@ import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "apps/website/components/Image.tsx";
 import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
+import { useSignal } from "@preact/signals";
 
 export interface Layout {
   basics?: {
@@ -38,7 +39,7 @@ export interface Layout {
   };
 }
 
-interface Props {
+export interface Props {
   product: Product;
   /** Preload card image */
   preload?: boolean;
@@ -85,6 +86,8 @@ function ProductCard(
     additionalProperty,
     isVariantOf,
   } = product;
+  const skuSelected = useSignal(productID);
+
   const id = `product-card-${productID}`;
   const hasVariant = isVariantOf?.hasVariant ?? [];
   const productGroupID = isVariantOf?.productGroupID;
@@ -96,6 +99,10 @@ function ProductCard(
   const categoryArray = additionalProperty?.filter((p) => p.name === "category")
     .map((obj) => obj.value);
   const category = categoryArray?.join(" | ");
+  const getSkuByUrl = (url: string) => {
+    const sku = url.split("skuId=")[1];
+    return sku;
+  };
 
   const l = layout;
   const align =
@@ -104,13 +111,22 @@ function ProductCard(
       : "center";
   const skuSelector = variants.map(([value, link]) => (
     <li>
-      <a href={link}>
+      <div
+        class="cursor-pointer"
+        onClick={() => {
+          skuSelected.value = getSkuByUrl(link!);
+        }}
+      >
         <AvatarSquare
-          variant={link === url ? "active" : link ? "default" : "disabled"}
+          variant={getSkuByUrl(link!) === skuSelected.value
+            ? "active"
+            : link
+            ? "default"
+            : "disabled"}
           content={value}
           size="tall"
         />
-      </a>
+      </div>
     </li>
   ));
 
@@ -119,23 +135,14 @@ function ProductCard(
     price,
     listPrice,
   });
-  // const cta = (
-  //   <AddToCartButtonVTEX
-  //     eventParams={{ items: [eventItem] }}
-  //     productID={productID}
-  //     seller={seller}
-  //     styles="!rounded !bg-[#D56B09] !border-none !w-full"
-  //   />
-  // );
 
   const cta = (
-    <a
-      href={url && relative(url)}
-      aria-label="view product"
-      class="btn rounded bg-[#D56B09] border-none w-full text-white"
-    >
-      {l?.basics?.ctaText || "Ver produto"}
-    </a>
+    <AddToCartButtonVTEX
+      eventParams={{ items: [eventItem] }}
+      productID={skuSelected.value}
+      seller={seller}
+      styles="!rounded !bg-[#D56B09] !border-none !w-full"
+    />
   );
 
   const splittedPrice =
@@ -266,16 +273,16 @@ function ProductCard(
           class={`
           absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2 ${
             l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
-              ? "transition-opacity opacity-0 lg:group-hover:opacity-100"
-              : "lg:hidden"
+              ? "transition-opacity lg:opacity-0 lg:group-hover:opacity-100"
+              : "lg:hidden flex"
           }`}
         >
           {/* SKU Selector */}
-          {l?.onMouseOver?.showSkuSelector && (
-            <ul class="flex justify-center items-center gap-2 w-full">
-              {skuSelector}
-            </ul>
-          )}
+
+          <ul class={`flex justify-center items-center gap-2 w-full`}>
+            {skuSelector}
+          </ul>
+
           {/* {l?.onMouseOver?.showCta && cta} */}
         </figcaption>
       </figure>
