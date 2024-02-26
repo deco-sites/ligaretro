@@ -55,8 +55,9 @@ import * as $$$$$$46 from "./sections/Links/Shortcuts.tsx";
 import * as $$$$$$47 from "./sections/Newsletter/Newsletter.tsx";
 import * as $$$$$$48 from "./sections/Header/CleanHeader.tsx";
 import * as $$$$$$49 from "./sections/Header/Header.tsx";
-import * as $$$$$$$$$0 from "./actions/createReview.ts";
-import * as $$$$$$$$$1 from "./actions/getProductAttachments.ts";
+import * as $$$$$$$$$0 from "./actions/sendEmail.ts";
+import * as $$$$$$$$$1 from "./actions/createReview.ts";
+import * as $$$$$$$$$2 from "./actions/getProductAttachments.ts";
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
@@ -119,8 +120,9 @@ const manifest = {
     "deco-sites/ligaretro/sections/Theme/Theme.tsx": $$$$$$44,
   },
   "actions": {
-    "deco-sites/ligaretro/actions/createReview.ts": $$$$$$$$$0,
-    "deco-sites/ligaretro/actions/getProductAttachments.ts": $$$$$$$$$1,
+    "deco-sites/ligaretro/actions/createReview.ts": $$$$$$$$$1,
+    "deco-sites/ligaretro/actions/getProductAttachments.ts": $$$$$$$$$2,
+    "deco-sites/ligaretro/actions/sendEmail.ts": $$$$$$$$$0,
   },
   "apps": {
     "deco-sites/ligaretro/apps/decohub.ts": $$$$$$$$$$$0,
