@@ -273,16 +273,16 @@ function ProductCard(
           class={`
           absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2 ${
             l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
-              ? "transition-opacity opacity-0 lg:group-hover:opacity-100"
-              : "lg:hidden"
+              ? "transition-opacity lg:opacity-0 lg:group-hover:opacity-100"
+              : "lg:hidden flex"
           }`}
         >
           {/* SKU Selector */}
-          {l?.onMouseOver?.showSkuSelector && (
-            <ul class="flex justify-center items-center gap-2 w-full">
-              {skuSelector}
-            </ul>
-          )}
+
+          <ul class={`flex justify-center items-center gap-2 w-full`}>
+            {skuSelector}
+          </ul>
+
           {/* {l?.onMouseOver?.showCta && cta} */}
         </figcaption>
       </figure>
