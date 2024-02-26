@@ -4,6 +4,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.env
 
 # Runtime data
 pids
@@ -73,3 +74,6 @@ import_map.local.json
 _fresh/
 
 deno.lock
+
+# EnvironmentVariables
+.env
