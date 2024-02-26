@@ -52,7 +52,7 @@ function Avatar(
         } ${colors[content] ?? colors[variant]} ${variants[variant]}`}
       >
         <span class={`uppercase font-semibold`}>
-          {colors[content] ? "" : content.substring(0, 2)}
+          {colors[content] ? "" : content.substring(0, 3)}
         </span>
       </div>
     </div>
