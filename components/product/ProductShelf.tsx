@@ -83,7 +83,7 @@ function ProductShelf({
             <Icon size={24} id="ChevronLeft" strokeWidth={3} />
           </Slider.PrevButton>
           <Slider.NextButton class="btn btn-circle btn-outline bg-base-100">
-            <Icon size={24} id="ChevronRight" strokeWidth={3} />
+            <Icon size={24} id="ChevronLeft" strokeWidth={3} class="transform rotate-180" />
           </Slider.NextButton>
         </div>
 
