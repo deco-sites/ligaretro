@@ -33,7 +33,16 @@ export default function GallerySlider(props: Props) {
     page: { product: { image: images = [] } },
     layout: { width, height },
   } = props;
-  const aspectRatio = `${width} / ${height}`;
+  const { page } = props;
+  const { product } = page;
+
+  const isHat = product.additionalProperty?.find((p) =>
+    p.value === "Bonés, Boinas e Gorros"
+  );
+
+  console.log({ isHat });
+
+  const aspectRatio = `${width} / ${isHat ? width : height}`;
 
   // removing measure table from images
   const imagesDisplay = images.filter((i) =>
@@ -52,7 +61,7 @@ export default function GallerySlider(props: Props) {
               <Image
                 class="w-full"
                 sizes="(max-width: 640px) 100vw, 40vw"
-                style={{ aspectRatio: "467/548" }}
+                style={{ aspectRatio: `${isHat ? "548/548" : "467/548"}` }}
                 src={img.url!}
                 alt={img.alternateName}
                 width={width}

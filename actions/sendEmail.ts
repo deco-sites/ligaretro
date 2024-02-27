@@ -22,13 +22,16 @@ export const sendEmail = async (
           {
             to: [
               {
-                email: "guilherme@nois.agency",
+                email: "faleconosco@ligaretro.com",
+              },
+              {
+                email: "leonardo@ligaretro.com",
               },
             ],
           },
         ],
         from: {
-          email: "guilherme@nois.agency",
+          email: "faleconosco@ligaretro.com",
         },
         subject: "[Revenda/Franquia] Formulário de contato",
         content: [
