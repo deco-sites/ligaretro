@@ -79,10 +79,10 @@ function ProductShelf({
         </Slider>
 
         <div class="hidden lg:flex lg:flex-row mt-[-100px] ml-[230px]">
-          <Slider.PrevButton class="btn btn-circle btn-outline bg-base-100 mr-3">
+          <Slider.PrevButton class="btn btn-circle btn-outline bg-base-100 mr-3 hover:bg-[#252525]">
             <Icon size={24} id="ChevronLeft" strokeWidth={3} />
           </Slider.PrevButton>
-          <Slider.NextButton class="btn btn-circle btn-outline bg-base-100">
+          <Slider.NextButton class="btn btn-circle btn-outline bg-base-100 hover:bg-[#252525]">
             <Icon
               size={24}
               id="ChevronLeft"
