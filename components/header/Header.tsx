@@ -46,6 +46,8 @@ export interface Props {
       text: string;
       href: string;
     };
+    hideFirstLink: boolean;
+    hideSecondLink: boolean;
   };
   hideAlert?: boolean;
 }

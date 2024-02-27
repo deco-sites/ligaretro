@@ -18,6 +18,8 @@ export interface Props {
       text: string;
       href: string;
     };
+    hideFirstLink?: boolean;
+    hideSecondLink?: boolean;
   };
 }
 
@@ -29,10 +31,18 @@ function Alert({ links }: Props) {
     <div id={id}>
       <div class="h-[38px] w-screen bg-[#252525] flex items-center">
         <div class="container gap-6 flex justify-end text-white text-xs items-center mx-10 sm:mx-0">
-          <a href={links.firstLink.href} target="_blank">
+          <a
+            class={`${links.hideFirstLink && "hidden"}`}
+            href={links.firstLink.href}
+            target="_blank"
+          >
             <span>{links.firstLink.text}</span>
           </a>
-          <a href={links.secondLink.href} target="_blank">
+          <a
+            class={`${links.hideSecondLink && "hidden"}`}
+            href={links.secondLink.href}
+            target="_blank"
+          >
             <span>{links.secondLink.text}</span>
           </a>
         </div>
