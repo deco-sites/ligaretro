@@ -66,7 +66,7 @@ function ProductShelf({
             <Slider.Item
               index={index}
               class="carousel-item w-[270px] sm:w-[292px] md:w-[400px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0 rounded-xl"
-              style={{"box-shadow": "2px 4px 10px #bfbfbf"}}
+              style={{ "box-shadow": "2px 4px 10px #bfbfbf" }}
             >
               <ProductCard
                 product={product}
