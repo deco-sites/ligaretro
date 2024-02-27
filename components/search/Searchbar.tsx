@@ -158,7 +158,7 @@ function Searchbar({
             >
               Produtos sugeridos
             </span>
-            <Slider class="carousel">
+            <Slider class="carousel gap-5 p-3">
               {products.map((product, index) => (
                 <Slider.Item
                   index={index}

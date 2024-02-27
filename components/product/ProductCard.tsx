@@ -187,6 +187,7 @@ function ProductCard(
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
       } rounded
       `}
+      style={{"box-shadow": "2px 4px 10px #bfbfbf"}}
       data-deco="view-product"
     >
       <SendEventOnClick
