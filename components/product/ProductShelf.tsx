@@ -61,11 +61,12 @@ function ProductShelf({
         id={id}
         class="relative mx-auto max-w-[100%] grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
       >
-        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5 py-3 px-2">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-[270px] sm:w-[292px] md:w-[400px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              class="carousel-item w-[270px] sm:w-[292px] md:w-[400px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0 rounded-xl"
+              style={{ "box-shadow": "2px 4px 10px #bfbfbf" }}
             >
               <ProductCard
                 product={product}
@@ -79,10 +80,10 @@ function ProductShelf({
         </Slider>
 
         <div class="hidden lg:flex lg:flex-row mt-[-100px] ml-[230px]">
-          <Slider.PrevButton class="btn btn-circle btn-outline bg-base-100 mr-3">
+          <Slider.PrevButton class="btn btn-circle btn-outline bg-base-100 mr-3 hover:bg-[#252525]">
             <Icon size={24} id="ChevronLeft" strokeWidth={3} />
           </Slider.PrevButton>
-          <Slider.NextButton class="btn btn-circle btn-outline bg-base-100">
+          <Slider.NextButton class="btn btn-circle btn-outline bg-base-100 hover:bg-[#252525]">
             <Icon
               size={24}
               id="ChevronLeft"

@@ -20,7 +20,7 @@ function AddToCartButton({ seller, productID, eventParams, styles }: Props) {
 
   return (
     <Button
-      classes={`${styles} rounded-2xl bg-black text-white font-normal`}
+      classes={`${styles} rounded-2xl bg-[#252525] text-white font-normal`}
       onAddItem={onAddItem}
       eventParams={eventParams}
     />
