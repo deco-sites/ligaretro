@@ -29,8 +29,8 @@ function Alert({ links }: Props) {
 
   return (
     <div id={id}>
-      <div class="h-[38px] w-screen bg-[#252525] flex items-center">
-        <div class="container gap-6 flex justify-end text-white text-xs items-center mx-10 sm:mx-0">
+      <div class="h-[38px] w-screen bg-[#252525] flex items-center justify-end px-4">
+        <div class="gap-6 flex justify-end text-white text-xs items-center mx-10 sm:mx-0">
           <a
             class={`${links.hideFirstLink && "hidden"}`}
             href={links.firstLink.href}
