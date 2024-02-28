@@ -14,11 +14,17 @@ interface Props {
 function CartButton({ loading, currency, total, items }: Props) {
   const { displayCart } = useUI();
   const totalItems = items.length;
+  const coupon = items[0].coupon ?? "";
 
   const onClick = () => {
     sendEvent({
       name: "view_cart",
-      params: { currency, value: total, items },
+      params: {
+        currency,
+        coupon,
+        value: total,
+        items,
+      },
     });
     displayCart.value = true;
   };
