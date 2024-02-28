@@ -19,11 +19,11 @@ function CartButton({ loading, currency, total, items }: Props) {
   const onClick = () => {
     sendEvent({
       name: "view_cart",
-      params: { 
-        currency, 
-        coupon, 
-        value: total, 
-        items 
+      params: {
+        currency,
+        coupon,
+        value: total,
+        items,
       },
     });
     displayCart.value = true;
