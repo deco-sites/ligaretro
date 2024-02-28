@@ -35,7 +35,15 @@ export interface SocialItem {
 }
 
 export interface PaymentItem {
-  label: "Diners" | "Elo" | "Mastercard" | "Pix" | "Visa";
+  label:
+    | "Diners"
+    | "Elo"
+    | "Mastercard"
+    | "Pix"
+    | "Visa"
+    | "Hipercard"
+    | "Amex"
+    | "Boleto";
 }
 
 export interface MobileApps {
