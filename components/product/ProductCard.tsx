@@ -185,9 +185,9 @@ function ProductCard(
         ${
         l?.onMouseOver?.card === "Move up" &&
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
-      } rounded
+      } 
+      
       `}
-      style={{ "box-shadow": "2px 4px 10px #bfbfbf" }}
       data-deco="view-product"
     >
       <SendEventOnClick
@@ -371,7 +371,7 @@ function ProductCard(
           <div
             class={`hidden ${
               hideHoverCTA ? "" : "group-hover:lg:flex"
-            } items-end p-3`}
+            } items-end py-3`}
           >
             {cta}
           </div>
