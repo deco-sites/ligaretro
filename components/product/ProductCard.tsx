@@ -185,7 +185,7 @@ function ProductCard(
         ${
         l?.onMouseOver?.card === "Move up" &&
         "duration-500 transition-translate ease-in-out lg:hover:-translate-y-2"
-      } 
+      } rounded-lg border border-gray-200 p-2
       
       `}
       data-deco="view-product"
