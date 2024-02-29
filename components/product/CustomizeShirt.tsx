@@ -177,12 +177,12 @@ function CustomizeModal({ productName, skuID }: Props) {
                 Imagem Ilustrativa - Aplicação será no modelo escolhido
               </span>
               {shirtName !== "" && (
-                <span class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl">
+                <span class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl font-['Jersey']">
                   {shirtName}
                 </span>
               )}
               {shirtNumber && (
-                <span class="absolute text-6xl left-1/2 transform -translate-x-1/2 uppercase top-[29%] font-bold text-[100px] sm:text-[120px]">
+                <span class="absolute text-6xl left-1/2 transform -translate-x-1/2 uppercase top-[29%] font-bold text-[100px] sm:text-[120px] font-['Jersey']">
                   {shirtNumber}
                 </span>
               )}
@@ -211,7 +211,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                       <input
                         name="nameShirt"
                         id="nameShirt"
-                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
+                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full font-['Jersey']"
                         type="text"
                         value={shirtName}
                         maxLength={10}
