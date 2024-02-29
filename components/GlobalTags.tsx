@@ -8,6 +8,7 @@ function GlobalTags() {
 
       {/* Tailwind v3 CSS file */}
       <link href={asset("/styles.css")} rel="stylesheet" />
+    
 
       {/* Web Manifest */}
       <link rel="manifest" href={asset("/site.webmanifest")} />
