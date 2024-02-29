@@ -20,9 +20,17 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
             class="fixed hidden hover:flex group-hover:flex flex-row bg-base-100 z-50 items-center justify-center gap-6 border-t border-b-2 border-base-200 w-screen"
             style={{ top: "0px", left: "0px", marginTop: "152px" }}
           >
-            <ul class={`flex flex-row items-start ${name !== 'Acessórios' ? 'grow' : ''} justify-center`}>
+            <ul
+              class={`flex flex-row items-start ${
+                name !== "Acessórios" ? "grow" : ""
+              } justify-center`}
+            >
               {children.map((node) => (
-                <li class={`flex flex-col ${ node.children!.length > 9 ? 'grow-[0.1]' : '' } p-6`}>
+                <li
+                  class={`flex flex-col ${
+                    node.children!.length > 9 ? "grow-[0.1]" : ""
+                  } p-6`}
+                >
                   <a class="hover:underline" href={node.url}>
                     <span>{node.name}</span>
                   </a>
