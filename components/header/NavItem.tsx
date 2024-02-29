@@ -42,16 +42,18 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                 </li>
               ))}
             </ul>
-            {(image?.url || image?.contentUrl) ? (
-              <Image
-                class="p-6 flex"
-                src={image?.url || image?.contentUrl || ""}
-                alt={image.alternateName}
-                width={300}
-                height={332}
-                loading="lazy"
-              />
-            ) : null}
+            {(image?.url || image?.contentUrl)
+              ? (
+                <Image
+                  class="p-6 flex"
+                  src={image?.url || image?.contentUrl || ""}
+                  alt={image.alternateName}
+                  width={300}
+                  height={332}
+                  loading="lazy"
+                />
+              )
+              : null}
           </div>
         )}
     </li>
