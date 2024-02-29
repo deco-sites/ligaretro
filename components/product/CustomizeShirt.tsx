@@ -203,7 +203,9 @@ function CustomizeModal({ productName, skuID }: Props) {
               />
             </div>
             <div class="flex flex-col justify-between">
-              <span>Personalize do seu jeito<b class="font-['Jersey']">:</b></span>
+              <span>
+                Personalize do seu jeito<b class="font-['Jersey']">:</b>
+              </span>
               <div class="flex flex-col mb-5 lg:mb-0">
                 <span class="font-bold">{productName}</span>
                 <span class="text-xs">SKU: {skuID}</span>
