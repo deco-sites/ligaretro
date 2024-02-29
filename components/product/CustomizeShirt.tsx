@@ -172,6 +172,15 @@ function CustomizeModal({ productName, skuID }: Props) {
             productNumberAttachment.value.name !== "")
         ? (
           <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg">
+              <style>
+              {`@font-face {
+                font-family: 'Jersey';
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: url(/live/invoke/website/loaders/asset.ts?src=https://ligaretro.deco.site/jersey.woff2) format('truetype');
+              }`}
+            </style>
             <div class="p-10 bg-[#e7e7e7] rounded-lg relative">
               <span class="absolute left-1/2 transform -translate-x-1/2 bottom-[1%] text-xs w-full text-center">
                 Imagem Ilustrativa - Aplicação será no modelo escolhido
@@ -211,7 +220,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                       <input
                         name="nameShirt"
                         id="nameShirt"
-                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full font-['Jersey']"
+                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
                         type="text"
                         value={shirtName}
                         maxLength={10}
