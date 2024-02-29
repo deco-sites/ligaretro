@@ -172,13 +172,13 @@ function CustomizeModal({ productName, skuID }: Props) {
             productNumberAttachment.value.name !== "")
         ? (
           <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg">
-              <style>
+            <style>
               {`@font-face {
                 font-family: 'Jersey';
                 font-style: normal;
                 font-weight: 400;
                 font-display: swap;
-                src: url(/live/invoke/website/loaders/asset.ts?src=https://ligaretro.deco.site/jersey.woff2) format('truetype');
+                src: url(/jersey.woff2) format('truetype');
               }`}
             </style>
             <div class="p-10 bg-[#e7e7e7] rounded-lg relative">
