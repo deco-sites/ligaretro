@@ -14,7 +14,7 @@ interface Props {
 function CartButton({ loading, currency, total, items }: Props) {
   const { displayCart } = useUI();
   const totalItems = items.length;
-  const coupon = totalItems > 0  ? items[0].coupon || "" : "";
+  const coupon = totalItems > 0 ? items[0].coupon || "" : "";
 
   const onClick = () => {
     sendEvent({
