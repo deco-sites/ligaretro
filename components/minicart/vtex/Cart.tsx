@@ -23,7 +23,7 @@ function Cart({ freeShippingTarget = 1000 }: { freeShippingTarget: number }) {
         },
         attachments: item.bundleItems as { name: string; price: number }[],
       }))}
-      total={(total+discounts) / 100}
+      total={(total + discounts) / 100}
       subtotal={total / 100}
       discounts={discounts / 100}
       locale={locale}
