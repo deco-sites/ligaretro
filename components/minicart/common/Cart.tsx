@@ -95,20 +95,20 @@ function Cart({
             <footer class="w-full">
               {/* Subtotal */}
               <div class="border-t border-base-200 py-2 flex flex-col">
-                {discounts > 0 && (
-                  <div class="flex justify-between items-center px-4">
-                    <span class="text-sm">Descontos</span>
-                    <span class="text-sm">
-                      {formatPrice(discounts, currency, locale)}
-                    </span>
-                  </div>
-                )}
                 <div class="w-full flex justify-between px-4 text-sm">
                   <span>Subtotal</span>
                   <span class="px-4">
                     {formatPrice(subtotal, currency, locale)}
                   </span>
                 </div>
+                {discounts !== 0 && (
+                  <div class="w-full flex justify-between px-4 text-sm">
+                    <span>Descontos</span>
+                    <span class="px-4">
+                      {formatPrice(discounts, currency, locale)}
+                    </span>
+                  </div>
+                )}
                 {onAddCoupon && (
                   <Coupon onAddCoupon={onAddCoupon} coupon={coupon} />
                 )}

@@ -203,8 +203,8 @@ export default function BannnerGrid(props: Props) {
                 <Source
                   media="(min-width: 768px)"
                   src={srcDesktop ? srcDesktop : srcMobile}
-                  width={250}
-                  height={163}
+                  width={500}
+                  height={326}
                 />
                 <img
                   class="w-full h-full"
