@@ -61,7 +61,6 @@ function FilterValues(
     <ul class={`flex flex-wrap gap-2 ${flexDirection}`}>
       {values.sort(sortLabel).map((item) => {
         const { url, selected, value, quantity } = item;
-
         if (key === "cor") {
           return (
             <a href={url} rel="nofollow" class="flex items-center">

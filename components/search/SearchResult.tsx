@@ -298,14 +298,27 @@ export const loader = (
 ) => {
   const newURL = new URL(req.url);
 
-  const style = styles?.find(({ matcher }) =>
-    new URLPattern({ pathname: matcher.pathName }).test(req.url) &&
-    (newURL.search && matcher.search
-      ? newURL.search.includes(matcher.search)
-      : true)
-  );
+  let title = pageTitle || "";
 
-  return { page, layout, cardLayout, startingPage, style, pageTitle };
+  const style = styles?.find(({ matcher }) => {
+    let newSearch = "";
+    const path = matcher.pathName.slice(1);
+    const urlPath = newURL.pathname.slice(1);
+    if (matcher.search?.includes("map=")) {
+      const value = matcher.search.split("map=")[1];
+      newSearch = `filter.${value}=${path}`;
+      title = urlPath[0].toUpperCase() + urlPath.slice(1);
+    }
+    return (
+      new URLPattern({ pathname: matcher.pathName }).test(req.url) &&
+      (newURL.search && matcher.search
+        ? newURL.search.includes(matcher.search) ||
+          newURL.search.includes(newSearch)
+        : true)
+    );
+  });
+
+  return { page, layout, cardLayout, startingPage, style, pageTitle: title };
 };
 
 export default SearchResult;
