@@ -42,7 +42,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={logo.mobilewidth ||127}
+              width={logo.mobilewidth || 127}
               height={logo.mobileheight || 91}
             />
           </a>
