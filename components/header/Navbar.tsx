@@ -40,7 +40,8 @@ function Navbar({ items, searchbar, logo, buttons }: {
             aria-label="Store logo"
           >
             <Image
-              src={logo.mobileSrc ||logo.src}
+              class={"object-cover "}
+              src={logo.mobileSrc || logo.src}
               alt={logo.alt}
               width={logo.mobilewidth || 127}
               height={logo.mobileheight || 91}
