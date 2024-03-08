@@ -11,7 +11,7 @@ export default function PDPShareButtons() {
     }`;
 
     // Open a new window or redirect to the WhatsApp share URL
-    window.open(whatsappShareUrl, "_blank");
+    globalThis.window.open(whatsappShareUrl, "_blank");
   };
 
   const handleCopyToClipboard = () => {

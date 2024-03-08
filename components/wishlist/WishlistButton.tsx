@@ -42,7 +42,9 @@ function WishlistButton({
         e.preventDefault();
 
         if (!isUserLoggedIn) {
-          window.alert("Faça login para inserir este item nos seus favoritos!");
+          globalThis.window.alert(
+            "Faça login para inserir este item nos seus favoritos!",
+          );
 
           return;
         }
