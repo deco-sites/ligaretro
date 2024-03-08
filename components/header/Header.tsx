@@ -9,6 +9,8 @@ import { headerHeight } from "./constants.ts";
 
 export interface Logo {
   src: ImageWidget;
+  mobileSrc?: ImageWidget;
+
   alt: string;
   width?: number;
   height?: number;
