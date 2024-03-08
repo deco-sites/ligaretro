@@ -12,6 +12,8 @@ export interface Logo {
   alt: string;
   width?: number;
   height?: number;
+  mobilewidth?: number;
+  mobileheight?: number;
 }
 export interface Buttons {
   hideSearchButton?: boolean;
