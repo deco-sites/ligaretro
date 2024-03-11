@@ -30,7 +30,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
       {/* Mobile Version */}
       <div
         style={{ height: "73px" }}
-        class="lg:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 gap-2"
+        class="lg:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-2 gap-2"
       >
         <MenuButton />
 
@@ -43,6 +43,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
           >
             <Image
               class={"object-cover "}
+              style={"margin-left:1.5rem"}
               src={logo.mobileSrc || logo.src}
               alt={logo.alt}
               width={logo.mobilewidth || 127}
