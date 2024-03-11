@@ -54,12 +54,9 @@ export default function GallerySlider(props: Props) {
       <div class="hidden md:grid md:grid-cols-2 md:grid-flow-row gap-4">
         {imagesDisplay.map((img, index) =>
           index <= 3 && (
-            <div
-              class="hidden lg:block lg:col-span-1 max-w-[350px]"
-              style={{ "box-shadow": "2px 2px 8px #cbcbcb" }}
-            >
+            <div class="hidden lg:block lg:col-span-1 max-w-[350px] rounded-lg border border-gray-200">
               <Image
-                class="w-full"
+                class="w-full rounded-lg"
                 sizes="(max-width: 640px) 100vw, 40vw"
                 style={{ aspectRatio: `${isHat ? "548/548" : "467/548"}` }}
                 src={img.url!}
