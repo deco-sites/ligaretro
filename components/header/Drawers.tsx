@@ -30,7 +30,7 @@ const Aside = (
     children: ComponentChildren;
   },
 ) => (
-  <div class="bg-base-100 grid grid-rows-[auto_1fr] h-full divide-y max-w-[100vw]">
+  <div class="bg-base-100 grid grid-rows-[auto_1fr] min-h-[100vh] h-auto divide-y max-w-[100vw]" style={{ minHeight: "100vh" }}>
     <div class="flex justify-between items-center">
       <h1 class="px-4 py-3">
         <span class="font-medium text-2xl">{title}</span>
