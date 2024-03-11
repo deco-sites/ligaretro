@@ -20,6 +20,7 @@ import * as $Header_Cart_vtex from "./islands/Header/Cart/vtex.tsx";
 import * as $Header_Cart_wake from "./islands/Header/Cart/wake.tsx";
 import * as $Header_Drawers from "./islands/Header/Drawers.tsx";
 import * as $Header_Searchbar from "./islands/Header/Searchbar.tsx";
+import * as $LogOut from "./islands/LogOut.tsx";
 import * as $LoginToReview from "./islands/LoginToReview.tsx";
 import * as $NewReviewForm from "./islands/NewReviewForm.tsx";
 import * as $Newsletter from "./islands/Newsletter.tsx";
@@ -60,6 +61,7 @@ const manifest = {
     "./islands/Header/Cart/wake.tsx": $Header_Cart_wake,
     "./islands/Header/Drawers.tsx": $Header_Drawers,
     "./islands/Header/Searchbar.tsx": $Header_Searchbar,
+    "./islands/LogOut.tsx": $LogOut,
     "./islands/LoginToReview.tsx": $LoginToReview,
     "./islands/NewReviewForm.tsx": $NewReviewForm,
     "./islands/Newsletter.tsx": $Newsletter,
