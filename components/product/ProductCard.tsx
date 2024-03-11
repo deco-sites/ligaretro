@@ -10,6 +10,7 @@ import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalytic
 import Image from "apps/website/components/Image.tsx";
 import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
 import { useSignal } from "@preact/signals";
+import Button from "$store/components/ui/Button.tsx";
 
 export interface Layout {
   basics?: {
@@ -362,9 +363,7 @@ function ProductCard(
               >
                 {l?.hide?.installments || installments === "" || !installments
                   ? ""
-                  : (
-                    <span>{ installments }</span>
-                  )}
+                  : <span>{installments}</span>}
               </div>
             </div>
           )}
@@ -399,7 +398,13 @@ function ProductCard(
                 l?.onMouseOver?.showCta ? "lg:hidden" : ""
               }`}
             >
-              {cta}
+              <a href={url && relative(url)} class="w-full">
+                <Button
+                  class={`rounded btn-primary !bg-[#D56B09] !border-none text-white font-normal w-full`}
+                >
+                  Comprar
+                </Button>
+              </a>
             </div>
           )
           : ""}
