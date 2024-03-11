@@ -179,7 +179,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`card card-compact group w-full ${
+      class={`card group min-w-[300px] w-full  ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:bg-white" : ""}
         ${
@@ -208,12 +208,12 @@ function ProductCard(
         }}
       />
       <figure
-        class="relative overflow-hidden"
+        class="flex relative overflow-hidden"
         style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
       >
         {/* Wishlist button */}
         <div
-          class={`absolute top-2 z-10
+          class={`absolute top-2 z-10 hidden lg:block
           ${
             l?.elementsPositions?.favoriteIcon === "Top left"
               ? "left-2"
@@ -274,8 +274,8 @@ function ProductCard(
           class={`
           absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2 ${
             l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
-              ? "transition-opacity lg:opacity-0 lg:group-hover:opacity-100"
-              : "lg:hidden flex"
+              ? "transition-opacity opacity-0 lg:group-hover:opacity-100"
+              : "hidden lg:flex"
           }`}
         >
           {/* SKU Selector */}
@@ -313,7 +313,7 @@ function ProductCard(
             <div class="flex flex-col gap-0 items-start">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class={`text-base lg:text-base font-semibold h-12 ${
+                  class={`text-base lg:text-base font-semibold h-16 ${
                     darkBackground
                       ? "text-white lg:group-hover:text-[#252525]"
                       : "text-base-content"
@@ -326,7 +326,7 @@ function ProductCard(
               <span class="mt-4 text-sm text-[#bcbcbc]">{category}</span>
             </div>
           )}
-        <div class="flex h-12 justify-between items-center">
+        <div class="flex h-14 justify-between items-center">
           {l?.hide?.allPrices ? "" : (
             <div class="flex flex-col gap-2">
               <div
@@ -353,25 +353,25 @@ function ProductCard(
                   {formattedPrice}
                 </div>
               </div>
-              {l?.hide?.installments || installments === "" || !installments
-                ? ""
-                : (
-                  <div
-                    class={`${
-                      darkBackground
-                        ? "text-white lg:group-hover:text-[#252525]"
-                        : "text-[#252525]"
-                    } text-[11px] truncate`}
-                  >
-                    até {installments}
-                  </div>
-                )}
+              <div
+                class={`${
+                  darkBackground
+                    ? "text-white lg:group-hover:text-[#252525]"
+                    : "text-[#252525]"
+                } text-[11px] truncate h-6`}
+              >
+                {l?.hide?.installments || installments === "" || !installments
+                  ? ""
+                  : (
+                    <span>{ installments }</span>
+                  )}
+              </div>
             </div>
           )}
           <div
             class={`hidden ${
               hideHoverCTA ? "" : "group-hover:lg:flex"
-            } items-end py-3`}
+            } items-end`}
           >
             {cta}
           </div>

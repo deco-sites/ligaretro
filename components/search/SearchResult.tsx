@@ -134,7 +134,7 @@ function Result({
           </Picture>
         </div>
       )}
-      <div class="container px-4 sm:py-10 lg:mt-16">
+      <div class="mx-auto w-full max-w[90%] px-4 sm:py-10 lg:mt-16">
         {style?.topBanner?.desktop && style?.topBanner?.mobile && (
           <a
             href={style?.topBanner.link || "#"}
@@ -176,7 +176,7 @@ function Result({
 
         <div class="flex flex-row gap-20">
           {layout?.variant === "aside" && filters.length > 0 && (
-            <aside class="hidden md:block w-min min-w-[250px] z-10">
+            <aside class="hidden lg:block w-min min-w-[250px] z-10">
               <Filters
                 darkBackground={style?.darkBackground}
                 darkBackgroundColor={style?.backgroundColor}
@@ -223,7 +223,7 @@ function Result({
         </div>
       </div>
       {style?.bottomBanner?.desktop && style?.bottomBanner?.mobile && (
-        <div class="container mb-20">
+        <div class="mx-auto w-full max-w[90%] mb-20">
           <a
             href={style?.bottomBanner.link || "#"}
             class="grid grid-cols-1 grid-rows-1"
