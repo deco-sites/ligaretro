@@ -14,7 +14,7 @@ import Image from "apps/website/components/Image.tsx";
 import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import { Buttons, Logo } from "$store/components/header/Header.tsx";
-import User from "$store/islands/User.tsx"
+import User from "$store/islands/User.tsx";
 
 function Navbar({ items, searchbar, logo, buttons }: {
   items: SiteNavigationElement[];
@@ -23,7 +23,6 @@ function Navbar({ items, searchbar, logo, buttons }: {
   buttons: Buttons;
 }) {
   const platform = usePlatform();
- 
 
   return (
     <>
@@ -99,7 +98,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
                 class="menu dropdown-content z-[1] p-4 shadow-sm shadow-[#9c9c9c] bg-base-100 rounded-box w-52 mt-4 gap-3"
               >
                 <li>
-                <User/>
+                  <User />
                 </li>
                 <li>
                   <a href="/login" class="inline text-[9px] no-underline">
