@@ -92,18 +92,16 @@ function CategoryList(props: Props) {
       <h3 class="text-xl font-semibold mb-8 pl-6 sm:pl-0 ">
         {header.title}
       </h3>
-      <Slider class="carousel carousel-start gap-4 lg:gap-8 row-start-2 row-end-5">
+
+      <div class={`flex sm:flex-row flex-col px-2 gap-4 lg:gap-8 `}>
         {list.map((
           { tag, label, description, href, image, buttonText },
           index,
         ) => (
-          <Slider.Item
-            index={index}
-            class="flex gap-4 carousel-item w-[260px] sm:w-1/3 first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
-          >
+          <div class="flex gap-4">
             <a
               href={href}
-              class="flex flex-col gap-4 lg:w-[450px] w-80 lg:h-auto"
+              class="flex flex-col gap-4 max-w-[450px] lg:h-auto"
             >
               {image &&
                 (
@@ -126,9 +124,9 @@ function CategoryList(props: Props) {
             </a>
             {buttonText &&
               <a href={href} class="btn">{buttonText}</a>}
-          </Slider.Item>
+          </div>
         ))}
-      </Slider>
+      </div>
 
       <SliderJS rootId={id} />
     </div>
