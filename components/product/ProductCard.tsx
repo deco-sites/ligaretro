@@ -95,8 +95,7 @@ function ProductCard(
   const description = product.description || isVariantOf?.description;
   const [front, back] = images ?? [];
   const { listPrice, price, installments, seller = "1" } = useOffer(offers);
-  const possibilities = useVariantPossibilities(hasVariant, product);
-  const variants = Object.entries(Object.values(possibilities)[0] ?? {});
+  const possibilities = useVariantPossibilities(hasVariant);
   const categoryArray = additionalProperty?.filter((p) => p.name === "category")
     .map((obj) => obj.value);
   const category = categoryArray?.join(" | ");
@@ -110,26 +109,6 @@ function ProductCard(
     !l?.basics?.contentAlignment || l?.basics?.contentAlignment == "Left"
       ? "left"
       : "center";
-  const skuSelector = variants.map(([value, link]) => (
-    <li>
-      <div
-        class="cursor-pointer"
-        onClick={() => {
-          skuSelected.value = getSkuByUrl(link!);
-        }}
-      >
-        <AvatarSquare
-          variant={getSkuByUrl(link!) === skuSelected.value
-            ? "active"
-            : link
-            ? "default"
-            : "disabled"}
-          content={value}
-          size="tall"
-        />
-      </div>
-    </li>
-  ));
 
   const eventItem = mapProductToAnalyticsItem({
     product,
@@ -171,6 +150,29 @@ function ProductCard(
       </span>
     </div>
   );
+
+  const skuSelector = Object.entries(possibilities["Tamanho"]).map((
+    [value, possibility],
+  ) => (
+    <li>
+      <button
+        onClick={() => {
+          skuSelected.value = getSkuByUrl(possibility?.url!);
+        }}
+      >
+        <AvatarSquare
+          size="small"
+          content={value}
+          variant={getSkuByUrl(possibility?.url!) ===
+              skuSelected.value
+            ? "active"
+            : possibility?.availability === "https://schema.org/OutOfStock"
+                ? "disabled"
+                : "default"}
+        />
+      </button>
+    </li>
+  ))
 
   const discount = price && listPrice ? listPrice - price : 0;
   const percentageDiscount = listPrice

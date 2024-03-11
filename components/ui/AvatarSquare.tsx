@@ -17,7 +17,7 @@ const colors: Record<string, string> = {
 
   // Color variants - only applied when no color as content is passed
   "active": "bg-neutral-focus text-neutral-content ring-neutral-focus ",
-  "disabled": "bg-neutral-content text-neutral",
+  "disabled": "bg-base-100 text-primary",
   "default": "bg-base-100 text-primary",
 };
 
@@ -48,7 +48,7 @@ function Avatar(
     <div class="avatar placeholder text-xs">
       <div
         class={`rounded-sm ${size === "large" && "w-[91px] h-[50px]"} ${
-          size === "tall" ? "w-10 h-12" : "w-10 h-6"
+          size === "tall" ? "w-10 h-12" : "w-10 h-8"
         } ${colors[content] ?? colors[variant]} ${variants[variant]}`}
       >
         <span class={`uppercase font-semibold`}>
