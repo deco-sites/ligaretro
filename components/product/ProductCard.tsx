@@ -180,7 +180,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`card group min-w-[300px] w-full  ${
+      class={`card group w-full  ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:bg-white" : ""}
         ${
