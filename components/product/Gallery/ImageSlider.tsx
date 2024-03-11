@@ -40,7 +40,13 @@ export default function GallerySlider(props: Props) {
     p.value === "Bonés, Boinas e Gorros"
   );
 
-  const aspectRatio = `${width} / ${isHat ? width : height}`;
+  const isKids =
+    product.isVariantOf?.additionalProperty.find((p) => p.name === "Infantil")
+      ?.value === "Sim";
+
+  const isSquare = isHat || isKids;
+
+  const aspectRatio = `${width} / ${isSquare ? width : height}`;
 
   // removing measure table from images
   const imagesDisplay = images.filter((i) =>
@@ -59,7 +65,7 @@ export default function GallerySlider(props: Props) {
                 src={img.url!}
                 alt={img.alternateName}
                 width={width}
-                height={isHat ? width : height}
+                height={isSquare ? width : height}
                 // Preload LCP image for better web vitals
                 preload={index === 0}
                 loading={index === 0 ? "eager" : "lazy"}
@@ -83,7 +89,7 @@ export default function GallerySlider(props: Props) {
                   src={img.url!}
                   alt={img.alternateName}
                   width={width}
-                  height={isHat ? width : height}
+                  height={isSquare ? width : height}
                   // Preload LCP image for better web vitals
                   preload={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
@@ -124,7 +130,7 @@ export default function GallerySlider(props: Props) {
                   style={{ aspectRatio }}
                   class="group-disabled:border-base-300 border rounded "
                   width={63}
-                  height={isHat ? 63 : 87.5}
+                  height={isSquare ? 63 : 87.5}
                   src={img.url!}
                   alt={img.alternateName}
                 />
