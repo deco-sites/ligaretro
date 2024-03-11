@@ -1,33 +1,33 @@
 const handleLoadScript = (src: string, onLoadCallback: () => void) => {
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-  
-    script.onload = () => {
-      onLoadCallback();
-    };
-  
-    document.head.appendChild(script);
+  const script = document.createElement("script");
+  script.src = src;
+  script.async = true;
+
+  script.onload = () => {
+    onLoadCallback();
   };
-  
-  const handleLoadCss = (styles: string) => {
-    const style = document.createElement("style");
-    style.innerHTML = styles;
-    document.head.appendChild(style);
-  };
-  
-  const handleSetScope = () => {
-    // deno-lint-ignore ban-ts-comment
-    // @ts-expect-error
-    globalThis.window.vtexid.setScope("4706efc1-4273-4c0c-8a0e-6d81bae6962f");
-    // deno-lint-ignore ban-ts-comment
-    // @ts-expect-error
-    globalThis.window.vtexid.setScopeName("ligaretro");
-  };
-  
-  export const loadVtexIdScripts = (callback: () => void) => {
-    handleLoadCss(
-      `
+
+  document.head.appendChild(script);
+};
+
+const handleLoadCss = (styles: string) => {
+  const style = document.createElement("style");
+  style.innerHTML = styles;
+  document.head.appendChild(style);
+};
+
+const handleSetScope = () => {
+  // deno-lint-ignore ban-ts-comment
+  // @ts-expect-error
+  globalThis.window.vtexid.setScope("4706efc1-4273-4c0c-8a0e-6d81bae6962f");
+  // deno-lint-ignore ban-ts-comment
+  // @ts-expect-error
+  globalThis.window.vtexid.setScopeName("ligaretro");
+};
+
+export const loadVtexIdScripts = (callback: () => void) => {
+  handleLoadCss(
+    `
           /*LOGIN ESTILIZADO:*/
                 .vtexIdUI * {
                   font-family: "Nunito Sans" !important; }
@@ -581,17 +581,17 @@ const handleLoadScript = (src: string, onLoadCallback: () => void) => {
                 #bannerEbit {
                   margin-bottom: 20px; }
           `,
-    );
-    handleLoadScript(
-      "https://io.vtex.com.br/front-libs/jquery/1.8.3/jquery-1.8.3.min.js?v=1.5.87.2539",
-      () => {
-        handleLoadScript(
-          "https://io.vtex.com.br/vtex-id-ui/3.27.1/vtexid-jquery.min.js?v=1.5.87.2539",
-          () => {
-            handleSetScope();
-            callback();
-          },
-        );
-      },
-    );
-  };
+  );
+  handleLoadScript(
+    "https://io.vtex.com.br/front-libs/jquery/1.8.3/jquery-1.8.3.min.js?v=1.5.87.2539",
+    () => {
+      handleLoadScript(
+        "https://io.vtex.com.br/vtex-id-ui/3.27.1/vtexid-jquery.min.js?v=1.5.87.2539",
+        () => {
+          handleSetScope();
+          callback();
+        },
+      );
+    },
+  );
+};

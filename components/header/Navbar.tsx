@@ -16,8 +16,7 @@ import { navbarHeight } from "./constants.ts";
 import { Buttons, Logo } from "$store/components/header/Header.tsx";
 import userLoader from "apps/wake/loaders/user.ts";
 import { useSignal } from "@preact/signals";
-import { useUser} from "apps/vtex/hooks/useUser.ts";
-
+import { useUser } from "apps/vtex/hooks/useUser.ts";
 
 function Navbar({ items, searchbar, logo, buttons }: {
   items: SiteNavigationElement[];
@@ -26,9 +25,9 @@ function Navbar({ items, searchbar, logo, buttons }: {
   buttons: Buttons;
 }) {
   const platform = usePlatform();
-  const {user} = useUser()  
-  const isUserLoggedIn = Boolean(user.value?.email)
-  const vtexIdScriptsLoaded = useSignal(false)
+  const { user } = useUser();
+  const isUserLoggedIn = Boolean(user.value?.email);
+  const vtexIdScriptsLoaded = useSignal(false);
 
   return (
     <>
@@ -109,35 +108,31 @@ function Navbar({ items, searchbar, logo, buttons }: {
                     href="/account"
                     aria-label="go to login"
                     class="btn btn-primary bg-[#252525] text-xs font-normal items-center flex-col justify-center pt-[15px]"
-                    onClick = {async ()=>{
-                      if(isUserLoggedIn){
-                        window.location.pathname = "account"
-                      }else{
-                        const execute = () =>{
+                    onClick={async () => {
+                      if (isUserLoggedIn) {
+                        window.location.pathname = "account";
+                      } else {
+                        const execute = () => {
                           vtexIdScriptsLoaded.value = true;
                           // deno-lint-ignore ban-ts-comment
                           // @ts-expect-error
 
                           window.vtexid.start({
-                            userEmail:"",
+                            userEmail: "",
                             locale: "pt-BR",
-                            forceReload:false,
-
+                            forceReload: false,
                           });
-
                         };
-                        if(!vtexIdScriptsLoaded.value){
-                          const {loadVtexIdScripts} = await import(
+                        if (!vtexIdScriptsLoaded.value) {
+                          const { loadVtexIdScripts } = await import(
                             "deco-sites/ligaretro/sdk/login.tsx"
                           );
                           loadVtexIdScripts(execute);
-                        }else{
+                        } else {
                           execute();
                         }
                       }
-                    }
-
-                    }
+                    }}
                   >
                     Acessar minha conta
                   </button>
