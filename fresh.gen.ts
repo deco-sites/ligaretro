@@ -34,6 +34,7 @@ import * as $ShirtBannerVideo from "./islands/ShirtBannerVideo.tsx";
 import * as $SizeTableButton from "./islands/SizeTableButton.tsx";
 import * as $SliderJS from "./islands/SliderJS.tsx";
 import * as $TabbedContent from "./islands/TabbedContent.tsx";
+import * as $User from "./islands/User.tsx";
 import * as $WishlistButton from "./islands/WishlistButton.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -73,6 +74,7 @@ const manifest = {
     "./islands/SizeTableButton.tsx": $SizeTableButton,
     "./islands/SliderJS.tsx": $SliderJS,
     "./islands/TabbedContent.tsx": $TabbedContent,
+    "./islands/User.tsx": $User,
     "./islands/WishlistButton.tsx": $WishlistButton,
   },
   baseUrl: import.meta.url,
