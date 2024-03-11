@@ -87,6 +87,7 @@ function NotFound() {
   );
 }
 
+
 function Result({
   page,
   layout,
@@ -204,7 +205,7 @@ function Result({
               aria-label="previous page link"
               rel="prev"
               href={pageInfo.previousPage ?? "#"}
-              class="btn btn-ghost join-item"
+              class={`${pageInfo.previousPage === undefined ?("btn btn-disabled "):("btn btn-ghost join-item")}`}
             >
               <Icon id="ChevronLeft" size={24} strokeWidth={2} />
             </a>
@@ -215,7 +216,8 @@ function Result({
               aria-label="next page link"
               rel="next"
               href={pageInfo.nextPage ?? "#"}
-              class="btn btn-ghost join-item"
+              class={`${pageInfo.nextPage === undefined ?("btn btn-disabled "):("btn btn-ghost join-item")}`}
+              
             >
               <Icon id="ChevronRight" size={24} strokeWidth={2} />
             </a>
