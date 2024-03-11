@@ -17,7 +17,6 @@ import { Buttons, Logo } from "$store/components/header/Header.tsx";
 import User from "$store/islands/User.tsx";
 import LogOut from "$store/islands/LogOut.tsx";
 
-
 function Navbar({ items, searchbar, logo, buttons }: {
   items: SiteNavigationElement[];
   searchbar?: SearchbarProps;
@@ -103,7 +102,7 @@ function Navbar({ items, searchbar, logo, buttons }: {
                   <User />
                 </li>
                 <li>
-                  <LogOut/>
+                  <LogOut />
                 </li>
               </ul>
             </div>
