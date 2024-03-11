@@ -20,7 +20,7 @@ export default function BenefitsSection(
     <div class="container flex flex-col gap-[70px] items-center my-14">
       <div class="max-w-[560px] flex justify-center">
         <span
-          class="text-5xl text-center font-bold"
+          class={`text-xl lg:text-5xl text-center font-bold`}
           style={{ "text-shadow": "2px 2px 3px #BFB78D;" }}
         >
           {title}
@@ -45,7 +45,7 @@ export default function BenefitsSection(
       </div>
       <div class="">
         <div
-          class="text-sm text-center max-w-[430px] sm:max-w-[560px]"
+          class="text-sm text-center max-w-[430px] sm:max-w-[560px] px-5"
           dangerouslySetInnerHTML={{ __html: benefitsText || "" }}
         />
       </div>
