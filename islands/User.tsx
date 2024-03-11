@@ -15,7 +15,11 @@ export default function User() {
       {user.value
         ? (
           <>
-            <a href={"/account"} tabIndex={0} class="font-bold uppercase text-xs truncate">
+            <a
+              href={"/account"}
+              tabIndex={0}
+              class="font-bold uppercase text-xs truncate"
+            >
               Olá, {username?.substring(0, 10)?.concat("...")}
             </a>
           </>
