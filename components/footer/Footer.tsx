@@ -231,6 +231,8 @@ function Footer({
     ? <></>
     : <ExtraLinks content={extraLinks} />;
 
+  const icon = "/LogoNois.svg";
+
   return (
     <div>
       <footer
@@ -256,6 +258,11 @@ function Footer({
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class={"flex w-full lg:justify-end cursor-pointer"}>
+                <a href="https://www.nois.agency/" target="_blank">
+                  <img src={icon} width={80} height={35} alt="Nois Agency" />
+                </a>
               </div>
             </div>
           )}
