@@ -40,8 +40,6 @@ export default function GallerySlider(props: Props) {
     p.value === "Bonés, Boinas e Gorros"
   );
 
-  console.log({ isHat });
-
   const aspectRatio = `${width} / ${isHat ? width : height}`;
 
   // removing measure table from images
@@ -54,15 +52,14 @@ export default function GallerySlider(props: Props) {
       <div class="hidden md:grid md:grid-cols-2 md:grid-flow-row gap-4">
         {imagesDisplay.map((img, index) =>
           index <= 3 && (
-            <div class="hidden lg:block lg:col-span-1 max-w-[350px] rounded-lg border border-gray-200">
+            <div class="hidden lg:block lg:col-span-1 rounded-lg border border-gray-200">
               <Image
-                class="w-full rounded-lg"
-                sizes="(max-width: 640px) 100vw, 40vw"
-                style={{ aspectRatio: `${isHat ? "548/548" : "467/548"}` }}
+                class="w-full h-full object-cover rounded-lg"
+                style={{ aspectRatio }}
                 src={img.url!}
                 alt={img.alternateName}
                 width={width}
-                height={height}
+                height={isHat ? width : height}
                 // Preload LCP image for better web vitals
                 preload={index === 0}
                 loading={index === 0 ? "eager" : "lazy"}
@@ -82,12 +79,11 @@ export default function GallerySlider(props: Props) {
               >
                 <Image
                   class="w-full"
-                  sizes="(max-width: 640px) 100vw, 40vw"
                   style={{ aspectRatio }}
                   src={img.url!}
                   alt={img.alternateName}
                   width={width}
-                  height={height}
+                  height={isHat ? width : height}
                   // Preload LCP image for better web vitals
                   preload={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
@@ -128,7 +124,7 @@ export default function GallerySlider(props: Props) {
                   style={{ aspectRatio }}
                   class="group-disabled:border-base-300 border rounded "
                   width={63}
-                  height={87.5}
+                  height={isHat ? 63 : 87.5}
                   src={img.url!}
                   alt={img.alternateName}
                 />
