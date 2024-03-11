@@ -16,7 +16,7 @@ export default function User() {
         ? (
           <>
             <a
-              href={"/account"}
+              href={"/account#/profile"}
               tabIndex={0}
               class="font-bold uppercase text-xs truncate"
             >
