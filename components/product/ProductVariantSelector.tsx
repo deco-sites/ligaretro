@@ -18,19 +18,19 @@ function VariantSelector({ product }: Props) {
           <span class="text-sm">{name}</span>
           <ul class="flex flex-row gap-3">
             {Object.entries(possibilities[name]).map(([value, possibility]) => (
-                <li>
-                  <button f-partial={possibility?.url} f-client-nav>
-                    <Avatar
-                      content={value}
-                      variant={possibility?.url === url
-                        ? "active"
-                        : possibility?.url
-                        ? "default"
-                        : "disabled"}
-                    />
-                  </button>
-                </li>
-              ))}
+              <li>
+                <button f-partial={possibility?.url} f-client-nav>
+                  <Avatar
+                    content={value}
+                    variant={possibility?.url === url
+                      ? "active"
+                      : possibility?.url
+                      ? "default"
+                      : "disabled"}
+                  />
+                </button>
+              </li>
+            ))}
           </ul>
         </li>
       ))}

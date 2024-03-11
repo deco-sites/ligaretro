@@ -167,12 +167,12 @@ function ProductCard(
               skuSelected.value
             ? "active"
             : possibility?.availability === "https://schema.org/OutOfStock"
-                ? "disabled"
-                : "default"}
+            ? "disabled"
+            : "default"}
         />
       </button>
     </li>
-  ))
+  ));
 
   const discount = price && listPrice ? listPrice - price : 0;
   const percentageDiscount = listPrice

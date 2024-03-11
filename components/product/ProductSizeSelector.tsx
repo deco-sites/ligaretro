@@ -24,7 +24,9 @@ function VariantSelector({ product, sizeTableImg }: Props) {
             <span class="text-lg font-semibold text-[#252525]">Tamanho</span>
             <SizeTableButton img={sizeTableImg} />
             <ul class="flex flex-row gap-2 flex-wrap">
-              {Object.entries(possibilities["Tamanho"]).map(([value, possibility]) => (
+              {Object.entries(possibilities["Tamanho"]).map((
+                [value, possibility],
+              ) => (
                 <li>
                   <button f-partial={possibility?.url} f-client-nav>
                     <AvatarSquare
@@ -32,7 +34,8 @@ function VariantSelector({ product, sizeTableImg }: Props) {
                       content={value}
                       variant={possibility?.url === url
                         ? "active"
-                        : possibility?.availability === "https://schema.org/OutOfStock" 
+                        : possibility?.availability ===
+                            "https://schema.org/OutOfStock"
                         ? "disabled"
                         : "default"}
                     />
