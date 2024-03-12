@@ -196,7 +196,10 @@ function CustomizeModal({ productName, skuID }: Props) {
                 Imagem Ilustrativa - Aplicação será no modelo escolhido
               </span>
               {shirtName !== "" && (
-                <span class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl" style={{ fontFamily: 'Versa' }}>
+                <span
+                  class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl"
+                  style={{ fontFamily: "Versa" }}
+                >
                   {shirtName}
                 </span>
               )}
