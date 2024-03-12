@@ -52,6 +52,8 @@ function Navbar({ items, searchbar, logo, buttons, device }: {
               height={logo.mobileheight || 91}
               loading={"lazy"}
               decoding={"async"}
+              preload={false}
+              fetchPriority={"low"}
             />
           </a>
         )}
