@@ -7,6 +7,9 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 
+import { useDevice } from "$store/sdk/useDevice.ts";
+import type { FnContext, LoaderReturnType } from "$live/types.ts";
+
 export interface Logo {
   src: ImageWidget;
   mobileSrc?: ImageWidget;
@@ -65,9 +68,12 @@ function Header({
   buttons,
   alertLinks,
   hideAlert,
-}: Props) {
+}: ReturnType<typeof loader>) {
   const platform = usePlatform();
   const items = navItems ?? [];
+
+  const { deviceSignal } = useDevice();
+  const device = deviceSignal.value || "desktop";
 
   return (
     <header class="h-[73px] lg:h-[111px]">
@@ -86,11 +92,18 @@ function Header({
             searchbar={searchbar && { ...searchbar, platform }}
             logo={logo}
             buttons={buttons}
+            device={device}
           />
         </div>
       </Drawers>
     </header>
   );
 }
+
+export const loader = (props: Props, req: Request, ctx: FnContext) => {
+  return {
+    ...props,
+  };
+};
 
 export default Header;

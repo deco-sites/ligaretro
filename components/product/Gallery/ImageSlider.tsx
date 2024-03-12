@@ -49,9 +49,7 @@ export default function GallerySlider(props: Props) {
   const aspectRatio = `${width} / ${isSquare ? width : height}`;
 
   // removing measure table from images
-  const imagesDisplay = images.filter((i) =>
-    i.alternateName !== "tabelaMedida"
-  );
+  const imagesDisplay = images.filter((i) => i.name !== "tabelaMedida");
 
   return (
     <>
@@ -143,4 +141,10 @@ export default function GallerySlider(props: Props) {
       </div>
     </>
   );
+}
+export function loader({ page, layout }: Props) {
+  const product = {
+    image: page?.product?.image?.filter((i) => i.name !== "tabelaMedida"),
+  };
+  return { page: { product }, layout };
 }

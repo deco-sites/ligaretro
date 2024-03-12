@@ -5,12 +5,18 @@ import Icon from "$store/components/ui/Icon.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
 import { useId } from "$store/sdk/useId.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
-import type { ProductListingPage } from "apps/commerce/types.ts";
+import type {
+  Product,
+  ProductLeaf,
+  ProductListingPage,
+  UnitPriceSpecification,
+} from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import type { SectionProps } from "deco/types.ts";
+import type { FnContext, SectionProps } from "deco/types.ts";
 import { Picture, Source } from "apps/website/components/Picture.tsx";
+import { useDevice } from "deco-sites/ligaretro/sdk/useDevice.ts";
 
 export interface Layout {
   /**
@@ -303,6 +309,7 @@ function SearchResult(
 export const loader = (
   { page, layout, cardLayout, startingPage, styles, pageTitle }: Props,
   req: Request,
+  ctx: FnContext,
 ) => {
   const newURL = new URL(req.url);
 
@@ -325,8 +332,154 @@ export const loader = (
         : true)
     );
   });
+  const { deviceSignal } = useDevice();
+  deviceSignal.value = ctx.device || "desktop";
+  const device = deviceSignal.value;
+  const bestInstallment = (
+    acc: UnitPriceSpecification | null,
+    curr: UnitPriceSpecification,
+  ) => {
+    if (curr.priceComponentType !== "https://schema.org/Installment") {
+      return acc;
+    }
 
-  return { page, layout, cardLayout, startingPage, style, pageTitle: title };
+    if (!acc) {
+      return curr;
+    }
+
+    if (acc.price > curr.price) {
+      return curr;
+    }
+
+    if (acc.price < curr.price) {
+      return acc;
+    }
+
+    if (
+      acc.billingDuration && curr.billingDuration &&
+      acc.billingDuration < curr.billingDuration
+    ) {
+      return curr;
+    }
+
+    return acc;
+  };
+
+  const installment = (specs: UnitPriceSpecification[]) =>
+    specs.reduce(bestInstallment, null);
+
+  const isVariantOfMap = (isVariantOf: Product["isVariantOf"]) => {
+    const hasVariant = isVariantOf?.hasVariant?.map((variant: ProductLeaf) => {
+      const { offers, url, productID, additionalProperty } = variant;
+      return {
+        offers: {
+          ...offers,
+          offers: offers?.offers.filter((offer) => offer.seller === "1").map(
+            (offer) => {
+              const best = installment(offer.priceSpecification);
+              const specs = offer.priceSpecification.filter((spec) =>
+                ["https://schema.org/ListPrice"].includes(spec.priceType)
+              );
+
+              if (best) {
+                specs.push(best);
+              }
+              return ({
+                seller: offer.seller,
+                priceSpecification: specs.map((spec) => {
+                  return {
+                    ...spec,
+                    price: spec.price,
+                    priceComponentType: spec.priceComponentType,
+                    priceType: spec.priceType,
+                    billingIncrement: spec.billingIncrement,
+                    billingDuration: spec.billingDuration,
+                  };
+                }),
+                price: offer.price,
+                availability: offer.availability,
+              });
+            },
+          ),
+        },
+        url,
+        productID,
+        additionalProperty: additionalProperty?.filter((
+          property,
+        ) => (property.valueReference === "SPECIFICATION" &&
+          property.name === "Tamanho")
+        ),
+      };
+    });
+    return {
+      productGroupID: isVariantOf?.productGroupID,
+      name: isVariantOf?.name,
+      hasVariant,
+    };
+  };
+
+  const products = page?.products?.map((product) => {
+    const isVariantOf = {
+      productGroupID: product.isVariantOf?.productGroupID,
+      name: product.isVariantOf?.name,
+      hasVariant: ctx.device === "desktop"
+        ? product.isVariantOf?.hasVariant
+        : undefined,
+    };
+
+    return {
+      productID: product.productID,
+      isVariantOf: isVariantOfMap(isVariantOf as Product["isVariantOf"]),
+      url: product.url,
+      offers: {
+        ...product.offers,
+        offers: product.offers?.offers.filter((offer) => offer.seller === "1")
+          .map((offer) => {
+            const best = installment(offer.priceSpecification);
+            const specs = offer.priceSpecification.filter((spec) =>
+              ["https://schema.org/ListPrice"].includes(spec.priceType)
+            );
+            if (best) {
+              specs.push(best);
+            }
+            return ({
+              seller: offer.seller,
+              priceSpecification: specs.map((spec) => {
+                return {
+                  ...spec,
+                  price: spec.price,
+                  priceComponentType: spec.priceComponentType,
+                  priceType: spec.priceType,
+                  billingIncrement: spec.billingIncrement,
+                  billingDuration: spec.billingDuration,
+                };
+              }),
+              price: offer.price,
+              availability: offer.availability,
+              inventoryLevel: offer.inventoryLevel,
+            });
+          }),
+      },
+      additionalProperty: product.additionalProperty?.filter((property) =>
+        property.name === "category" ||
+        (property.valueReference === "SPECIFICATION" &&
+          property.name === "Tamanho")
+      ),
+      image: [product.image?.[0], product.image?.[1]],
+      category: product.category,
+      sku: product.sku,
+    };
+  });
+
+  return {
+    page: { ...page, products } as ProductListingPage,
+    layout,
+    cardLayout,
+    startingPage,
+    style,
+    pageTitle,
+    device,
+  };
 };
 
 export default SearchResult;

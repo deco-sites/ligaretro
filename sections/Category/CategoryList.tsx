@@ -118,6 +118,9 @@ function CategoryList(props: Props) {
                       width={232}
                       height={284}
                       loading="lazy"
+                      decoding={"async"}
+                      preload={false}
+                      fetchPriority={"low"}
                     />
                   </figure>
                 )}

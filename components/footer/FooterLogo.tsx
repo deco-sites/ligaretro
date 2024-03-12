@@ -19,6 +19,7 @@ export default function FooterLogo({ logo }: Props) {
               alt={"Logo liga retro"}
               width={200}
               height={200}
+              decoding={"async"}
             />
           </div>
           <div class="">
