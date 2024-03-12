@@ -20,7 +20,6 @@ import type {
   UnitPriceSpecification,
 } from "apps/commerce/types.ts";
 
-
 export interface Props {
   products: LoaderReturnType<Product[] | null>;
   title?: string;
@@ -140,7 +139,6 @@ function ProductShelf({
     </div>
   );
 }
-
 
 export const loader = (props: Props, req: Request, ctx: FnContext) => {
   const { deviceSignal } = useDevice();

@@ -151,7 +151,7 @@ function ProductCard(
     </div>
   );
 
-  const skuSelector = Object.entries(possibilities["Tamanho"]).map((
+  const skuSelector = Object.entries(possibilities["Tamanho"])?.map((
     [value, possibility],
   ) => (
     <li>
