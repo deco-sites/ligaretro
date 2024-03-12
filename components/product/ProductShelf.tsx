@@ -10,11 +10,19 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
-import type { Product } from "apps/commerce/types.ts";
+import type { FnContext, LoaderReturnType } from "$live/types.ts";
+import { useDevice } from "$store/sdk/useDevice.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
+import type {
+  Product,
+  ProductGroup,
+  ProductLeaf,
+  UnitPriceSpecification,
+} from "apps/commerce/types.ts";
+
 
 export interface Props {
-  products: Product[] | null;
+  products: LoaderReturnType<Product[] | null>;
   title?: string;
   description?: string;
   layout?: {
@@ -32,7 +40,7 @@ function ProductShelf({
   layout,
   cardLayout,
   bottom,
-}: Props) {
+}: ReturnType<typeof loader>) {
   const id = useId();
   const platform = usePlatform();
 
@@ -68,7 +76,7 @@ function ProductShelf({
               class="carousel-item w-[40vw] lg:w-[10vw] min-w-[290px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0 rounded-xl"
             >
               <ProductCard
-                product={product}
+                product={product as Product}
                 itemListName={title}
                 layout={cardLayout}
                 platform={platform}
@@ -113,11 +121,16 @@ function ProductShelf({
             name: "view_item_list",
             params: {
               item_list_name: title,
-              items: products.map((product, index) =>
+              items: products.map((product) =>
                 mapProductToAnalyticsItem({
-                  index,
-                  product,
-                  ...(useOffer(product.offers)),
+                  product: product as Product,
+                  ...(product.offers),
+                  price: product.offers?.offers?.[0]?.price,
+                  listPrice: product.offers?.offers?.[0]?.priceSpecification
+                    .find(
+                      (spec) =>
+                        spec.priceType === "https://schema.org/ListPrice",
+                    )?.price,
                 })
               ),
             },
@@ -127,5 +140,188 @@ function ProductShelf({
     </div>
   );
 }
+
+
+export const loader = (props: Props, req: Request, ctx: FnContext) => {
+  const { deviceSignal } = useDevice();
+  deviceSignal.value = ctx.device || "desktop";
+  const device = deviceSignal.value;
+  const bestInstallment = (
+    acc: UnitPriceSpecification | null,
+    curr: UnitPriceSpecification,
+  ) => {
+    if (curr.priceComponentType !== "https://schema.org/Installment") {
+      return acc;
+    }
+
+    if (!acc) {
+      return curr;
+    }
+
+    if (acc.price > curr.price) {
+      return curr;
+    }
+
+    if (acc.price < curr.price) {
+      return acc;
+    }
+
+    if (
+      acc.billingDuration && curr.billingDuration &&
+      acc.billingDuration < curr.billingDuration
+    ) {
+      return curr;
+    }
+
+    return acc;
+  };
+
+  const installment = (specs: UnitPriceSpecification[]) =>
+    specs.reduce(bestInstallment, null);
+
+  const isVariantOfMap = (isVariantOf: Product["isVariantOf"]) => {
+    const hasVariant = isVariantOf?.hasVariant?.map((variant: ProductLeaf) => {
+      const { offers, url, productID, additionalProperty } = variant;
+      return {
+        offers: {
+          ...offers,
+          offers: offers?.offers.filter((offer) => offer.seller === "1").map(
+            (offer) => {
+              const best = installment(offer.priceSpecification);
+              const specs = offer.priceSpecification.filter((spec) =>
+                ["https://schema.org/ListPrice"].includes(spec.priceType)
+              );
+
+              if (best) {
+                specs.push(best);
+              }
+              return ({
+                seller: offer.seller,
+                priceSpecification: specs.map((spec) => {
+                  return {
+                    ...spec,
+                    price: spec.price,
+                    priceComponentType: spec.priceComponentType,
+                    priceType: spec.priceType,
+                    billingIncrement: spec.billingIncrement,
+                    billingDuration: spec.billingDuration,
+                  };
+                }),
+                price: offer.price,
+                availability: offer.availability,
+                inventoryLevel: offer.inventoryLevel,
+              });
+            },
+          ),
+        },
+        url,
+        productID,
+        additionalProperty: additionalProperty?.filter((property) =>
+          property.valueReference === "SPECIFICATION"
+        ),
+      };
+    });
+    return {
+      productGroupID: isVariantOf?.productGroupID,
+      name: isVariantOf?.name,
+      hasVariant,
+    };
+  };
+
+  const products = props.products?.map((product) => {
+    const isVariantOf = {
+      productGroupID: product.isVariantOf?.productGroupID,
+      name: product.isVariantOf?.name,
+      hasVariant: ctx.device === "desktop"
+        ? product.isVariantOf?.hasVariant
+        : undefined,
+    };
+
+    return {
+      productID: product.productID,
+      inProductGroupWithID: product.inProductGroupWithID,
+      isVariantOf: isVariantOfMap(isVariantOf as Product["isVariantOf"]),
+      isSimilarTo: product.isSimilarTo?.map((similar) => {
+        const { image, offers, productID, url } = similar;
+        const isVariantOf = isVariantOfMap(similar.isVariantOf!);
+        const colorImage = image?.find((img) =>
+          img?.alternateName === "color-thumbnail"
+        );
+        return {
+          image: [image?.[0], image?.[1], colorImage],
+          offers: {
+            ...offers,
+            offers: offers?.offers.filter((offer) => offer.seller === "1").map(
+              (offer) => {
+                const best = installment(offer.priceSpecification);
+                const specs = offer.priceSpecification.filter((spec) =>
+                  ["https://schema.org/ListPrice"].includes(spec.priceType)
+                );
+
+                if (best) {
+                  specs.push(best);
+                }
+                return ({
+                  seller: offer.seller,
+                  priceSpecification: specs.map((spec) => {
+                    return {
+                      ...spec,
+                      price: spec.price,
+                      priceComponentType: spec.priceComponentType,
+                      priceType: spec.priceType,
+                      billingIncrement: spec.billingIncrement,
+                      billingDuration: spec.billingDuration,
+                    };
+                  }),
+                  price: offer.price,
+                  availability: offer.availability,
+                  inventoryLevel: offer.inventoryLevel,
+                });
+              },
+            ),
+          },
+          productID,
+          url,
+          isVariantOf,
+        };
+      }),
+      url: product.url,
+      offers: {
+        ...product.offers,
+        offers: product.offers?.offers.filter((offer) => offer.seller === "1")
+          .map((offer) => {
+            const best = installment(offer.priceSpecification);
+            const specs = offer.priceSpecification.filter((spec) =>
+              ["https://schema.org/ListPrice"].includes(spec.priceType)
+            );
+            if (best) {
+              specs.push(best);
+            }
+            return ({
+              seller: offer.seller,
+              priceSpecification: specs.map((spec) => {
+                return {
+                  ...spec,
+                  price: spec.price,
+                  priceComponentType: spec.priceComponentType,
+                  priceType: spec.priceType,
+                  billingIncrement: spec.billingIncrement,
+                  billingDuration: spec.billingDuration,
+                };
+              }),
+              price: offer.price,
+              availability: offer.availability,
+              inventoryLevel: offer.inventoryLevel,
+            });
+          }),
+      },
+      image: [product.image?.[0]],
+      category: product.category,
+      sku: product.sku,
+    };
+  });
+
+  return { ...props, products, device };
+};
 
 export default ProductShelf;
