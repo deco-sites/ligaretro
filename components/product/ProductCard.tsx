@@ -151,28 +151,30 @@ function ProductCard(
     </div>
   );
 
-  const skuSelector = Object.entries(possibilities["Tamanho"])?.map((
-    [value, possibility],
-  ) => (
-    <li>
-      <button
-        onClick={() => {
-          skuSelected.value = getSkuByUrl(possibility?.url!);
-        }}
-      >
-        <AvatarSquare
-          size="small"
-          content={value}
-          variant={getSkuByUrl(possibility?.url!) ===
-              skuSelected.value
-            ? "active"
-            : possibility?.availability === "https://schema.org/OutOfStock"
-            ? "disabled"
-            : "default"}
-        />
-      </button>
-    </li>
-  ));
+  const skuSelector = possibilities["Tamanho"]
+    ? Object.entries(possibilities["Tamanho"])?.map((
+      [value, possibility],
+    ) => (
+      <li>
+        <button
+          onClick={() => {
+            skuSelected.value = getSkuByUrl(possibility?.url!);
+          }}
+        >
+          <AvatarSquare
+            size="small"
+            content={value}
+            variant={getSkuByUrl(possibility?.url!) ===
+                skuSelected.value
+              ? "active"
+              : possibility?.availability === "https://schema.org/OutOfStock"
+              ? "disabled"
+              : "default"}
+          />
+        </button>
+      </li>
+    ))
+    : null;
 
   const discount = price && listPrice ? listPrice - price : 0;
   const percentageDiscount = listPrice

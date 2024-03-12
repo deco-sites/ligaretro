@@ -207,7 +207,6 @@ export const loader = (props: Props, req: Request, ctx: FnContext) => {
                 }),
                 price: offer.price,
                 availability: offer.availability,
-                inventoryLevel: offer.inventoryLevel,
               });
             },
           ),
@@ -215,7 +214,8 @@ export const loader = (props: Props, req: Request, ctx: FnContext) => {
         url,
         productID,
         additionalProperty: additionalProperty?.filter((property) =>
-          property.valueReference === "SPECIFICATION"
+          property.valueReference === "SPECIFICATION" &&
+          property.name === "Tamanho"
         ),
       };
     });
@@ -237,52 +237,10 @@ export const loader = (props: Props, req: Request, ctx: FnContext) => {
 
     return {
       productID: product.productID,
-      inProductGroupWithID: product.inProductGroupWithID,
       isVariantOf: isVariantOfMap(isVariantOf as Product["isVariantOf"]),
-      isSimilarTo: product.isSimilarTo?.map((similar) => {
-        const { image, offers, productID, url } = similar;
-        const isVariantOf = isVariantOfMap(similar.isVariantOf!);
-        const colorImage = image?.find((img) =>
-          img?.alternateName === "color-thumbnail"
-        );
-        return {
-          image: [image?.[0], image?.[1], colorImage],
-          offers: {
-            ...offers,
-            offers: offers?.offers.filter((offer) => offer.seller === "1").map(
-              (offer) => {
-                const best = installment(offer.priceSpecification);
-                const specs = offer.priceSpecification.filter((spec) =>
-                  ["https://schema.org/ListPrice"].includes(spec.priceType)
-                );
-
-                if (best) {
-                  specs.push(best);
-                }
-                return ({
-                  seller: offer.seller,
-                  priceSpecification: specs.map((spec) => {
-                    return {
-                      ...spec,
-                      price: spec.price,
-                      priceComponentType: spec.priceComponentType,
-                      priceType: spec.priceType,
-                      billingIncrement: spec.billingIncrement,
-                      billingDuration: spec.billingDuration,
-                    };
-                  }),
-                  price: offer.price,
-                  availability: offer.availability,
-                  inventoryLevel: offer.inventoryLevel,
-                });
-              },
-            ),
-          },
-          productID,
-          url,
-          isVariantOf,
-        };
-      }),
+      additionalProperty: product.additionalProperty?.filter((property) =>
+        property.name === "category"
+      ),
       url: product.url,
       offers: {
         ...product.offers,
@@ -313,7 +271,7 @@ export const loader = (props: Props, req: Request, ctx: FnContext) => {
             });
           }),
       },
-      image: [product.image?.[0]],
+      image: [product.image?.[0], product.image?.[1]],
       category: product.category,
       sku: product.sku,
     };
