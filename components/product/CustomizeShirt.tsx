@@ -173,7 +173,17 @@ function CustomizeModal({ productName, skuID }: Props) {
         ? (
           <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg">
             <style>
-              {`@font-face {
+              {`
+              @font-face {
+                font-family: 'Versa';
+                font-style: normal;
+                font-display: swap;
+                src: url(/Versa.woff);
+              }`}
+            </style>
+            <style>
+              {`
+              @font-face {
                 font-family: 'Jersey';
                 font-style: normal;
                 font-weight: 400;
@@ -186,7 +196,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                 Imagem Ilustrativa - Aplicação será no modelo escolhido
               </span>
               {shirtName !== "" && (
-                <span class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl font-['Jersey']">
+                <span class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl" style={{ fontFamily: 'Versa' }}>
                   {shirtName}
                 </span>
               )}
