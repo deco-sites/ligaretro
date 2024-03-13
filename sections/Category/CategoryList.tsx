@@ -81,23 +81,23 @@ function CategoryList(props: Props) {
                 (
                   <>
                     <figure class="relative">
-                    <div class= "absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
-                      <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
-                        {label}
-                      </h3>
-                    </div>
-                    <Image
-                      class="card w-full"
-                      src={image}
-                      alt={description || label || tag}
-                      width={232}
-                      height={284}
-                      loading="lazy"
-                      decoding={"async"}
-                      preload={false}
-                      fetchPriority={"low"}
-                    />
-                  </figure>
+                      <div class="absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
+                        <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
+                          {label}
+                        </h3>
+                      </div>
+                      <Image
+                        class="card w-full"
+                        src={image}
+                        alt={description || label || tag}
+                        width={232}
+                        height={284}
+                        loading="lazy"
+                        decoding={"async"}
+                        preload={false}
+                        fetchPriority={"low"}
+                      />
+                    </figure>
                   </>
                 )}
             </a>
