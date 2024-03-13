@@ -5,6 +5,9 @@ import { useId } from "$store/sdk/useId.ts";
 import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 
+import { Picture, Source } from "apps/website/components/Picture.tsx";
+import { useDevice } from "deco-sites/ligaretro/sdk/useDevice.ts";
+
 export interface Category {
   tag?: string;
   label: string;
@@ -28,7 +31,6 @@ export interface Props {
     };
   };
 }
-
 
 function CategoryList(props: Props) {
   const id = useId();
@@ -62,7 +64,6 @@ function CategoryList(props: Props) {
       id={id}
       class="container py-8 flex flex-col gap-8 lg:gap-0 text-base-content  lg:py-10"
     >
-      
       <h3 class="text-xl font-semibold mb-8 pl-6 sm:pl-0 ">
         {header.title}
       </h3>
@@ -78,7 +79,8 @@ function CategoryList(props: Props) {
             >
               {image &&
                 (
-                  <figure class="relative">
+                  <>
+                    <figure class="relative">
                     <div class= "absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
                       <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
                         {label}
@@ -96,6 +98,7 @@ function CategoryList(props: Props) {
                       fetchPriority={"low"}
                     />
                   </figure>
+                  </>
                 )}
             </a>
             {buttonText &&
