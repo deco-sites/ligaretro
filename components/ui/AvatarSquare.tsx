@@ -21,10 +21,12 @@ const colors: Record<string, string> = {
   "default": "bg-base-100 text-primary",
 };
 
+export type AvatarSize = "large" | "small" | "tall" | "extraSmall";
+
 interface Props {
   variant?: "active" | "disabled" | "default";
   content: string;
-  size?: "large" | "small" | "tall";
+  size?: AvatarSize;
   darkBackground?: boolean;
   darkBackgroundColor?: string;
 }
@@ -45,17 +47,33 @@ function Avatar(
   };
 
   return (
-    <div class="avatar placeholder text-xs">
-      <div
-        class={`rounded-sm ${size === "large" && "w-[91px] h-[50px]"} ${
-          size === "tall" ? "w-10 h-12" : "w-10 h-8"
-        } ${colors[content] ?? colors[variant]} ${variants[variant]}`}
-      >
-        <span class={`uppercase font-semibold`}>
-          {colors[content] ? "" : content.substring(0, 3)}
-        </span>
-      </div>
-    </div>
+    size === "extraSmall"
+      ? (
+        <div class="avatar placeholder text-xs">
+          <div
+            class={`rounded-sm w-6 h-6 ${colors[content] ?? colors[variant]} ${
+              variants[variant]
+            }`}
+          >
+            <span class={`uppercase font-semibold text-[9px]`}>
+              {colors[content] ? "" : content.substring(0, 3)}
+            </span>
+          </div>
+        </div>
+      )
+      : (
+        <div class="avatar placeholder text-xs">
+          <div
+            class={`rounded-sm ${size === "large" && "w-[91px] h-[50px]"} ${
+              size === "tall" ? "w-10 h-12" : "w-10 h-8"
+            } ${colors[content] ?? colors[variant]} ${variants[variant]}`}
+          >
+            <span class={`uppercase font-semibold`}>
+              {colors[content] ? "" : content.substring(0, 3)}
+            </span>
+          </div>
+        </div>
+      )
   );
 }
 
