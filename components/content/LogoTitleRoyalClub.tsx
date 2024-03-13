@@ -24,7 +24,7 @@ export default function LogoTitleRoyalClub(
       </div>
       <div class="max-w-[690px] flex justify-center">
         <span
-          class="text-5xl text-center font-bold leading-[54px]"
+          class="text-2xl leading-[24px] sm:text-5xl text-center font-bold sm:leading-[54px]"
           style={{ "text-shadow": "2px 2px 3px #BFB78D;" }}
         >
           {title}

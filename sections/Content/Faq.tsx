@@ -54,8 +54,8 @@ const DEFAULT_PROPS = {
 
 function Question({ question, answer }: Question) {
   return (
-    <details class="collapse collapse-arrow join-item border-t border-base-200">
-      <summary class="collapse-title text-lg font-medium">
+    <details class="collapse collapse-arrow join-item border rounded-xl border-base-200 p-5">
+      <summary class="collapse-title text-lg font-semibold">
         {question}
       </summary>
       <div
@@ -103,7 +103,7 @@ export default function FAQ(props: Props) {
               description={description || ""}
               alignment={layout?.headerAlignment || "center"}
             />
-            <div class="join join-vertical w-full">
+            <div class="flex flex-col gap-2 w-full">
               {questions.map((question) => <Question {...question} />)}
             </div>
           </div>

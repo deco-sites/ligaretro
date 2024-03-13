@@ -1,1 +1,1 @@
-export { default } from "$store/components/content/PlanSelection.tsx";
+export { default } from "$store/islands/PlanSelection.tsx";
