@@ -21,10 +21,12 @@ const colors: Record<string, string> = {
   "default": "bg-base-100 text-primary",
 };
 
+export type AvatarSize = "large" | "small" | "tall" | "extraSmall";
+
 interface Props {
   variant?: "active" | "disabled" | "default";
   content: string;
-  size?: "large" | "small" | "tall";
+  size?: AvatarSize;
   darkBackground?: boolean;
   darkBackgroundColor?: string;
 }
@@ -38,24 +40,40 @@ function Avatar(
       ? ` bg-white !text-[${darkBackgroundColor}]`
       : `ring ring-1 ring-offset-base-100 ring-offset-2 bg-[#252525] text-white`,
     disabled:
-      `relative after:absolute after:left-0 after:top-1/2 after:h-[1px] after:bg-red-800 after:w-full after:block after:-rotate-45 after:content-[""]`,
+      `relative after:absolute after:left-0 after:top-1/2 after:h-[1px] after:bg-red-800 after:w-full after:block after:-rotate-45 after:content-[""] !text-[#252525]`,
     default: darkBackground
       ? "border border-white hover:border-primary !bg-transparent !text-white"
       : `border border-base-200 hover:border-primary !text-[#252525]`,
   };
 
   return (
-    <div class="avatar placeholder text-xs">
-      <div
-        class={`rounded-sm ${size === "large" && "w-[91px] h-[50px]"} ${
-          size === "tall" ? "w-10 h-12" : "w-10 h-8"
-        } ${colors[content] ?? colors[variant]} ${variants[variant]}`}
-      >
-        <span class={`uppercase font-semibold`}>
-          {colors[content] ? "" : content.substring(0, 3)}
-        </span>
-      </div>
-    </div>
+    size === "extraSmall"
+      ? (
+        <div class="avatar placeholder text-xs">
+          <div
+            class={`rounded-sm w-6 h-6 ${colors[content] ?? colors[variant]} ${
+              variants[variant]
+            }`}
+          >
+            <span class={`uppercase font-semibold text-[9px]`}>
+              {colors[content] ? "" : content.substring(0, 3)}
+            </span>
+          </div>
+        </div>
+      )
+      : (
+        <div class="avatar placeholder text-xs">
+          <div
+            class={`rounded-sm ${size === "large" && "w-[91px] h-[50px]"} ${
+              size === "tall" ? "w-10 h-12" : "w-10 h-8"
+            } ${colors[content] ?? colors[variant]} ${variants[variant]}`}
+          >
+            <span class={`uppercase font-semibold`}>
+              {colors[content] ? "" : content.substring(0, 3)}
+            </span>
+          </div>
+        </div>
+      )
   );
 }
 
