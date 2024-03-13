@@ -29,26 +29,6 @@ export interface Props {
   };
 }
 
-function CardText(
-  { tag, label, description, alignment }: {
-    tag?: string;
-    label?: string;
-    description?: string;
-    alignment?: "center" | "left";
-  },
-) {
-  return (
-    <div
-      class={`flex flex-col ${
-        alignment === "center" ? "text-center" : "text-left"
-      }`}
-    >
-      {tag && <div class="text-sm text-primary">{tag}</div>}
-      {label && <h3 class="text-lg text-base-content">{label}</h3>}
-      {description && <div class="text-sm text-neutral">{description}</div>}
-    </div>
-  );
-}
 
 function CategoryList(props: Props) {
   const id = useId();
@@ -82,13 +62,7 @@ function CategoryList(props: Props) {
       id={id}
       class="container py-8 flex flex-col gap-8 lg:gap-0 text-base-content  lg:py-10"
     >
-      {
-        /* <Header
-        title={header.title}
-        description={header.description || ""}
-        alignment={layout.headerAlignment || "center"}
-      /> */
-      }
+      
       <h3 class="text-xl font-semibold mb-8 pl-6 sm:pl-0 ">
         {header.title}
       </h3>
@@ -96,7 +70,6 @@ function CategoryList(props: Props) {
       <div class={`flex sm:flex-row flex-col px-2 gap-4 lg:gap-8 `}>
         {list.map((
           { tag, label, description, href, image, buttonText },
-          index,
         ) => (
           <div class="flex gap-4">
             <a
@@ -106,7 +79,7 @@ function CategoryList(props: Props) {
               {image &&
                 (
                   <figure class="relative">
-                    <div class="absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
+                    <div class= "absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
                       <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
                         {label}
                       </h3>
