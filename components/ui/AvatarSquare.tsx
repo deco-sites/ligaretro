@@ -38,7 +38,7 @@ function Avatar(
       ? ` bg-white !text-[${darkBackgroundColor}]`
       : `ring ring-1 ring-offset-base-100 ring-offset-2 bg-[#252525] text-white`,
     disabled:
-      `relative after:absolute after:left-0 after:top-1/2 after:h-[1px] after:bg-red-800 after:w-full after:block after:-rotate-45 after:content-[""]`,
+      `relative after:absolute after:left-0 after:top-1/2 after:h-[1px] after:bg-red-800 after:w-full after:block after:-rotate-45 after:content-[""] !text-[#252525]`,
     default: darkBackground
       ? "border border-white hover:border-primary !bg-transparent !text-white"
       : `border border-base-200 hover:border-primary !text-[#252525]`,
