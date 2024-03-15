@@ -3,13 +3,13 @@ import Image from "apps/website/components/Image.tsx";
 import { headerHeight } from "./constants.ts";
 
 function NavItem({ item }: { item: SiteNavigationElement }) {
-  const { url, name, children } = item;
+  const { url, name, children, additionalType } = item;
   const image = item?.image?.[0];
 
   return (
     <li class="group flex items-center">
       <a href={url} class="px-4 py-3">
-        <span class="group-hover:underline text-sm">
+        <span class={`group-hover:underline text-sm`}>
           {name}
         </span>
       </a>
@@ -40,7 +40,7 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                     style={{ "column-gap": "34px" }}
                   >
                     {node.children?.map((leaf) => (
-                      <li>
+                      <li class={leaf.additionalType === 'show_all' ? 'font-bold' : ''}>
                         <a class="hover:underline" href={leaf.url}>
                           <span class="text-xs">{leaf.name}</span>
                         </a>
