@@ -29,7 +29,7 @@ export default function User() {
             as="Button"
             href="/account"
             aria-label="go to login"
-            class="btn btn-primary bg-[#252525] text-xs font-normal items-center flex-col justify-center pt-[15px]"
+            class="btn btn-primary bg-[#252525] text-xs text-white font-normal items-center flex-col justify-center pt-[15px]"
             onClick={async () => {
               if (isUserLoggedIn) {
                 window.location.pathname = "/account";
