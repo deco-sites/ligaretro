@@ -197,19 +197,19 @@ function CustomizeModal({ productName, skuID }: Props) {
               </span>
               {shirtName !== "" && (
                 <span
-                  class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[23%] font-bold text-xl sm:text-2xl"
+                  class="absolute left-1/2 transform -translate-x-1/2 uppercase top-[28%] font-bold text-xl sm:text-2xl"
                   style={{ fontFamily: "Versa" }}
                 >
                   {shirtName}
                 </span>
               )}
               {shirtNumber && (
-                <span class="absolute text-6xl left-1/2 transform -translate-x-1/2 uppercase top-[29%] font-bold text-[100px] sm:text-[120px] font-['Jersey']">
+                <span class="absolute text-6xl left-1/2 transform -translate-x-1/2 uppercase top-[34%] font-bold text-[100px] sm:text-[120px] font-['Jersey']">
                   {shirtNumber}
                 </span>
               )}
               <Image
-                src="https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/96e3da9c-7ed8-4a6f-9f20-bfca9d58579c___fd8ee451f36ce4e437487da7af1dbb68.webp"
+                src="https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/6c99ea67-c0b0-4f65-8d18-bcb35b9df96c___f2e2f2a19f3d23e2dedd24c3618bbbbf.png"
                 alt="shirt template"
                 width={335}
                 height={400}
