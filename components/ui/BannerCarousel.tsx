@@ -8,7 +8,9 @@ import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import { Picture, Source } from "apps/website/components/Picture.tsx";
+import { FnContext } from "$live/types.ts";
+import { Device } from "apps/website/matchers/device.ts";
+import Image from "apps/website/components/Image.tsx";
 
 /**
  * @titleBy alt
@@ -91,7 +93,12 @@ const DEFAULT_PROPS = {
 };
 
 function BannerItem(
-  { image, lcp, id }: { image: Banner; lcp?: boolean; id: string },
+  { image, lcp, id, device }: {
+    image: Banner;
+    lcp?: boolean;
+    id: string;
+    device: Device;
+  },
 ) {
   const {
     alt,
@@ -107,28 +114,33 @@ function BannerItem(
       aria-label={action?.label}
       class="relative h-[600px] overflow-y-hidden w-full"
     >
-      <Picture preload={lcp}>
-        <Source
-          media="(max-width: 767px)"
-          fetchPriority={lcp ? "high" : "auto"}
+      {device !== "desktop" && (
+        <Image
+          class="object-cover w-full h-full"
+          loading={lcp ? "eager" : "lazy"}
           src={mobile}
+          alt={alt}
           width={360}
           height={600}
+          fetchPriority={lcp ? "high" : "low"}
+          preload={lcp ? true : false}
+          decoding={"async"}
         />
-        <Source
-          media="(min-width: 768px)"
-          fetchPriority={lcp ? "high" : "auto"}
-          src={desktop}
-          width={1440}
-          height={600}
-        />
-        <img
+      )}
+      {device === "desktop" && (
+        <Image
           class="object-cover w-full h-full"
           loading={lcp ? "eager" : "lazy"}
           src={desktop}
           alt={alt}
+          width={1440}
+          height={600}
+          fetchPriority={lcp ? "high" : "low"}
+          preload={lcp ? true : false}
+          decoding={"async"}
         />
-      </Picture>
+      )}
+
       {action && (
         <div class="absolute h-min top-0 bottom-0 m-auto left-0 right-0 max-h-min max-w-[400px] flex flex-col gap-4 p-4 items-center">
           <span class="text-3xl font-medium text-base-100">
@@ -208,10 +220,9 @@ function Buttons() {
   );
 }
 
-function BannerCarousel(props: Props) {
+function BannerCarousel(props: ReturnType<typeof loader>) {
   const id = useId();
-  const { images, preload, interval } = { ...DEFAULT_PROPS, ...props };
-
+  const { images, preload, interval, device } = { ...DEFAULT_PROPS, ...props };
   return (
     <div
       id={id}
@@ -227,6 +238,7 @@ function BannerCarousel(props: Props) {
                 image={image}
                 lcp={index === 0 && preload}
                 id={`${id}::${index}`}
+                device={device}
               />
               <SendEventOnClick
                 id={`${id}::${index}`}
@@ -241,13 +253,28 @@ function BannerCarousel(props: Props) {
         })}
       </Slider>
 
-      {/* <Buttons /> */}
+      {images && images.length > 1 && (
+        <>
+          {/* <Buttons /> */}
 
-      <Dots images={images} interval={interval} />
+          <Dots images={images} interval={interval} />
 
-      <SliderJS rootId={id} interval={interval && interval * 1e3} infinite />
+          <SliderJS
+            rootId={id}
+            interval={interval && interval * 1e3}
+            infinite
+          />
+        </>
+      )}
     </div>
   );
 }
+
+export const loader = (props: Props, req: Request, ctx: FnContext) => {
+  return {
+    ...props,
+    device: ctx.device,
+  };
+};
 
 export default BannerCarousel;

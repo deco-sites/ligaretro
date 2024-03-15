@@ -1,14 +1,19 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Icon from "deco-sites/ligaretro/components/ui/Icon.tsx";
-import CartButtonVTEX from "$store/islands/Header/Cart/vtex.tsx";
-
+import { FnContext } from "$live/types.ts";
+import { Device } from "apps/website/matchers/device.ts";
+import Image from "apps/website/components/Image.tsx";
 /**
  * @titleBy alt
  */
 export interface Banner {
   srcMobile: ImageWidget;
   srcDesktop?: ImageWidget;
+  width?: number;
+  height?: number;
+  mobileWidth?: number;
+  mobileHeight?: number;
   /**
    * @description Image alt text
    */
@@ -126,12 +131,13 @@ const DEFAULT_PROPS: Props = {
   },
 };
 
-export default function BannnerGrid(props: Props) {
+function BannnerGrid(props: ReturnType<typeof loader>) {
   const {
     title,
     itemsPerLine,
     borderRadius,
     banners = [],
+    device,
   } = { ...DEFAULT_PROPS, ...props };
 
   return (
@@ -160,6 +166,10 @@ export default function BannnerGrid(props: Props) {
             gridColumns,
             gridRows,
             camisaHistorica,
+            height,
+            width,
+            mobileHeight,
+            mobileWidth,
           },
         ) => (
           <a
@@ -193,28 +203,33 @@ export default function BannnerGrid(props: Props) {
                   </div>
                 </div>
               )}
-              <Picture>
-                <Source
-                  media="(max-width: 767px)"
-                  src={srcMobile}
-                  width={100}
-                  height={65}
-                />
-                <Source
-                  media="(min-width: 768px)"
-                  src={srcDesktop ? srcDesktop : srcMobile}
-                  width={500}
-                  height={326}
-                />
-                <img
-                  class="w-full h-full"
-                  sizes="(max-width: 640px) 100vw, 30vw"
+
+              {device !== "desktop" && (
+                <Image
+                  class="object-cover w-full h-full"
+                  loading={"lazy"}
                   src={srcMobile}
                   alt={alt}
-                  decoding="async"
-                  loading="lazy"
+                  width={mobileWidth || 100}
+                  height={mobileHeight || 65}
+                  fetchPriority={"low"}
+                  preload={false}
+                  decoding={"async"}
                 />
-              </Picture>
+              )}
+              {device === "desktop" && (
+                <Image
+                  class="object-cover w-full h-full"
+                  loading={"lazy"}
+                  src={srcDesktop || srcMobile}
+                  alt={alt}
+                  width={width || 336}
+                  height={height || 220}
+                  fetchPriority={"low"}
+                  preload={false}
+                  decoding={"async"}
+                />
+              )}
             </div>
           </a>
         ))}
@@ -222,3 +237,12 @@ export default function BannnerGrid(props: Props) {
     </section>
   );
 }
+
+export const loader = (props: Props, req: Request, ctx: FnContext) => {
+  return {
+    ...props,
+    device: ctx.device,
+  };
+};
+
+export default BannnerGrid;
