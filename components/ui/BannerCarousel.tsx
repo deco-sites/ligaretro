@@ -24,14 +24,15 @@ export interface Banner {
   alt: string;
   action?: {
     /** @description when user clicks on the image, go to this link */
-    href: string;
+    href?: string;
     /** @description Image text title */
-    title: string;
+    title?: string;
     /** @description Image text subtitle */
-    subTitle: string;
+    subTitle?: string;
     /** @description Button label */
-    label: string;
+    label?: string;
   };
+  layoutAlign?: "right" | "left" | "center";
 }
 
 export interface Props {
@@ -105,6 +106,7 @@ function BannerItem(
     mobile,
     desktop,
     action,
+    layoutAlign,
   } = image;
 
   return (
@@ -142,19 +144,31 @@ function BannerItem(
       )}
 
       {action && (
-        <div class="absolute h-min top-0 bottom-0 m-auto left-0 right-0 max-h-min max-w-[400px] flex flex-col gap-4 p-4 items-center">
-          <span class="text-3xl font-medium text-base-100">
-            {action.title}
-          </span>
-          <span class="font-medium text-base text-base-100">
-            {action.subTitle}
-          </span>
-          <Button
-            aria-label="Call to action"
-            class="btn rounded-full bg-white w-fit px-10"
-          >
-            {action.label}
-          </Button>
+        <div
+          class={`absolute h-min top-0 bottom-0 m-auto left-0 right-0 max-h-min max-w-[70%] flex flex-col gap-4 p-4 ${
+            (!layoutAlign || layoutAlign === "center") && "items-center"
+          } ${(layoutAlign === "left") && "items-start"} ${
+            (layoutAlign === "right") && "items-end"
+          }`}
+        >
+          {action.title && (
+            <span class="text-3xl font-medium text-base-100">
+              {action.title}
+            </span>
+          )}
+          {action.subTitle && (
+            <span class="font-medium text-base text-base-100">
+              {action.subTitle}
+            </span>
+          )}
+          {action.label && (
+            <Button
+              aria-label="Call to action"
+              class="btn rounded-full bg-white w-fit px-10"
+            >
+              {action.label}
+            </Button>
+          )}
         </div>
       )}
     </a>
