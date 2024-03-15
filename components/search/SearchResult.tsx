@@ -87,8 +87,16 @@ export interface Props {
 
 function NotFound() {
   return (
-    <div class="w-full flex justify-center items-center py-10">
-      <span>Not Found!</span>
+    <div
+      class="w-full flex flex-col my-28 justify-center items-center py-10 gap-6"
+      style={{ "margin": "100px 0" }}
+    >
+      <h2 class="text-4xl">Ops, esta página não existe.</h2>
+      <span>
+        Clique aqui para acessar a{" "}
+        <a class="text-red-600 underline" href="/">Página Inicial</a>{" "}
+        da nossa loja!
+      </span>
     </div>
   );
 }
@@ -472,7 +480,7 @@ export const loader = (
   });
 
   return {
-    page: { ...page, products } as ProductListingPage,
+    page: page ? { ...page, products } as ProductListingPage : null,
     layout,
     cardLayout,
     startingPage,

@@ -2,12 +2,8 @@ import Header from "$store/components/ui/SectionHeader.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
-import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-
 import { Picture, Source } from "apps/website/components/Picture.tsx";
-import { useDevice } from "deco-sites/ligaretro/sdk/useDevice.ts";
-
 export interface Category {
   tag?: string;
   label: string;
@@ -67,7 +63,6 @@ function CategoryList(props: Props) {
       <h3 class="text-xl font-semibold mb-8 pl-6 sm:pl-0 ">
         {header.title}
       </h3>
-
       <div class={`flex sm:flex-row flex-col px-2 gap-4 lg:gap-8 `}>
         {list.map((
           { tag, label, description, href, image, buttonText },
@@ -79,26 +74,32 @@ function CategoryList(props: Props) {
             >
               {image &&
                 (
-                  <>
-                    <figure class="relative">
-                      <div class="absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
-                        <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
-                          {label}
-                        </h3>
-                      </div>
-                      <Image
-                        class="card w-full"
+                  <div class="relative">
+                    <div class="absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
+                      <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
+                        {label}
+                      </h3>
+                    </div>
+                    <Picture preload={false} class="card w-full">
+                      <Source
                         src={image}
-                        alt={description || label || tag}
-                        width={232}
-                        height={284}
-                        loading="lazy"
-                        decoding={"async"}
-                        preload={false}
-                        fetchPriority={"low"}
+                        width={360}
+                        height={159}
+                        media="(max-width: 767px)"
                       />
-                    </figure>
-                  </>
+                      <Source
+                        src={image}
+                        width={450}
+                        height={550}
+                        media="(min-width: 767px)"
+                      />
+                      <img
+                        class="w-full rounded-2xl"
+                        src={image}
+                        alt={image}
+                      />
+                    </Picture>
+                  </div>
                 )}
             </a>
             {buttonText &&

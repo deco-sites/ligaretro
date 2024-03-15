@@ -11,6 +11,7 @@ import Image from "apps/website/components/Image.tsx";
 import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
 import { useSignal } from "@preact/signals";
 import Button from "$store/components/ui/Button.tsx";
+import { AvatarSize } from "$store/components/ui/AvatarSquare.tsx";
 
 export interface Layout {
   basics?: {
@@ -55,6 +56,7 @@ export interface Props {
   platform?: Platform;
   darkBackground?: boolean;
   hideHoverCTA?: boolean;
+  avatarSize?: AvatarSize;
 }
 
 const relative = (url: string) => {
@@ -76,6 +78,7 @@ function ProductCard(
     index,
     darkBackground,
     hideHoverCTA,
+    avatarSize,
   }: Props,
 ) {
   const {
@@ -162,7 +165,7 @@ function ProductCard(
           }}
         >
           <AvatarSquare
-            size="small"
+            size={avatarSize ? avatarSize : "small"}
             content={value}
             variant={getSkuByUrl(possibility?.url!) ===
                 skuSelected.value
