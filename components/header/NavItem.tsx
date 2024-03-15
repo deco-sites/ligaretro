@@ -40,7 +40,11 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                     style={{ "column-gap": "34px" }}
                   >
                     {node.children?.map((leaf) => (
-                      <li class={leaf.additionalType === 'show_all' ? 'font-bold' : ''}>
+                      <li
+                        class={leaf.additionalType === "show_all"
+                          ? "font-bold"
+                          : ""}
+                      >
                         <a class="hover:underline" href={leaf.url}>
                           <span class="text-xs">{leaf.name}</span>
                         </a>

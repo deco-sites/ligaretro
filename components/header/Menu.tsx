@@ -6,10 +6,10 @@ export interface Props {
 }
 
 function MenuItem({ item }: { item: SiteNavigationElement }) {
-  if(item.children?.length === 0) {
-    return (<a class="flex items-center py-4 " href={item.url}>{item.name}</a>)
-  }  
-  
+  if (item.children?.length === 0) {
+    return <a class="flex items-center py-4 " href={item.url}>{item.name}</a>;
+  }
+
   return (
     <div class="collapse collapse-plus">
       <input type="checkbox" />
@@ -19,7 +19,9 @@ function MenuItem({ item }: { item: SiteNavigationElement }) {
           <li class="pb-2">
             <a class="underline text-sm" href={item.url}>Ver todos</a>
           </li>
-          {item.children?.filter(n => n.additionalType !== 'show_all').map((node) => (
+          {item.children?.filter((n) => n.additionalType !== "show_all").map((
+            node,
+          ) => (
             <li>
               <MenuItem item={node} />
             </li>
