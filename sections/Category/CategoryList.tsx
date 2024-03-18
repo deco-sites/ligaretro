@@ -63,7 +63,7 @@ function CategoryList(props: Props) {
       <h3 class="text-xl font-semibold mb-8 pl-6 sm:pl-0 ">
         {header.title}
       </h3>
-      <div class={`flex sm:flex-row flex-col px-2 gap-4 lg:gap-8 `}>
+      <div class={`flex sm:flex-row flex-col justify-between px-2 gap-4 lg:gap-8 `}>
         {list.map((
           { tag, label, description, href, image, buttonText },
         ) => (
