@@ -30,7 +30,7 @@ export const loadVtexIdScripts = (callback: () => void) => {
     `
           /*LOGIN ESTILIZADO:*/
                 .vtexIdUI * {
-                  font-family: "Nunito Sans" !important; }
+                  font-family: "Montserrat" !important; }
                 
                 .vtexIdUI-show-app {
                   -webkit-box-shadow: none !important;
