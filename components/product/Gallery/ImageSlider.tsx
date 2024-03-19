@@ -40,8 +40,6 @@ export default function GallerySlider(props: Props) {
     p.value === "Bonés, Boinas e Gorros"
   );
 
-  console.log({ isHat });
-
   const aspectRatio = `${width} / ${isHat ? width : height}`;
 
   // removing measure table from images
