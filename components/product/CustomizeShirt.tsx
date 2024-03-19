@@ -209,10 +209,17 @@ function CustomizeModal({ productName, skuID }: Props) {
                 </span>
               )}
               <Image
+                class="hidden sm:block"
                 src="https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/6c99ea67-c0b0-4f65-8d18-bcb35b9df96c___f2e2f2a19f3d23e2dedd24c3618bbbbf.png"
                 alt="shirt template"
                 width={335}
                 height={400}
+              />
+              <Image
+                class="sm:hidden"
+                src="https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/6c99ea67-c0b0-4f65-8d18-bcb35b9df96c___f2e2f2a19f3d23e2dedd24c3618bbbbf.png"
+                alt="shirt template"
+                width={230}
               />
             </div>
             <div class="flex flex-col justify-between">
@@ -221,12 +228,12 @@ function CustomizeModal({ productName, skuID }: Props) {
               </span>
               <div class="flex flex-col mb-5 lg:mb-0">
                 <span class="font-bold">{productName}</span>
-                <span class="text-xs">SKU: {skuID}</span>
+                <span class="hidden sm:block text-xs">SKU: {skuID}</span>
               </div>
-              <div class="flex flex-col gap-5 lg:gap-10">
+              <div class="flex flex-col gap-2 sm:gap-5 lg:gap-10">
                 {productNameAttachment.value &&
                   productNameAttachment.value.name !== "" && (
-                  <div class="flex flex-col gap-4">
+                  <div class="flex flex-col gap-1 sm:gap-4">
                     <span class="text-xs">
                       Adicione um nome (R${" "}
                       {(productNameAttachment.value.price / 100).toFixed(2)})
@@ -254,7 +261,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                 )}
                 {productNumberAttachment.value &&
                   productNumberAttachment.value.name !== "" && (
-                  <div class="flex flex-col gap-4">
+                  <div class="flex flex-col gap-1 sm:gap-4">
                     <span class="text-xs">
                       Adicione um número (R${" "}
                       {(productNumberAttachment.value.price / 100).toFixed(2)})
