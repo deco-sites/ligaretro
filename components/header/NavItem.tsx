@@ -31,7 +31,7 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
                     node.children!.length > 9 ? "grow-[0.1]" : ""
                   } p-6`}
                 >
-                  <a class="hover:underline" href={node.url}>
+                  <a class="hover:underline font-bold" href={node.url}>
                     <span>{node.name}</span>
                   </a>
 

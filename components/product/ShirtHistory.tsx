@@ -11,7 +11,7 @@ export interface History {
     image: ImageWidget;
     alt: string;
   };
-  videoUrl: string;
+  videoUrl?: string;
   /**
    * @title História da Camisa
    * @format html
