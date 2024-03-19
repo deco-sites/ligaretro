@@ -165,13 +165,14 @@ function CustomizeModal({ productName, skuID }: Props) {
       loading="lazy"
       open={displayCustomizePopup.value}
       onClose={() => displayCustomizePopup.value = false}
+      class="flex justify-center"
     >
       {(productNameAttachment.value &&
           productNameAttachment.value.name !== "") ||
           (productNumberAttachment.value &&
             productNumberAttachment.value.name !== "")
         ? (
-          <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg">
+          <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg m-auto left-1/2 transform -translate-x-1/2">
             <style>
               {`
               @font-face {
@@ -209,14 +210,14 @@ function CustomizeModal({ productName, skuID }: Props) {
                 </span>
               )}
               <Image
-                class="hidden sm:block"
+                class="hidden sm:block m-auto"
                 src="https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/6c99ea67-c0b0-4f65-8d18-bcb35b9df96c___f2e2f2a19f3d23e2dedd24c3618bbbbf.png"
                 alt="shirt template"
                 width={335}
                 height={400}
               />
               <Image
-                class="sm:hidden"
+                class="sm:hidden m-auto"
                 src="https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/6c99ea67-c0b0-4f65-8d18-bcb35b9df96c___f2e2f2a19f3d23e2dedd24c3618bbbbf.png"
                 alt="shirt template"
                 width={230}
