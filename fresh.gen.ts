@@ -20,11 +20,13 @@ import * as $Header_Cart_vtex from "./islands/Header/Cart/vtex.tsx";
 import * as $Header_Cart_wake from "./islands/Header/Cart/wake.tsx";
 import * as $Header_Drawers from "./islands/Header/Drawers.tsx";
 import * as $Header_Searchbar from "./islands/Header/Searchbar.tsx";
+import * as $LogOut from "./islands/LogOut.tsx";
 import * as $LoginToReview from "./islands/LoginToReview.tsx";
 import * as $NewReviewForm from "./islands/NewReviewForm.tsx";
 import * as $Newsletter from "./islands/Newsletter.tsx";
 import * as $OutOfStock from "./islands/OutOfStock.tsx";
 import * as $PDPShareButtons from "./islands/PDPShareButtons.tsx";
+import * as $PlanSelection from "./islands/PlanSelection.tsx";
 import * as $PriceFilter from "./islands/PriceFilter.tsx";
 import * as $ProductCard from "./islands/ProductCard.tsx";
 import * as $ProductImageZoom from "./islands/ProductImageZoom.tsx";
@@ -34,6 +36,7 @@ import * as $ShirtBannerVideo from "./islands/ShirtBannerVideo.tsx";
 import * as $SizeTableButton from "./islands/SizeTableButton.tsx";
 import * as $SliderJS from "./islands/SliderJS.tsx";
 import * as $TabbedContent from "./islands/TabbedContent.tsx";
+import * as $User from "./islands/User.tsx";
 import * as $WishlistButton from "./islands/WishlistButton.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -59,11 +62,13 @@ const manifest = {
     "./islands/Header/Cart/wake.tsx": $Header_Cart_wake,
     "./islands/Header/Drawers.tsx": $Header_Drawers,
     "./islands/Header/Searchbar.tsx": $Header_Searchbar,
+    "./islands/LogOut.tsx": $LogOut,
     "./islands/LoginToReview.tsx": $LoginToReview,
     "./islands/NewReviewForm.tsx": $NewReviewForm,
     "./islands/Newsletter.tsx": $Newsletter,
     "./islands/OutOfStock.tsx": $OutOfStock,
     "./islands/PDPShareButtons.tsx": $PDPShareButtons,
+    "./islands/PlanSelection.tsx": $PlanSelection,
     "./islands/PriceFilter.tsx": $PriceFilter,
     "./islands/ProductCard.tsx": $ProductCard,
     "./islands/ProductImageZoom.tsx": $ProductImageZoom,
@@ -73,6 +78,7 @@ const manifest = {
     "./islands/SizeTableButton.tsx": $SizeTableButton,
     "./islands/SliderJS.tsx": $SliderJS,
     "./islands/TabbedContent.tsx": $TabbedContent,
+    "./islands/User.tsx": $User,
     "./islands/WishlistButton.tsx": $WishlistButton,
   },
   baseUrl: import.meta.url,

@@ -10,6 +10,8 @@ import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalytic
 import Image from "apps/website/components/Image.tsx";
 import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
 import { useSignal } from "@preact/signals";
+import Button from "$store/components/ui/Button.tsx";
+import { AvatarSize } from "$store/components/ui/AvatarSquare.tsx";
 
 export interface Layout {
   basics?: {
@@ -54,6 +56,7 @@ export interface Props {
   platform?: Platform;
   darkBackground?: boolean;
   hideHoverCTA?: boolean;
+  avatarSize?: AvatarSize;
 }
 
 const relative = (url: string) => {
@@ -75,6 +78,7 @@ function ProductCard(
     index,
     darkBackground,
     hideHoverCTA,
+    avatarSize,
   }: Props,
 ) {
   const {
@@ -94,8 +98,7 @@ function ProductCard(
   const description = product.description || isVariantOf?.description;
   const [front, back] = images ?? [];
   const { listPrice, price, installments, seller = "1" } = useOffer(offers);
-  const possibilities = useVariantPossibilities(hasVariant, product);
-  const variants = Object.entries(Object.values(possibilities)[0] ?? {});
+  const possibilities = useVariantPossibilities(hasVariant);
   const categoryArray = additionalProperty?.filter((p) => p.name === "category")
     .map((obj) => obj.value);
   const category = categoryArray?.join(" | ");
@@ -109,26 +112,6 @@ function ProductCard(
     !l?.basics?.contentAlignment || l?.basics?.contentAlignment == "Left"
       ? "left"
       : "center";
-  const skuSelector = variants.map(([value, link]) => (
-    <li>
-      <div
-        class="cursor-pointer"
-        onClick={() => {
-          skuSelected.value = getSkuByUrl(link!);
-        }}
-      >
-        <AvatarSquare
-          variant={getSkuByUrl(link!) === skuSelected.value
-            ? "active"
-            : link
-            ? "default"
-            : "disabled"}
-          content={value}
-          size="tall"
-        />
-      </div>
-    </li>
-  ));
 
   const eventItem = mapProductToAnalyticsItem({
     product,
@@ -171,6 +154,31 @@ function ProductCard(
     </div>
   );
 
+  const skuSelector = possibilities["Tamanho"]
+    ? Object.entries(possibilities["Tamanho"])?.map((
+      [value, possibility],
+    ) => (
+      <li>
+        <button
+          onClick={() => {
+            skuSelected.value = getSkuByUrl(possibility?.url!);
+          }}
+        >
+          <AvatarSquare
+            size={avatarSize ? avatarSize : "small"}
+            content={value}
+            variant={getSkuByUrl(possibility?.url!) ===
+                skuSelected.value
+              ? "active"
+              : possibility?.availability === "https://schema.org/OutOfStock"
+              ? "disabled"
+              : "default"}
+          />
+        </button>
+      </li>
+    ))
+    : null;
+
   const discount = price && listPrice ? listPrice - price : 0;
   const percentageDiscount = listPrice
     ? Math.round((discount / listPrice) * 100)
@@ -179,7 +187,7 @@ function ProductCard(
   return (
     <div
       id={id}
-      class={`card card-compact group w-full ${
+      class={`card group w-full  ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:bg-white" : ""}
         ${
@@ -208,12 +216,12 @@ function ProductCard(
         }}
       />
       <figure
-        class="relative overflow-hidden"
+        class="flex relative overflow-hidden"
         style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
       >
         {/* Wishlist button */}
         <div
-          class={`absolute top-2 z-10
+          class={`absolute top-2 z-10 hidden lg:block
           ${
             l?.elementsPositions?.favoriteIcon === "Top left"
               ? "left-2"
@@ -274,8 +282,8 @@ function ProductCard(
           class={`
           absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2 ${
             l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
-              ? "transition-opacity lg:opacity-0 lg:group-hover:opacity-100"
-              : "lg:hidden flex"
+              ? "transition-opacity opacity-0 lg:group-hover:opacity-100"
+              : "hidden lg:flex"
           }`}
         >
           {/* SKU Selector */}
@@ -313,7 +321,7 @@ function ProductCard(
             <div class="flex flex-col gap-0 items-start">
               {l?.hide?.productName ? "" : (
                 <h2
-                  class={`text-base lg:text-base font-semibold h-12 ${
+                  class={`text-base lg:text-base font-semibold h-16 ${
                     darkBackground
                       ? "text-white lg:group-hover:text-[#252525]"
                       : "text-base-content"
@@ -326,7 +334,7 @@ function ProductCard(
               <span class="mt-4 text-sm text-[#bcbcbc]">{category}</span>
             </div>
           )}
-        <div class="flex h-12 justify-between items-center">
+        <div class="flex h-14 justify-between items-center">
           {l?.hide?.allPrices ? "" : (
             <div class="flex flex-col gap-2">
               <div
@@ -353,25 +361,23 @@ function ProductCard(
                   {formattedPrice}
                 </div>
               </div>
-              {l?.hide?.installments || installments === "" || !installments
-                ? ""
-                : (
-                  <div
-                    class={`${
-                      darkBackground
-                        ? "text-white lg:group-hover:text-[#252525]"
-                        : "text-[#252525]"
-                    } text-[11px] truncate`}
-                  >
-                    até {installments}
-                  </div>
-                )}
+              <div
+                class={`${
+                  darkBackground
+                    ? "text-white lg:group-hover:text-[#252525]"
+                    : "text-[#252525]"
+                } text-[11px] truncate h-6`}
+              >
+                {l?.hide?.installments || installments === "" || !installments
+                  ? ""
+                  : <span>{installments}</span>}
+              </div>
             </div>
           )}
           <div
             class={`hidden ${
               hideHoverCTA ? "" : "group-hover:lg:flex"
-            } items-end py-3`}
+            } items-end`}
           >
             {cta}
           </div>
@@ -399,7 +405,13 @@ function ProductCard(
                 l?.onMouseOver?.showCta ? "lg:hidden" : ""
               }`}
             >
-              {cta}
+              <a href={url && relative(url)} class="w-full">
+                <Button
+                  class={`rounded btn-primary !bg-[#D56B09] !border-none text-white font-normal w-full`}
+                >
+                  Comprar
+                </Button>
+              </a>
             </div>
           )
           : ""}

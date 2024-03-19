@@ -2,9 +2,8 @@ import Header from "$store/components/ui/SectionHeader.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "$store/sdk/useId.ts";
-import Image from "apps/website/components/Image.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-
+import { Picture, Source } from "apps/website/components/Picture.tsx";
 export interface Category {
   tag?: string;
   label: string;
@@ -27,27 +26,6 @@ export interface Props {
       textAlignment?: "center" | "left";
     };
   };
-}
-
-function CardText(
-  { tag, label, description, alignment }: {
-    tag?: string;
-    label?: string;
-    description?: string;
-    alignment?: "center" | "left";
-  },
-) {
-  return (
-    <div
-      class={`flex flex-col ${
-        alignment === "center" ? "text-center" : "text-left"
-      }`}
-    >
-      {tag && <div class="text-sm text-primary">{tag}</div>}
-      {label && <h3 class="text-lg text-base-content">{label}</h3>}
-      {description && <div class="text-sm text-neutral">{description}</div>}
-    </div>
-  );
 }
 
 function CategoryList(props: Props) {
@@ -82,53 +60,55 @@ function CategoryList(props: Props) {
       id={id}
       class="container py-8 flex flex-col gap-8 lg:gap-0 text-base-content  lg:py-10"
     >
-      {
-        /* <Header
-        title={header.title}
-        description={header.description || ""}
-        alignment={layout.headerAlignment || "center"}
-      /> */
-      }
       <h3 class="text-xl font-semibold mb-8 pl-6 sm:pl-0 ">
         {header.title}
       </h3>
-      <Slider class="carousel carousel-start gap-4 lg:gap-8 row-start-2 row-end-5">
+      <div
+        class={`flex sm:flex-row flex-col justify-between px-2 gap-4 lg:gap-8 `}
+      >
         {list.map((
           { tag, label, description, href, image, buttonText },
-          index,
         ) => (
-          <Slider.Item
-            index={index}
-            class="flex gap-4 carousel-item w-[260px] sm:w-1/3 first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
-          >
+          <div class="flex gap-4">
             <a
               href={href}
-              class="flex flex-col gap-4 lg:w-[450px] w-80 lg:h-auto"
+              class="flex flex-col gap-4 max-w-[450px] lg:h-auto"
             >
               {image &&
                 (
-                  <figure class="relative">
+                  <div class="relative">
                     <div class="absolute bg-white z-10 top-3/4 py-3 px-8 left-0 right-0 w-fit mx-auto rounded-full">
                       <h3 class="capitalize text-center text-xs sm:text-base font-semibold">
                         {label}
                       </h3>
                     </div>
-                    <Image
-                      class="card w-full"
-                      src={image}
-                      alt={description || label || tag}
-                      width={232}
-                      height={284}
-                      loading="lazy"
-                    />
-                  </figure>
+                    <Picture preload={false} class="card w-full">
+                      <Source
+                        src={image}
+                        width={360}
+                        height={159}
+                        media="(max-width: 767px)"
+                      />
+                      <Source
+                        src={image}
+                        width={450}
+                        height={550}
+                        media="(min-width: 767px)"
+                      />
+                      <img
+                        class="w-full rounded-2xl"
+                        src={image}
+                        alt={image}
+                      />
+                    </Picture>
+                  </div>
                 )}
             </a>
             {buttonText &&
               <a href={href} class="btn">{buttonText}</a>}
-          </Slider.Item>
+          </div>
         ))}
-      </Slider>
+      </div>
 
       <SliderJS rootId={id} />
     </div>

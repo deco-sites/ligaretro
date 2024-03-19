@@ -6,16 +6,22 @@ export interface Props {
 }
 
 function MenuItem({ item }: { item: SiteNavigationElement }) {
+  if (item.children?.length === 0) {
+    return <a class="flex items-center py-4 " href={item.url}>{item.name}</a>;
+  }
+
   return (
     <div class="collapse collapse-plus">
       <input type="checkbox" />
       <div class="collapse-title">{item.name}</div>
       <div class="collapse-content">
         <ul>
-          <li>
+          <li class="pb-2">
             <a class="underline text-sm" href={item.url}>Ver todos</a>
           </li>
-          {item.children?.map((node) => (
+          {item.children?.filter((n) => n.additionalType !== "show_all").map((
+            node,
+          ) => (
             <li>
               <MenuItem item={node} />
             </li>
@@ -50,7 +56,7 @@ function Menu({ items }: Props) {
         <li>
           <a
             class="flex items-center gap-4 px-4 py-2"
-            href="https://www.deco.cx"
+            href="/lojas"
           >
             <Icon id="MapPin" size={24} strokeWidth={2} />
             <span class="text-sm">Nossas lojas</span>
@@ -59,7 +65,7 @@ function Menu({ items }: Props) {
         <li>
           <a
             class="flex items-center gap-4 px-4 py-2"
-            href="https://www.deco.cx"
+            href="/atendimento"
           >
             <Icon id="Phone" size={24} strokeWidth={2} />
             <span class="text-sm">Fale conosco</span>
@@ -68,7 +74,7 @@ function Menu({ items }: Props) {
         <li>
           <a
             class="flex items-center gap-4 px-4 py-2"
-            href="https://www.deco.cx"
+            href="/account#/profile"
           >
             <Icon id="User" size={24} strokeWidth={2} />
             <span class="text-sm">Minha conta</span>

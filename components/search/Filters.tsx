@@ -53,13 +53,45 @@ function FilterValues(
     return 0;
   };
 
+  const sortSizeOrder = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "8",
+    "10",
+    "12",
+    "14",
+    "16",
+    "PPP",
+    "PP",
+    "P",
+    "M",
+    "G",
+    "GG",
+    "GGG",
+    "4G",
+    "UNICO",
+  ];
+
+  const sortSize = (a: FilterToggleValue, b: FilterToggleValue) => {
+    const indexA = sortSizeOrder.indexOf(a.label);
+    const indexB = sortSizeOrder.indexOf(b.label);
+
+    if (indexA < indexB) return -1;
+    if (indexA > indexB) return 1;
+    return 0;
+  };
+
   if (key === "price") {
     return <PriceFilter values={values} darkBackground={darkBackground} />;
   }
 
   return (
     <ul class={`flex flex-wrap gap-2 ${flexDirection}`}>
-      {values.sort(sortLabel).map((item) => {
+      {values.sort(key === "tamanho" ? sortSize : sortLabel).map((item) => {
         const { url, selected, value, quantity } = item;
         if (key === "cor") {
           return (
@@ -105,15 +137,16 @@ function FilterValues(
 function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
   const noFilters = ["category-1", "category-2", "brand", "cores-geral---sku"];
   const firstFilters = filters.filter((f) =>
-    ["times", "price"].includes(f.key)
+    ["times", "price", "selecao"].includes(f.key)
   );
   const lastFilters = filters.filter((f) =>
-    !["times", "price"].includes(f.key)
+    !["times", "price", "selecao"].includes(f.key)
   );
 
   const filteredFilters: Filter[] = [
     firstFilters.find((f) => f.key === "price") || {} as Filter,
     firstFilters.find((f) => f.key === "times") || {} as Filter,
+    firstFilters.find((f) => f.key === "selecao") || {} as Filter,
     ...lastFilters,
   ];
 

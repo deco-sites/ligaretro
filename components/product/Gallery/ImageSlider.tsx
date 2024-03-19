@@ -40,30 +40,30 @@ export default function GallerySlider(props: Props) {
     p.value === "Bonés, Boinas e Gorros"
   );
 
-  const aspectRatio = `${width} / ${isHat ? width : height}`;
+  const isKids =
+    product.isVariantOf?.additionalProperty.find((p) => p.name === "Infantil")
+      ?.value === "Sim";
+
+  const isSquare = isHat || isKids;
+
+  const aspectRatio = `${width} / ${isSquare ? width : height}`;
 
   // removing measure table from images
-  const imagesDisplay = images.filter((i) =>
-    i.alternateName !== "tabelaMedida"
-  );
+  const imagesDisplay = images.filter((i) => i.name !== "tabelaMedida");
 
   return (
     <>
       <div class="hidden md:grid md:grid-cols-2 md:grid-flow-row gap-4">
         {imagesDisplay.map((img, index) =>
           index <= 3 && (
-            <div
-              class="hidden lg:block lg:col-span-1 max-w-[350px]"
-              style={{ "box-shadow": "2px 2px 8px #cbcbcb" }}
-            >
+            <div class="hidden lg:block lg:col-span-1 rounded-lg border border-gray-200">
               <Image
-                class="w-full"
-                sizes="(max-width: 640px) 100vw, 40vw"
-                style={{ aspectRatio: `${isHat ? "548/548" : "467/548"}` }}
+                class="w-full h-full object-cover rounded-lg"
+                style={{ aspectRatio }}
                 src={img.url!}
                 alt={img.alternateName}
                 width={width}
-                height={height}
+                height={isSquare ? width : height}
                 // Preload LCP image for better web vitals
                 preload={index === 0}
                 loading={index === 0 ? "eager" : "lazy"}
@@ -83,12 +83,11 @@ export default function GallerySlider(props: Props) {
               >
                 <Image
                   class="w-full"
-                  sizes="(max-width: 640px) 100vw, 40vw"
                   style={{ aspectRatio }}
                   src={img.url!}
                   alt={img.alternateName}
                   width={width}
-                  height={height}
+                  height={isSquare ? width : height}
                   // Preload LCP image for better web vitals
                   preload={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
@@ -129,7 +128,7 @@ export default function GallerySlider(props: Props) {
                   style={{ aspectRatio }}
                   class="group-disabled:border-base-300 border rounded "
                   width={63}
-                  height={87.5}
+                  height={isSquare ? 63 : 87.5}
                   src={img.url!}
                   alt={img.alternateName}
                 />
@@ -142,4 +141,10 @@ export default function GallerySlider(props: Props) {
       </div>
     </>
   );
+}
+export function loader({ page, layout }: Props) {
+  const product = {
+    image: page?.product?.image?.filter((i) => i.name !== "tabelaMedida"),
+  };
+  return { page: { product }, layout };
 }

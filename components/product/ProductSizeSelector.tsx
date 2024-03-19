@@ -14,7 +14,7 @@ interface Props {
 function VariantSelector({ product, sizeTableImg }: Props) {
   const { url, isVariantOf } = product;
   const hasVariant = isVariantOf?.hasVariant ?? [];
-  const possibilities = useVariantPossibilities(hasVariant, product);
+  const possibilities = useVariantPossibilities(hasVariant);
 
   return (
     <ul class="flex flex-col gap-4">
@@ -24,17 +24,20 @@ function VariantSelector({ product, sizeTableImg }: Props) {
             <span class="text-lg font-semibold text-[#252525]">Tamanho</span>
             <SizeTableButton img={sizeTableImg} />
             <ul class="flex flex-row gap-2 flex-wrap">
-              {Object.entries(possibilities["Tamanho"]).map(([value, link]) => (
+              {Object.entries(possibilities["Tamanho"]).map((
+                [value, possibility],
+              ) => (
                 <li>
-                  <button f-partial={link} f-client-nav>
+                  <button f-partial={possibility?.url} f-client-nav>
                     <AvatarSquare
                       size="large"
                       content={value}
-                      variant={link === url
+                      variant={possibility?.url === url
                         ? "active"
-                        : link
-                        ? "default"
-                        : "disabled"}
+                        : possibility?.availability ===
+                            "https://schema.org/OutOfStock"
+                        ? "disabled"
+                        : "default"}
                     />
                   </button>
                 </li>

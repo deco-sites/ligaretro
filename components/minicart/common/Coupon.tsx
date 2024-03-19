@@ -37,7 +37,7 @@ function Coupon({ coupon, onAddCoupon }: Props) {
           >
             <input
               name="coupon"
-              class="input join-item"
+              class="input join-item focus:outline-none focus:ring-0 border border-gray-200"
               type="text"
               value={coupon ?? ""}
               placeholder={"Cupom"}

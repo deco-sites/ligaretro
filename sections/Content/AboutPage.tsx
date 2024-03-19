@@ -14,7 +14,9 @@ export interface Props {
 export default function AboutPage({ title, banner, description }: Props) {
   return (
     <div class="container py-8 my-16 flex flex-col items-center justify-center gap-14">
-      <h3 class="font-bold text-7xl text-center max-w-[900px]">{title}</h3>
+      <h3 class="font-bold text-2xl sm:text-4xl lg:text-7xl text-center max-w-[900px]">
+        {title}
+      </h3>
       <Image
         width={1439}
         height={768}

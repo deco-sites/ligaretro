@@ -2,6 +2,11 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
+import * as $$$$$$$$$0 from "./actions/createReview.ts";
+import * as $$$$$$$$$1 from "./actions/getProductAttachments.ts";
+import * as $$$$$$$$$2 from "./actions/sendEmail.ts";
+import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
+import * as $$$$$$$$$$$1 from "./apps/site.ts";
 import * as $$$0 from "./loaders/Layouts/ProductCard.tsx";
 import * as $$$1 from "./loaders/List/Sections.tsx";
 import * as $$$2 from "./loaders/Reviews/reviewsandratings.ts";
@@ -13,8 +18,8 @@ import * as $$$$$$4 from "./sections/Content/Benefits.tsx";
 import * as $$$$$$5 from "./sections/Content/BenefitsSection.tsx";
 import * as $$$$$$6 from "./sections/Content/ExchangesAndReturns.tsx";
 import * as $$$$$$7 from "./sections/Content/Faq.tsx";
-import * as $$$$$$8 from "./sections/Content/Logos.tsx";
-import * as $$$$$$9 from "./sections/Content/LogoTitleRoyalClub.tsx";
+import * as $$$$$$9 from "./sections/Content/Logos.tsx";
+import * as $$$$$$8 from "./sections/Content/LogoTitleRoyalClub.tsx";
 import * as $$$$$$10 from "./sections/Content/PlanSelection.tsx";
 import * as $$$$$$11 from "./sections/Content/RichText.tsx";
 import * as $$$$$$12 from "./sections/Content/Support.tsx";
@@ -55,11 +60,6 @@ import * as $$$$$$46 from "./sections/Product/Wishlist.tsx";
 import * as $$$$$$47 from "./sections/Social/InstagramPosts.tsx";
 import * as $$$$$$48 from "./sections/Social/WhatsApp.tsx";
 import * as $$$$$$49 from "./sections/Theme/Theme.tsx";
-import * as $$$$$$$$$0 from "./actions/createReview.ts";
-import * as $$$$$$$$$1 from "./actions/getProductAttachments.ts";
-import * as $$$$$$$$$2 from "./actions/sendEmail.ts";
-import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
-import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
 const manifest = {
   "loaders": {
@@ -76,8 +76,8 @@ const manifest = {
     "deco-sites/ligaretro/sections/Content/BenefitsSection.tsx": $$$$$$5,
     "deco-sites/ligaretro/sections/Content/ExchangesAndReturns.tsx": $$$$$$6,
     "deco-sites/ligaretro/sections/Content/Faq.tsx": $$$$$$7,
-    "deco-sites/ligaretro/sections/Content/Logos.tsx": $$$$$$8,
-    "deco-sites/ligaretro/sections/Content/LogoTitleRoyalClub.tsx": $$$$$$9,
+    "deco-sites/ligaretro/sections/Content/Logos.tsx": $$$$$$9,
+    "deco-sites/ligaretro/sections/Content/LogoTitleRoyalClub.tsx": $$$$$$8,
     "deco-sites/ligaretro/sections/Content/PlanSelection.tsx": $$$$$$10,
     "deco-sites/ligaretro/sections/Content/RichText.tsx": $$$$$$11,
     "deco-sites/ligaretro/sections/Content/Support.tsx": $$$$$$12,

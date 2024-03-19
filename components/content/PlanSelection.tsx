@@ -1,4 +1,6 @@
 import Icon from "$store/components/ui/Icon.tsx";
+import AddToCartButtonVTEX from "$store/islands/AddToCartButton/vtex.tsx";
+import { useState } from "preact/hooks";
 
 interface BenefitText {
   /** @format html */
@@ -10,6 +12,8 @@ interface Plan {
   price: number;
   recurrencyPeriod: string;
   benefits: BenefitText[];
+  skuID: string;
+  seller: string;
   bestOption?: boolean;
 }
 
@@ -60,9 +64,12 @@ function PlanItem({ p }: { p: Plan }) {
             );
           })}
           <div class="mt-5">
-            <button class="btn bg-white text-[#292929] rounded-full w-full">
-              Assinar
-            </button>
+            <AddToCartButtonVTEX
+              eventParams={{ items: [] }}
+              productID={p.skuID}
+              seller={p.seller}
+              styles="btn bg-white !text-[#292929] !font-semibold rounded-full w-full"
+            />
           </div>
         </div>
       </div>
@@ -85,6 +92,8 @@ function PlanList({ list }: { list: Plan[] }) {
 export default function PlanSelection(
   { title, oneShirtPlans, twoShirtsPlans, termsConditionsLink }: Props,
 ) {
+  const [tabSelected, setTabSelected] = useState<number>(1);
+
   return (
     <div class="bg-[#292929] py-20">
       <div class="container flex flex-col gap-[80px]">
@@ -96,14 +105,31 @@ export default function PlanSelection(
           </span>
         </div>
         <div class="flex flex-col items-center sm:flex-row gap-5 justify-center">
-          <div class="w-fit px-5 py-2 rounded-full bg-[#BFB78D]">
+          <div
+            class={`w-fit px-5 py-2 rounded-full ${
+              tabSelected === 1
+                ? "bg-[#BFB78D] text-[#252525]"
+                : "bg-[#424242] text-white"
+            } cursor-pointer`}
+            onClick={() => setTabSelected(1)}
+          >
             <span class="font-semibold text-lg">01 camisa por mês</span>
           </div>
-          <div class="w-fit px-5 py-2 rounded-full bg-[#BFB78D]">
+          <div
+            class={`w-fit px-5 py-2 rounded-full ${
+              tabSelected === 2
+                ? "bg-[#BFB78D] text-[#252525]"
+                : "!bg-[#3B3B3B] text-white"
+            } cursor-pointer`}
+            onClick={() => setTabSelected(2)}
+          >
             <span class="font-semibold text-lg">02 camisa por mês</span>
           </div>
         </div>
-        <PlanList list={oneShirtPlans} />
+
+        {tabSelected === 1 && <PlanList list={oneShirtPlans} />}
+
+        {tabSelected === 2 && <PlanList list={twoShirtsPlans} />}
         <div class="flex justify-center">
           <span class="text-white">
             <a

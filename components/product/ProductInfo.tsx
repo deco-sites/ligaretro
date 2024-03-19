@@ -12,7 +12,13 @@ import { formatPrice } from "$store/sdk/format.ts";
 import { useId } from "$store/sdk/useId.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
-import { ProductDetailsPage } from "apps/commerce/types.ts";
+import {
+  BreadcrumbList,
+  Product,
+  ProductDetailsPage,
+  ProductLeaf,
+  UnitPriceSpecification,
+} from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import ProductSelector from "./ProductSizeSelector.tsx";
 import RatingStars from "$store/components/ui/RatingStars.tsx";
@@ -49,8 +55,103 @@ export async function loader({ page, layout }: Props) {
     debug = { ...debug, reviewsError: e };
     console.log({ e });
   }
+  const bestInstallment = (
+    acc: UnitPriceSpecification | null,
+    curr: UnitPriceSpecification,
+  ) => {
+    if (curr.priceComponentType !== "https://schema.org/Installment") {
+      return acc;
+    }
 
-  return ({ page, layout, rating, debug });
+    if (!acc) {
+      return curr;
+    }
+
+    if (acc.price > curr.price) {
+      return curr;
+    }
+
+    if (acc.price < curr.price) {
+      return acc;
+    }
+
+    if (
+      acc.billingDuration && curr.billingDuration &&
+      acc.billingDuration < curr.billingDuration
+    ) {
+      return curr;
+    }
+
+    return acc;
+  };
+
+  const installment = (specs: UnitPriceSpecification[]) =>
+    specs.reduce(bestInstallment, null);
+
+  const isVariantOfMap = (isVariantOf: Product["isVariantOf"]) => {
+    const hasVariant = isVariantOf?.hasVariant?.map((variant: ProductLeaf) => {
+      const { offers, url, productID, additionalProperty } = variant;
+      return {
+        offers: {
+          ...offers,
+          offers: offers?.offers.filter((offer) => offer.seller === "1").map(
+            (offer) => {
+              const best = installment(offer.priceSpecification);
+              const specs = offer.priceSpecification.filter((spec) =>
+                ["https://schema.org/ListPrice"].includes(spec.priceType)
+              );
+
+              if (best) {
+                specs.push(best);
+              }
+              return ({
+                seller: offer.seller,
+                priceSpecification: specs.map((spec) => {
+                  return {
+                    ...spec,
+                    price: spec.price,
+                    priceComponentType: spec.priceComponentType,
+                    priceType: spec.priceType,
+                    billingIncrement: spec.billingIncrement,
+                    billingDuration: spec.billingDuration,
+                  };
+                }),
+                price: offer.price,
+                availability: offer.availability,
+              });
+            },
+          ),
+        },
+        url,
+        productID,
+        additionalProperty: additionalProperty?.filter((
+          property,
+        ) => (property.valueReference === "SPECIFICATION" &&
+          property.name === "Tamanho")
+        ),
+      };
+    });
+    return {
+      productGroupID: isVariantOf?.productGroupID,
+      name: isVariantOf?.name,
+      hasVariant,
+    };
+  };
+
+  const product = {
+    description: page?.product?.description,
+    productID: page?.product?.productID,
+    offers: page?.product?.offers,
+    name: page?.product?.name,
+    gtin: page?.product?.gtin,
+    image: page?.product?.image?.filter((i) => i.name === "tabelaMedida"),
+    sku: page?.product?.sku,
+    additionalProperty: page?.product?.additionalProperty,
+    isVariantOf: isVariantOfMap(page?.product?.isVariantOf),
+    url: page?.product?.url,
+  } as Product;
+
+  return ({ page: { ...page, product }, layout, rating, debug });
 }
 
 function ProductInfo(
@@ -92,8 +193,8 @@ function ProductInfo(
   const breadcrumb = {
     ...breadcrumbList,
     itemListElement: breadcrumbList?.itemListElement.slice(0, -1),
-    numberOfItems: breadcrumbList.numberOfItems - 1,
-  };
+    numberOfItems: breadcrumbList!.numberOfItems - 1,
+  } as BreadcrumbList;
 
   const eventItem = mapProductToAnalyticsItem({
     product,
@@ -102,16 +203,14 @@ function ProductInfo(
     listPrice,
   });
 
-  const measureTable =
-    product.image?.find((i) => i.alternateName === "tabelaMedida")
-      ? product.image?.find((i) => i.alternateName === "tabelaMedida")
-      : ({
-        url:
-          "https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/5b092411-5da9-448c-8ea3-40a5e55b7331___dbfde0d71b47ed07f56c8a4152b88b3a.jpeg",
-        alternateName: "Tabela de Medidas",
-      });
+  const measureTable = product.image?.find((i) => i.name === "tabelaMedida")
+    ? product.image?.find((i) => i.name === "tabelaMedida")
+    : ({
+      url:
+        "https://ligaretro.vtexassets.com/assets/vtex.file-manager-graphql/images/5b092411-5da9-448c-8ea3-40a5e55b7331___dbfde0d71b47ed07f56c8a4152b88b3a.jpeg",
+      alternateName: "Tabela de Medidas",
+    });
 
-  // console.log({isvariantofname: isVariantOf?.name, name})
   return (
     <div class="flex flex-col" style={{ maxWidth: "90vw" }} id={id}>
       {/* Share */}

@@ -93,7 +93,7 @@ function Searchbar({
         <input
           ref={searchInputRef}
           id="search-input"
-          class="input input-bordered join-item flex-grow"
+          class="input input-bordered join-item flex-grow focus:outline-none focus:ring-0"
           name={name}
           onInput={(e) => {
             const value = e.currentTarget.value;
@@ -165,6 +165,7 @@ function Searchbar({
                   class="carousel-item first:ml-4 last:mr-4 min-w-[200px] max-w-[200px]"
                 >
                   <ProductCard
+                    avatarSize="extraSmall"
                     product={product}
                     platform={platform}
                     index={index}
