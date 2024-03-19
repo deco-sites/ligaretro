@@ -165,13 +165,14 @@ function CustomizeModal({ productName, skuID }: Props) {
       loading="lazy"
       open={displayCustomizePopup.value}
       onClose={() => displayCustomizePopup.value = false}
+      class="flex justify-center"
     >
       {(productNameAttachment.value &&
           productNameAttachment.value.name !== "") ||
           (productNumberAttachment.value &&
             productNumberAttachment.value.name !== "")
         ? (
-          <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg m-auto">
+          <div class="absolute container flex flex-col lg:flex-row bg-white p-5 w-fit gap-6 rounded-lg m-auto left-1/2 transform -translate-x-1/2">
             <style>
               {`
               @font-face {
