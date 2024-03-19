@@ -242,7 +242,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                       <input
                         name="nameShirt"
                         id="nameShirt"
-                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
+                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-md sm:text-xs join-item rounded-l-lg w-full"
                         type="text"
                         value={shirtName}
                         maxLength={10}
@@ -270,7 +270,7 @@ function CustomizeModal({ productName, skuID }: Props) {
                       <input
                         name="numberShirt"
                         id="numberShirt"
-                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-xs join-item rounded-l-lg w-full"
+                        class="input focus:border-[#A1A1A1] focus:outline-none  bg-none border border-[#A1A1A1] border-r-0 text-md sm:text-xs join-item rounded-l-lg w-full"
                         type="number"
                         min={0}
                         max={99}
