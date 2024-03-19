@@ -205,42 +205,36 @@ function Result({
               layout={{ card: cardLayout, columns: layout?.columns }}
               darkBackground={style?.darkBackground}
             />
-          </div>
-        </div>
 
-        <div
-          class={`flex justify-center my-4 ${
-            style?.darkBackground && "text-white"
-          }`}
-        >
-          <div class="join">
-            <a
-              aria-label="previous page link"
-              rel="prev"
-              href={pageInfo.previousPage ?? "#"}
-              class={`${
-                pageInfo.previousPage === undefined
-                  ? ("btn btn-disabled ")
-                  : ("btn btn-ghost join-item")
+            <div
+              class={`flex justify-center my-4 ${
+                style?.darkBackground && "text-white"
               }`}
             >
-              <Icon id="ChevronLeft" size={24} strokeWidth={2} />
-            </a>
-            <span class="btn btn-ghost join-item">
-              Página {zeroIndexedOffsetPage + 1}
-            </span>
-            <a
-              aria-label="next page link"
-              rel="next"
-              href={pageInfo.nextPage ?? "#"}
-              class={`${
-                pageInfo.nextPage === undefined
-                  ? ("btn btn-disabled ")
-                  : ("btn btn-ghost join-item")
-              }`}
-            >
-              <Icon id="ChevronRight" size={24} strokeWidth={2} />
-            </a>
+              <div class="join">
+                <a
+                  aria-label="previous page link"
+                  rel="prev"
+                  href={pageInfo.previousPage ?? "#"}
+                  class="btn btn-ghost join-item"
+                  disabled={!pageInfo.previousPage}
+                >
+                  <Icon id="ChevronLeft" size={24} strokeWidth={2} />
+                </a>
+                <span class="btn btn-ghost join-item">
+                  Página {zeroIndexedOffsetPage + 1}
+                </span>
+                <a
+                  aria-label="next page link"
+                  rel="next"
+                  href={pageInfo.nextPage ?? "#"}
+                  class="btn btn-ghost join-item"
+                  disabled={!pageInfo.nextPage}
+                >
+                  <Icon id="ChevronRight" size={24} strokeWidth={2} />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
