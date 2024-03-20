@@ -9,9 +9,10 @@ import { useCart } from "apps/vtex/hooks/useCart.ts";
 export interface Props {
   productName: string;
   skuID: string;
+  text?: string;
 }
 
-function CustomizeModal({ productName, skuID }: Props) {
+function CustomizeModal({ productName, skuID, text }: Props) {
   const {
     displayCustomizePopup,
     productNameAttachment,
@@ -194,7 +195,9 @@ function CustomizeModal({ productName, skuID }: Props) {
             </style>
             <div class="p-10 bg-[#e7e7e7] rounded-lg relative">
               <span class="absolute left-1/2 transform -translate-x-1/2 bottom-[1%] text-xs w-full text-center">
-                Imagem Ilustrativa - Aplicação será no modelo escolhido
+                {text
+                  ? text
+                  : "Imagem Ilustrativa - Aplicação será no modelo escolhido"}
               </span>
               {shirtName !== "" && (
                 <span
