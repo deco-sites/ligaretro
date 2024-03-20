@@ -145,6 +145,16 @@ export default function GallerySlider(props: Props) {
 export function loader({ page, layout }: Props) {
   const product = {
     image: page?.product?.image?.filter((i) => i.name !== "tabelaMedida"),
+    additionalProperty:
+      page?.product?.additionalProperty?.filter((p) =>
+        p.name === "category" && p.value === "Bonés, Boinas e Gorros"
+      ).map((c) => ({ name: c.name, value: c.value })) ?? [],
+    isVariantOf: {
+      additionalProperty:
+        page?.product?.isVariantOf?.additionalProperty?.filter((p) =>
+          p.name === "Infantil"
+        ).map((c) => ({ name: c.name, value: c.value })) ?? [],
+    },
   };
   return { page: { product }, layout };
 }
