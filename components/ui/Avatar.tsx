@@ -70,20 +70,22 @@ const variants = {
 
 function Avatar({ content, variant = "default" }: Props) {
   return (
-    <div class="avatar placeholder text-xs">
-      <div
-        class={`rounded-full w-6 h-6 ${colors[content] ?? colors[variant]} ${
-          variants[variant]
-        }`}
-      >
-        <span class="hidden">{content}</span>
-        {content === "listrado"
-          ? <Icon id="Stripped" size={32} />
-          : (
-            <span class="uppercase">
-              {colors[content] ? "" : content.substring(0, 2)}
-            </span>
-          )}
+    <div class="tooltip" data-tip={content}>
+      <div class="avatar placeholder text-xs">
+        <div
+          class={`rounded-full w-6 h-6 ${colors[content] ?? colors[variant]} ${
+            variants[variant]
+          }`}
+        >
+          <span class="hidden">{content}</span>
+          {content === "listrado"
+            ? <Icon id="Stripped" size={32} />
+            : (
+              <span class="uppercase">
+                {colors[content] ? "" : content.substring(0, 2)}
+              </span>
+            )}
+        </div>
       </div>
     </div>
   );

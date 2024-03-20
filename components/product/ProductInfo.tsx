@@ -40,9 +40,10 @@ interface Props {
      */
     name?: "concat" | "productGroup" | "product";
   };
+  customizeShirtText?: string;
 }
 
-export async function loader({ page, layout }: Props) {
+export async function loader({ page, layout, customizeShirtText }: Props) {
   let rating = { average: 4, totalCount: 3 } as AverageResponse;
   let debug = {};
 
@@ -151,11 +152,19 @@ export async function loader({ page, layout }: Props) {
     url: page?.product?.url,
   } as Product;
 
-  return ({ page: { ...page, product }, layout, rating, debug });
+  return ({
+    page: { ...page, product },
+    layout,
+    rating,
+    debug,
+    customizeShirtText,
+  });
 }
 
 function ProductInfo(
-  { page, layout, rating, debug }: SectionProps<typeof loader>,
+  { page, layout, rating, debug, customizeShirtText }: SectionProps<
+    typeof loader
+  >,
 ) {
   const platform = usePlatform();
   const id = useId();
@@ -290,6 +299,7 @@ function ProductInfo(
                   <CustomizeShirt
                     productName={`${isVariantOf?.name} ${name}`}
                     skuID={sku}
+                    text={customizeShirtText}
                   />
                   <AddToCartButtonVTEX
                     eventParams={{ items: [eventItem] }}
