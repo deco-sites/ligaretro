@@ -1,5 +1,4 @@
 import { asset, Head } from "$fresh/runtime.ts";
-const icon = "/LigaRetro.svg";
 
 function GlobalTags() {
   return (
@@ -11,7 +10,6 @@ function GlobalTags() {
       <link href={asset("/styles.css")} rel="stylesheet" />
       {/* Web Manifest */}
       <link rel="manifest" href={asset("/site.webmanifest")} />
-      <link rel="icon" type="image/png" href={icon} />
     </Head>
   );
 }

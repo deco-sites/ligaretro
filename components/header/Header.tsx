@@ -76,7 +76,7 @@ function Header({
   const device = deviceSignal.value || "desktop";
 
   return (
-    <header class="h-[73px] lg:h-[111px]">
+    <header class="">
       <Drawers
         menu={{ items }}
         searchbar={searchbar}
