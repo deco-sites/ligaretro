@@ -24,8 +24,6 @@ export default function TabbedContent({ tabs }: Props) {
     item.title.toUpperCase() ==
       decodeURIComponent(valorURL).replace(/-/g, " ").toUpperCase()
   );
-  console.log(valorURL?.replace(/-/g, " "));
-  console.log(valueTabs);
   const [tabOpen, setTabOpen] = useState(valueTabs == -1 ? (0) : valueTabs);
 
   return (
