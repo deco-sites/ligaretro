@@ -24,7 +24,39 @@ function VariantSelector({ product, sizeTableImg }: Props) {
             <span class="text-lg font-semibold text-[#252525]">Tamanho</span>
             <SizeTableButton img={sizeTableImg} />
             <ul class="flex flex-row gap-2 flex-wrap">
-              {Object.entries(possibilities["Tamanho"]).map((
+              {Object.entries(possibilities["Tamanho"]).sort(([a], [b]) => {
+                const order = [
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "8",
+                  "10",
+                  "12",
+                  "14",
+                  "16",
+                  "36",
+                  "38",
+                  "40",
+                  "42",
+                  "44",
+                  "46",
+                  "48",
+                  "50",
+                  "PPP",
+                  "PP",
+                  "P",
+                  "M",
+                  "G",
+                  "GG",
+                  "GGG",
+                  "4G",
+                  "UNICO",
+                ];
+                return order.indexOf(a) - order.indexOf(b);
+              }).map((
                 [value, possibility],
               ) => (
                 <li>
