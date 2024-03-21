@@ -10,6 +10,10 @@
     "orientation": "portrait",
     "icons": [
         {
+            "src": "/LigaRetro.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },{
             "src": "/icon-v2-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
