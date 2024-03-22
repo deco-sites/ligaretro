@@ -19,7 +19,12 @@ export interface Props {
 }
 
 export default function TabbedContent({ tabs }: Props) {
-  const [tabOpen, setTabOpen] = useState(0);
+  const valorURL = window.location.pathname?.split("/")[2];
+  const valueTabs = tabs.findIndex((item) =>
+    item.title.toUpperCase() ==
+      decodeURIComponent(valorURL).replace(/-/g, " ").toUpperCase()
+  );
+  const [tabOpen, setTabOpen] = useState(valueTabs == -1 ? (0) : valueTabs);
 
   return (
     <div class="flex flex-col sm:flex-row w-full gap-16">
