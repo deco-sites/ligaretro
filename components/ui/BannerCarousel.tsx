@@ -114,7 +114,7 @@ function BannerItem(
       id={id}
       href={action?.href ?? "#"}
       aria-label={action?.label}
-      class="relative h-[600px] overflow-y-hidden w-full"
+      class="relative  h-[600px]  overflow-y-hidden w-full"
     >
       {device !== "desktop" && (
         <Image

@@ -67,7 +67,7 @@ function Navbar({ items, searchbar, logo, buttons, device }: {
 
       {/* Desktop Version */}
       {device == "desktop" && (
-        <div class="hidden lg:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
+        <div class="hidden lg:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 h-[115px]">
           <div class="flex-none w-44">
             {logo && (
               <a
