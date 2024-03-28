@@ -54,6 +54,7 @@ const SizeTableButton = ({ img }: Props) => {
     <>
       <button
         class="btn btn-outline w-fit rounded-full border-[#d9d9d9] hover:bg-[#252525]"
+        aria-label={"Ruler"}
         onClick={() => displaySizeTablePopup.value = true}
       >
         <Icon id="Ruler" size={24} class="mr-1" />

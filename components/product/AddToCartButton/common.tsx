@@ -43,7 +43,11 @@ export default function AddToCartButton(props: Props) {
   const { classes } = props;
 
   return (
-    <Button {...btnProps} class={`btn-primary ${classes || ""}`}>
+    <Button
+      {...btnProps}
+      class={`btn-primary ${classes || ""}`}
+      aria-label={"Comprar"}
+    >
       Comprar
     </Button>
   );

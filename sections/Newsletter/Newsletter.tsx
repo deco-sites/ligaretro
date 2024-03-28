@@ -66,6 +66,7 @@ export default function Newsletter(props: Props) {
         <button
           class={`btn ${isReverse ? "btn-accent" : ""}`}
           type="submit"
+          aria-label={form.buttonText}
         >
           {form.buttonText}
         </button>

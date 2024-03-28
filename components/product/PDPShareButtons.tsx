@@ -44,6 +44,7 @@ export default function PDPShareButtons() {
       <button
         class="btn btn-outline btn-sm border-[#cecece] rounded-full"
         onClick={handleShare}
+        aria-label={"WhatsApp"}
       >
         <Icon id="WhatsApp" size={16} />
         <span class="font-normal text-xs">WhatsApp</span>
@@ -51,6 +52,7 @@ export default function PDPShareButtons() {
       <button
         class="btn btn-outline btn-sm border-[#cecece] rounded-full"
         onClick={handleCopyToClipboard}
+        aria-label={"Copy"}
       >
         <Icon id="Copy" size={16} />
         <span class="font-normal text-xs">Copiar Link</span>

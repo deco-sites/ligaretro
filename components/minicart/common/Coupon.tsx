@@ -46,6 +46,7 @@ function Coupon({ coupon, onAddCoupon }: Props) {
               class="join-item"
               type="submit"
               htmlFor="coupon"
+              aria-label={"Ok"}
               loading={loading}
             >
               Ok
@@ -56,6 +57,7 @@ function Coupon({ coupon, onAddCoupon }: Props) {
           <Button
             class="btn-ghost underline font-normal"
             onClick={() => setDisplay(true)}
+            aria-label={"Adicionar"}
           >
             {coupon || "Adicionar"}
           </Button>
