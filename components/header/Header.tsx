@@ -76,27 +76,29 @@ function Header({
   const device = deviceSignal.value || "desktop";
 
   return (
-    <header class="">
-      <Drawers
-        menu={{ items }}
-        searchbar={searchbar}
-        platform={platform}
-        freeShippingTarget={freeShippingTarget}
-      >
-        <div class="bg-base-100 fixed w-full z-50">
-          {/* {alerts.length > 0 && <Alert alerts={alerts} />} */}
-          {!hideAlert && <Alert links={alertLinks} />}
+    <>
+      <header style={{ height: "154px" }}>
+        <Drawers
+          menu={{ items }}
+          searchbar={searchbar}
+          platform={platform}
+          freeShippingTarget={freeShippingTarget}
+        >
+          <div class="bg-base-100 fixed w-full z-50">
+            {/* {alerts.length > 0 && <Alert alerts={alerts} />} */}
+            {!hideAlert && <Alert links={alertLinks} />}
 
-          <Navbar
-            items={items}
-            searchbar={searchbar && { ...searchbar, platform }}
-            logo={logo}
-            buttons={buttons}
-            device={device}
-          />
-        </div>
-      </Drawers>
-    </header>
+            <Navbar
+              items={items}
+              searchbar={searchbar && { ...searchbar, platform }}
+              logo={logo}
+              buttons={buttons}
+              device={device}
+            />
+          </div>
+        </Drawers>
+      </header>
+    </>
   );
 }
 

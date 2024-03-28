@@ -31,7 +31,7 @@ function Navbar({ items, searchbar, logo, buttons, device }: {
     <>
       {/* Mobile Version */}
       <div
-        style={{ height: "73px" }}
+        style={{ height: "83px" }}
         class="lg:hidden flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-2 gap-2"
       >
         <MenuButton />
@@ -67,7 +67,7 @@ function Navbar({ items, searchbar, logo, buttons, device }: {
 
       {/* Desktop Version */}
       {device == "desktop" && (
-        <div class="hidden lg:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
+        <div class="hidden lg:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 h-[115px]">
           <div class="flex-none w-44">
             {logo && (
               <a
