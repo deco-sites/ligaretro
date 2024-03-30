@@ -79,6 +79,7 @@ function CartItem(
           <div class="flex justify-between items-center">
             <span>{name}</span>
             <Button
+              aria-label={"Trash"}
               disabled={loading || isGift}
               loading={loading}
               class="btn-ghost btn-square"

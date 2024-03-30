@@ -36,6 +36,7 @@ export default function TabbedContent({ tabs }: Props) {
               class={`btn w-full ${
                 i === tabOpen ? "btn-primary" : "btn-outline"
               }`}
+              aria-label={t.title}
             >
               {t.title}
             </button>

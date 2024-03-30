@@ -10,9 +10,10 @@ export default function Checkbox(props: Props) {
     <div className="form-control">
       {label
         ? (
-          <label className="label cursor-pointer">
+          <label for={label} className="label cursor-pointer">
             <span className="label-text">{label}</span>
             <input
+              id={label}
               type="checkbox"
               checked={checked}
               className="checkbox"
@@ -21,6 +22,7 @@ export default function Checkbox(props: Props) {
         )
         : (
           <input
+            id={label}
             type="checkbox"
             checked={checked}
             className="checkbox"

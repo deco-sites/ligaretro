@@ -44,7 +44,11 @@ function SearchControls(
               <h1 class="px-4 py-3">
                 <span class="font-medium text-2xl">Filtrar</span>
               </h1>
-              <Button class="btn btn-ghost" onClick={() => open.value = false}>
+              <Button
+                class="btn btn-ghost"
+                onClick={() => open.value = false}
+                aria-label="Close"
+              >
                 <Icon id="XMark" size={24} strokeWidth={2} />
               </Button>
             </div>
@@ -97,6 +101,7 @@ function SearchControls(
             onClick={() => {
               open.value = true;
             }}
+            aria-label="Filtrar"
           >
             Filtrar
             <Icon id="FilterList" width={16} height={16} />

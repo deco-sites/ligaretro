@@ -10,9 +10,14 @@ export default function Toggle(props: Props) {
     <div className="form-control">
       {label
         ? (
-          <label className="label cursor-pointer">
+          <label className="label cursor-pointer" for={label}>
             <span className="label-text">{label}</span>
-            <input type="checkbox" className="toggle" checked={checked} />
+            <input
+              type="checkbox"
+              className="toggle"
+              id={label}
+              checked={checked}
+            />
           </label>
         )
         : <input type="checkbox" className="toggle" checked={checked} />}
