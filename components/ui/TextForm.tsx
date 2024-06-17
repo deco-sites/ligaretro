@@ -15,7 +15,6 @@ export interface Props {
 export const loader = (props: Props) => {
   const { textSection, formTitle, sendGridApiKey } = props;
   const apiKey = sendGridApiKey.get();
-
   return { textSection, formTitle, apiKey };
 };
 
