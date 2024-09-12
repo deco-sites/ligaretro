@@ -195,6 +195,7 @@ function ProductCard(
           onClick={() => {
             skuSelected.value = getSkuByUrl(possibility?.url!);
           }}
+          aria-label={"AvatarSquare"}
         >
           <AvatarSquare
             size={avatarSize ? avatarSize : "small"}
@@ -440,6 +441,7 @@ function ProductCard(
               <a href={url && relative(url)} class="w-full">
                 <Button
                   class={`rounded btn-primary !bg-[#D56B09] !border-none text-white font-normal w-full`}
+                  aria-label={"Comprar"}
                 >
                   Comprar
                 </Button>

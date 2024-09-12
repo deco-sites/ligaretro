@@ -12,7 +12,9 @@ function MenuItem({ item }: { item: SiteNavigationElement }) {
 
   return (
     <div class="collapse collapse-plus">
-      <input type="checkbox" />
+      <label for={item.name}>
+        <input id={item.name} type="checkbox" />
+      </label>
       <div class="collapse-title">{item.name}</div>
       <div class="collapse-content">
         <ul>

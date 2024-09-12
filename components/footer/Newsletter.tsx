@@ -73,6 +73,7 @@ function Newsletter(
               type="submit"
               class="btn disabled:loading"
               disabled={loading}
+              aria-label={content?.form?.buttonText || "Inscrever"}
             >
               {content?.form?.buttonText || "Inscrever"}
             </button>

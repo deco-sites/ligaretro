@@ -65,6 +65,7 @@ function TabbedProductShelf({
             <button
               class={`tab tab-lg ${index === ti ? "tab-active" : ""}`}
               {...usePartialSection({ props: { tabIndex: index } })}
+              aria-label={tab.title}
             >
               {tab.title}
             </button>
