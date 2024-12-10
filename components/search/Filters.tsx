@@ -180,7 +180,9 @@ function Filters({ filters, darkBackground, darkBackgroundColor }: Props) {
                   {filter.key !== "category-3" && <span>{filter.label}</span>}
                 </div> */
                   }
-                  <input type="checkbox" />
+                  <label for={filter.label}>
+                    <input id={filter.label} type="checkbox" />
+                  </label>
                   <div class="collapse-title  w-[225px]">
                     {filter.label}
                   </div>

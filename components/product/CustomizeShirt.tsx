@@ -257,6 +257,7 @@ function CustomizeModal({ productName, skuID, text }: Props) {
                         type="submit"
                         htmlFor="nameShirt"
                         onClick={handleApplyName}
+                        aria-label={"Aplicar"}
                       >
                         Aplicar
                       </Button>
@@ -288,6 +289,7 @@ function CustomizeModal({ productName, skuID, text }: Props) {
                         class="  bg-transparent border border-[#A1A1A1] border-l-0 rounded-r-lg px-2 lg:px-0  w-[120px] h-[25px] rounded-md uppercase text-xs font-bold join-item"
                         type="submit"
                         htmlFor="numberShirt"
+                        aria-label={"Aplicar"}
                         onClick={handleApplyNumber}
                       >
                         Aplicar
@@ -305,12 +307,14 @@ function CustomizeModal({ productName, skuID, text }: Props) {
                   <Button
                     class="btn btn-ghost underline text-xs"
                     onClick={handleCancel}
+                    aria-label={"Cancelar"}
                   >
                     Cancelar
                   </Button>
                   <Button
                     class="bg-black text-white font-normal rounded-lg"
                     onClick={handleFinish}
+                    aria-label={"Finalizar"}
                   >
                     {loadingFinish ? "Carregando..." : "Finalizar"}
                   </Button>
