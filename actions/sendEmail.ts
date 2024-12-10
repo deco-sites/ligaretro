@@ -9,13 +9,14 @@ export const sendEmail = async (
   props: Props,
   _req: Request,
 ): Promise<unknown | null> => {
-  const { name, company, email, apiKey } = props;
+  const { name, company, email } = props;
   try {
     const response = await fetch(" https://api.sendgrid.com/v3/mail/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        Authorization:
+          `Bearer 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`,
       },
       body: JSON.stringify({
         personalizations: [
