@@ -82,3 +82,6 @@ deno.lock
 _docker_deps.ts
 .metadata/*
 .deco/metadata/*
+
+browserslist
+bw_stats.json
