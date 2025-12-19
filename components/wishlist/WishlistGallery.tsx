@@ -2,7 +2,7 @@ import SearchResult, {
   loader as searchLoader,
   Props as SearchResultProps,
 } from "$store/components/search/SearchResult.tsx";
-import { AppContext } from "deco-sites/ligaretro/apps/site.ts";
+import { AppContext } from "site/apps/site.ts";
 
 export type Props = SearchResultProps;
 

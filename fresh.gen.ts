@@ -38,7 +38,7 @@ import * as $SliderJS from "./islands/SliderJS.tsx";
 import * as $TabbedContent from "./islands/TabbedContent.tsx";
 import * as $User from "./islands/User.tsx";
 import * as $WishlistButton from "./islands/WishlistButton.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {

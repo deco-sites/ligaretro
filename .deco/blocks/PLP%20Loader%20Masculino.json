@@ -1,0 +1,1 @@
+{"data":{"sort":"orders:desc","count":12,"fuzzy":"automatic","pageOffset":1,"__resolveType":"vtex/loaders/intelligentSearch/productListingPage.ts","selectedFacets":[{"key":"genero","value":"masculino"}]},"extensions":[{"__resolveType":"vtex/loaders/product/extensions/listingPage.ts"}],"__resolveType":"commerce/loaders/product/extensions/listingPage.ts"}

@@ -1,10 +1,7 @@
 import { signal } from "@preact/signals";
-import { Device } from "deco/utils/userAgent.ts";
-
-const deviceSignal = signal(<Device> "desktop");
-
+import { Device } from "@deco/deco/utils";
+const deviceSignal = signal(<Device>"desktop");
 const state = {
-  deviceSignal,
+    deviceSignal,
 };
-
 export const useDevice = () => state;

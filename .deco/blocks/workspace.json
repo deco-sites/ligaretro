@@ -1,0 +1,1 @@
+{"fileSystem":[{"name":"sections","value":{"entries":[{"name":"Hello.tsx","value":{"content":"function Hello() {\nreturn <div>World</div>}"}}]}}],"__resolveType":"decohub/apps/workspace.ts"}

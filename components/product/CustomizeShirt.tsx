@@ -1,7 +1,7 @@
 import Modal from "$store/components/ui/Modal.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
 import Image from "apps/website/components/Image.tsx";
-import Button from "deco-sites/ligaretro/components/ui/Button.tsx";
+import Button from "site/components/ui/Button.tsx";
 import { useState } from "preact/hooks";
 import { invoke } from "$store/runtime.ts";
 import { useCart } from "apps/vtex/hooks/useCart.ts";
@@ -354,7 +354,7 @@ function CustomizeShirt({ productName, skuID }: Props) {
     setIsLoading(true);
     const { addItems } = useCart();
 
-    const r = await invoke["deco-sites/ligaretro"].actions
+    const r = await invoke["site"].actions
       .getProductAttachments({ id: skuID }) as {
         items: [{ offerings: O[] }];
       };

@@ -26,7 +26,7 @@ const Form = ({ productId }: { productId: string }) => {
     reviewerName: string;
   }) => {
     setIsLoading(true);
-    const data = await invoke["deco-sites/ligaretro"].actions.createReview(
+    const data = await invoke["site"].actions.createReview(
       body,
     );
     setFormSent(true);
