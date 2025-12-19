@@ -1,6 +1,6 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import Icon from "deco-sites/ligaretro/components/ui/Icon.tsx";
+import Icon from "site/components/ui/Icon.tsx";
 import { FnContext } from "$live/types.ts";
 import { Device } from "apps/website/matchers/device.ts";
 import Image from "apps/website/components/Image.tsx";

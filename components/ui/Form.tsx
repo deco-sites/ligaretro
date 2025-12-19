@@ -16,7 +16,7 @@ function TextForm({ formTitle, apiKey }: Props) {
     e.preventDefault();
     setLoading(true);
     try {
-      const data = await invoke["deco-sites/ligaretro"].actions
+      const data = await invoke["site"].actions
         .sendEmail(
           {
             name,

@@ -46,7 +46,7 @@ export default function User() {
                 };
                 if (!vtexIdScriptsLoaded.value) {
                   const { loadVtexIdScripts } = await import(
-                    "deco-sites/ligaretro/sdk/login.tsx"
+                    "site/sdk/login.tsx"
                   );
                   loadVtexIdScripts(execute);
                 } else {

@@ -16,7 +16,7 @@ import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import type { FnContext, SectionProps } from "deco/types.ts";
 import { Picture, Source } from "apps/website/components/Picture.tsx";
-import { useDevice } from "deco-sites/ligaretro/sdk/useDevice.ts";
+import { useDevice } from "site/sdk/useDevice.ts";
 
 export interface Layout {
   /**

@@ -1,0 +1,1 @@
+{"page":{"slug":{"param":"slug","__resolveType":"website/functions/requestToParam.ts"},"__resolveType":"vtex/loaders/intelligentSearch/productDetailsPage.ts"},"layout":{"name":"concat","image":"front-back"},"__resolveType":"site/sections/Product/ProductDetails.tsx"}

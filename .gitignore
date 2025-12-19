@@ -77,3 +77,8 @@ deno.lock
 
 # EnvironmentVariables
 .env
+
+# Deco files
+_docker_deps.ts
+.metadata/*
+.deco/metadata/*
