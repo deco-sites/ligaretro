@@ -1,7 +1,6 @@
 import { defineConfig } from "$fresh/server.ts";
-import plugins from "https://denopkg.com/deco-sites/std@1.24.2/plugins/mod.ts";
+import { plugins } from "deco/plugins/deco.ts";
 import partytownPlugin from "partytown/mod.ts";
-import tailwind from "./tailwind.config.ts";
 import decoManifest from "./manifest.gen.ts";
 
 export default defineConfig({
@@ -9,7 +8,7 @@ export default defineConfig({
     ...plugins({
       manifest: decoManifest,
       // deno-lint-ignore no-explicit-any
-      tailwind: tailwind as any,
+      
     }),
     partytownPlugin(),
   ],

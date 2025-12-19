@@ -1,16 +1,12 @@
-import { Section } from "deco/blocks/section.ts";
-
+import { type Section } from "@deco/deco/blocks";
 interface Props {
-  children: Section;
+    children: Section;
 }
-
 function Gallery({ children: { Component, props } }: Props) {
-  return (
+    return (
     // <section class="mt-[43px]">
     <section>
-      <Component {...props} />
-    </section>
-  );
+      <Component {...props}/>
+    </section>);
 }
-
 export default Gallery;

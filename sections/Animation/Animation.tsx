@@ -1,60 +1,37 @@
-import { Section } from "deco/blocks/section.ts";
 import { useId } from "$store/sdk/useId.ts";
-
+import { type Section } from "@deco/deco/blocks";
 const animationClasses = {
-  "fade-in": "animate-fade-in",
-  "fade-in-bottom": "animate-fade-in-bottom",
-  "slide-left": "animate-slide-left",
-  "slide-right": "animate-slide-right",
-  "zoom-in": "animate-zoom-in",
+    "fade-in": "animate-fade-in",
+    "fade-in-bottom": "animate-fade-in-bottom",
+    "slide-left": "animate-slide-left",
+    "slide-right": "animate-slide-right",
+    "zoom-in": "animate-zoom-in",
 };
-
 interface Children {
-  label?: string;
-  section: Section;
+    label?: string;
+    section: Section;
 }
-
 interface Props {
-  animationType?:
-    | "fade-in"
-    | "fade-in-bottom"
-    | "slide-left"
-    | "slide-right"
-    | "zoom-in";
-  /**
-   * @default 0.3
-   */
-  duration?: string;
-  children: Children;
+    animationType?: "fade-in" | "fade-in-bottom" | "slide-left" | "slide-right" | "zoom-in";
+    /**
+     * @default 0.3
+     */
+    duration?: string;
+    children: Children;
 }
-
-function Animation(
-  { children, animationType = "fade-in", duration = "0.3" }: Props,
-) {
-  const { section } = children;
-
-  const { Component, props } = section;
-  const id = useId();
-
-  const animationClass = animationClasses[animationType];
-
-  return (
-    <>
-      <style
-        dangerouslySetInnerHTML={{ __html: animationByType[animationType] }}
-      >
+function Animation({ children, animationType = "fade-in", duration = "0.3" }: Props) {
+    const { section } = children;
+    const { Component, props } = section;
+    const id = useId();
+    const animationClass = animationClasses[animationType];
+    return (<>
+      <style dangerouslySetInnerHTML={{ __html: animationByType[animationType] }}>
       </style>
-      <div
-        id={id}
-        class="opacity-0"
-        style={{ animationDuration: duration + "s" }}
-      >
-        <Component {...props} />
+      <div id={id} class="opacity-0" style={{ animationDuration: duration + "s" }}>
+        <Component {...props}/>
       </div>
-      <script
-        async={true}
-        dangerouslySetInnerHTML={{
-          __html: `
+      <script async={true} dangerouslySetInnerHTML={{
+            __html: `
                 var observer = new IntersectionObserver(function(entries) {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -68,16 +45,12 @@ function Animation(
                 var element = document.getElementById('${id}');
                 observer.observe(element);
             `,
-        }}
-      />
-    </>
-  );
+        }}/>
+    </>);
 }
-
 export default Animation;
-
 const animationByType = {
-  "fade-in": `    
+    "fade-in": `    
         @keyframes fade-in {
             from {
                 opacity: 0;
@@ -90,7 +63,7 @@ const animationByType = {
             animation: fade-in 1s ease-out;
         }
     `,
-  "fade-in-bottom": `
+    "fade-in-bottom": `
         @keyframes fade-in-bottom {
             from {
                 opacity: 0;
@@ -108,7 +81,7 @@ const animationByType = {
             animation: fade-in-bottom 1s ease-out;
         }
     `,
-  "slide-left": `
+    "slide-left": `
         @keyframes slide-left {
             from {
                 transform: translateX(100%);
@@ -122,7 +95,7 @@ const animationByType = {
             animation: slide-left 1s ease-out;
         }
     `,
-  "slide-right": `
+    "slide-right": `
         @keyframes slide-right {
             from {
                 transform: translateX(-100%);
@@ -136,7 +109,7 @@ const animationByType = {
             animation: slide-right 1s ease-out;
         }
     `,
-  "zoom-in": `
+    "zoom-in": `
         @keyframes zoom-in {
             from {
                 transform: scale(0);
