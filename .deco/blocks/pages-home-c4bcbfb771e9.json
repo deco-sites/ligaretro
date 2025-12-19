@@ -1,1 +1,109 @@
-{"name":"Home","path":"/","sections":[{"type":"website","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/45a65497-3e17-47f1-996d-58183ea9fe5b","title":"Liga Retrô","noIndexing":false,"description":"Vendemos História!","__resolveType":"website/sections/Seo/Seo.tsx"},{"__resolveType":"Header - 01"},{"images":[{"alt":"Banner 3","action":{"href":"/fluminense?map=times"},"mobile":"https://assets.decocache.com/ligaretro/01682d08-206d-4bb3-bd27-64f27dbd009c/banner-home-mobile-flu-edinho.jpg","desktop":"https://assets.decocache.com/ligaretro/71bf0793-0aac-4c57-b087-8d58f8459c1e/banner-home-desktop-flu-edinho.jpg","layoutAlign":"right"},{"alt":"Banner 1","action":{"href":"/flamengo?map=times"},"mobile":"https://assets.decocache.com/ligaretro/5c6724af-9904-4c2e-b7df-9e5ede96ee1b/banner-home-mobile-fla1995.jpg","desktop":"https://assets.decocache.com/ligaretro/43402ea9-81b8-4634-9ca5-2ba65719e7c9/banner-home-desktop-fla1995.jpg"},{"alt":"Banner 2","action":{"href":"/botafogo?map=times"},"mobile":"https://assets.decocache.com/ligaretro/94bd989c-8a0a-477e-ba25-a3b438139cfb/banner-home-mobile-MAU-PRE.jpg","desktop":"https://assets.decocache.com/ligaretro/554bc8c2-6139-4658-b30e-eb84dc6871d7/banner-home-desktop-MAU-PRE.jpg","layoutAlign":"right"},{"alt":"Banner 4","action":{"href":"/fluminense?map=times"},"mobile":"https://assets.decocache.com/ligaretro/9422ef1e-8664-4f0b-8fc6-494ee661916a/banner-home-mobile-FFC95.jpg","desktop":"https://assets.decocache.com/ligaretro/98c04854-80d5-440f-be11-36e779279d74/banner-home-desktop-FFC95.jpg","layoutAlign":"right"}],"preload":true,"interval":9,"__resolveType":"site/sections/Images/Carousel.tsx"},{"__resolveType":"Category List - 01"},{"title":"Mais Vendidos","layout":{"headerfontSize":"Normal","headerAlignment":"center"},"products":{"props":{"ids":["2542","2737","2843","2244","2768","2035","1825","531"],"hideUnavailableItems":true},"__resolveType":"vtex/loaders/intelligentSearch/productList.ts"},"cardLayout":{"__resolveType":"Product Card Layout - 01"},"description":"Check these out!","__resolveType":"site/sections/Product/ProductShelf.tsx"},{"behavior":{"type":"intersection","payload":"300px"},"sections":[{"__resolveType":"Banner Grid - 01"},{"__resolveType":"Footer - 01"}],"__resolveType":"website/sections/Rendering/Deferred.tsx"},{"__resolveType":"Whatsapp Liga Retrô"}],"__resolveType":"website/pages/Page.tsx"}
+{
+  "name": "Home",
+  "path": "/",
+  "sections": [
+    {
+      "type": "website",
+      "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/45a65497-3e17-47f1-996d-58183ea9fe5b",
+      "title": "Liga Retrô",
+      "noIndexing": false,
+      "description": "Vendemos História!",
+      "__resolveType": "website/sections/Seo/Seo.tsx"
+    },
+    {
+      "__resolveType": "Header - 01"
+    },
+    {
+      "images": [
+        {
+          "alt": "Banner 4",
+          "action": {
+            "href": "/fluminense?map=times"
+          },
+          "mobile": "https://assets.decocache.com/ligaretro/8036f722-65e9-41fc-938b-0e69b5234e95/banner-home-mobile-flu-felix.jpg",
+          "desktop": "https://assets.decocache.com/ligaretro/fd273ba8-6b42-444c-8ce8-c32153d12cc6/banner-home-desktop-flu-felix.jpg",
+          "layoutAlign": "right"
+        },
+        {
+          "alt": "Banner 1",
+          "action": {
+            "href": "/flamengo?map=times"
+          },
+          "mobile": "https://assets.decocache.com/ligaretro/5c6724af-9904-4c2e-b7df-9e5ede96ee1b/banner-home-mobile-fla1995.jpg",
+          "desktop": "https://assets.decocache.com/ligaretro/43402ea9-81b8-4634-9ca5-2ba65719e7c9/banner-home-desktop-fla1995.jpg"
+        },
+        {
+          "alt": "Banner 3",
+          "action": {
+            "href": "/fluminense?map=times"
+          },
+          "mobile": "https://assets.decocache.com/ligaretro/01682d08-206d-4bb3-bd27-64f27dbd009c/banner-home-mobile-flu-edinho.jpg",
+          "desktop": "https://assets.decocache.com/ligaretro/2c591e1f-7e55-4e3d-90d4-b398f1c9e083/banner-home-desktop-flu-edinho.jpg",
+          "layoutAlign": "right"
+        },
+        {
+          "alt": "Banner 2",
+          "action": {
+            "href": "/botafogo?map=times"
+          },
+          "mobile": "https://assets.decocache.com/ligaretro/94bd989c-8a0a-477e-ba25-a3b438139cfb/banner-home-mobile-MAU-PRE.jpg",
+          "desktop": "https://assets.decocache.com/ligaretro/554bc8c2-6139-4658-b30e-eb84dc6871d7/banner-home-desktop-MAU-PRE.jpg",
+          "layoutAlign": "right"
+        }
+      ],
+      "preload": true,
+      "interval": 9,
+      "__resolveType": "site/sections/Images/Carousel.tsx"
+    },
+    {
+      "__resolveType": "Category List - 01"
+    },
+    {
+      "title": "Mais Vendidos",
+      "layout": {
+        "headerfontSize": "Normal",
+        "headerAlignment": "center"
+      },
+      "products": {
+        "props": {
+          "ids": [
+            "2542",
+            "2737",
+            "2843",
+            "2244",
+            "2768",
+            "2035",
+            "1825",
+            "531"
+          ],
+          "hideUnavailableItems": true
+        },
+        "__resolveType": "vtex/loaders/intelligentSearch/productList.ts"
+      },
+      "cardLayout": {
+        "__resolveType": "Product Card Layout - 01"
+      },
+      "description": "Check these out!",
+      "__resolveType": "site/sections/Product/ProductShelf.tsx"
+    },
+    {
+      "behavior": {
+        "type": "intersection",
+        "payload": "300px"
+      },
+      "sections": [
+        {
+          "__resolveType": "Banner Grid - 01"
+        },
+        {
+          "__resolveType": "Footer - 01"
+        }
+      ],
+      "__resolveType": "website/sections/Rendering/Deferred.tsx"
+    },
+    {
+      "__resolveType": "Whatsapp Liga Retrô"
+    }
+  ],
+  "__resolveType": "website/pages/Page.tsx"
+}
