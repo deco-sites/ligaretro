@@ -25,14 +25,6 @@
           "layoutAlign": "right"
         },
         {
-          "alt": "Banner 1",
-          "action": {
-            "href": "/flamengo?map=times"
-          },
-          "mobile": "https://assets.decocache.com/ligaretro/5c6724af-9904-4c2e-b7df-9e5ede96ee1b/banner-home-mobile-fla1995.jpg",
-          "desktop": "https://assets.decocache.com/ligaretro/43402ea9-81b8-4634-9ca5-2ba65719e7c9/banner-home-desktop-fla1995.jpg"
-        },
-        {
           "alt": "Banner 3",
           "action": {
             "href": "/fluminense?map=times"
@@ -67,14 +59,14 @@
       "products": {
         "props": {
           "ids": [
-            "2542",
-            "2737",
-            "2843",
             "2244",
             "2768",
             "2035",
             "1825",
-            "531"
+            "531",
+            "62",
+            "2773",
+            "249"
           ],
           "hideUnavailableItems": true
         },
