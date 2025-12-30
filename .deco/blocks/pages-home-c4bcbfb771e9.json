@@ -25,15 +25,6 @@
           "layoutAlign": "right"
         },
         {
-          "alt": "Banner 3",
-          "action": {
-            "href": "/fluminense?map=times"
-          },
-          "mobile": "https://assets.decocache.com/ligaretro/01682d08-206d-4bb3-bd27-64f27dbd009c/banner-home-mobile-flu-edinho.jpg",
-          "desktop": "https://assets.decocache.com/ligaretro/2c591e1f-7e55-4e3d-90d4-b398f1c9e083/banner-home-desktop-flu-edinho.jpg",
-          "layoutAlign": "right"
-        },
-        {
           "alt": "Banner 2",
           "action": {
             "href": "/botafogo?map=times"
