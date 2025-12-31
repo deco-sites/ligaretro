@@ -1,1 +1,1716 @@
-{"name":"Infantil","path":"/infantil","sections":[{"jsonLD":{"sort":"price:desc","count":12,"fuzzy":"automatic","__resolveType":"vtex/loaders/intelligentSearch/productListingPage.ts","selectedFacets":[{"key":"infantil","value":"sim"}]},"__resolveType":"commerce/sections/Seo/SeoPLP.tsx","titleTemplate":"%s"},{"__resolveType":"Header - 01"},{"page":{"data":{"sort":"orders:desc","count":20,"fuzzy":"automatic","__resolveType":"vtex/loaders/intelligentSearch/productListingPage.ts","selectedFacets":[{"key":"infantil","value":"sim"}]},"extensions":[{"__resolveType":"vtex/loaders/product/extensions/listingPage.ts"}],"__resolveType":"commerce/loaders/product/extensions/listingPage.ts"},"layout":{"columns":{"mobile":2,"desktop":5},"variant":"aside","pagination":"show-more"},"styles":[{"matcher":{"0":"/","1":"v","2":"e","3":"s","4":"t","5":"u","6":"a","7":"r","8":"i","9":"o","search":"?sort=&filter.category-1=vestuario&filter.genero=masculino","pathName":"/vestuario"},"topBanner":{},"coverImage":{"alt":"Cover cruzeiro banner","link":"#","mobile":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/0d1bb552-1896-4124-a3ff-2400de9c9a5c","desktop":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/89cbebe5-ee8a-46c6-bf8a-c27d4940959a"},"titleStyle":{"titleBgColor":"\"bg-gradient-to-r from-1D3D8F to-transparent\"","titleTextColor":"#FFFFFF"},"bottomBanner":{"alt":"banner campanha","link":"/infantil","mobile":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/51f7fe9a-160e-4545-b595-52271383f053","desktop":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/eacd1e6f-6ff4-4f93-9b40-ce9bb09e604e"},"darkBackground":true,"backgroundColor":"#1D3D8F"},{"matcher":{"0":"/","1":"f","2":"e","3":"m","4":"i","5":"n","6":"i","7":"n","8":"o","pathName":"/acessorios"},"topBanner":{"alt":"Banner adidas","link":"#","mobile":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/77a6587f-be1c-4f88-9c28-7e34c95b78bd","desktop":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/538557ba-c506-4bf9-a99c-3d39ca1f2400"},"coverImage":{},"titleStyle":{"logo":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/aab02938-88af-42e3-b650-a9963f0c3e42","titleBgColor":"#1D3D8F","titleTextColor":"#FFFFFF"},"darkBackground":false}],"pageTitle":"Infantil","cardLayout":{"__resolveType":"Product Card Layout - 01"},"startingPage":1,"__resolveType":"site/sections/Product/SearchResult.tsx"},{"__resolveType":"Footer - 01"},{"__resolveType":"Whatsapp Liga Retrô"}],"__resolveType":"website/pages/Page.tsx"}
+{
+  "name": "Infantil",
+  "path": "/infantil",
+  "sections": [
+    {
+      "jsonLD": {
+        "sort": "price:desc",
+        "count": 12,
+        "fuzzy": "automatic",
+        "__resolveType": "vtex/loaders/intelligentSearch/productListingPage.ts",
+        "selectedFacets": [
+          {
+            "key": "infantil",
+            "value": "sim"
+          }
+        ]
+      },
+      "__resolveType": "commerce/sections/Seo/SeoPLP.tsx",
+      "titleTemplate": "%s"
+    },
+    {
+      "__resolveType": "site/sections/Header/Header.tsx",
+      "cart": {
+        "freeShippingObjectiveQuantity": 600
+      },
+      "logo": {
+        "alt": "Fashion logo by deco",
+        "src": "https://data.decoassets.com/ligaretro/e70ef0cf-a9d1-4f17-816f-f28c122c8fe3/logo-home.jpg",
+        "width": 127,
+        "height": 91,
+        "mobileSrc": "https://data.decoassets.com/ligaretro/57d5ef69-0648-49be-9e3f-1a94c88cf73e/logo-home.jpg",
+        "mobilewidth": 96,
+        "mobileheight": 69
+      },
+      "alerts": [
+        "Use this template to create your store at deco.cx"
+      ],
+      "buttons": {
+        "hideCartButton": false,
+        "hideSearchButton": false,
+        "hideAccountButton": false,
+        "hideWishlistButton": false
+      },
+      "navItems": {
+        "items": [
+          {
+            "name": "Masculino",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/masculino?filter.clubes=nacionais",
+                "name": "Clubes Nacionais",
+                "@type": "SiteNavigationElement",
+                "children": [
+                  {
+                    "url": "/america?map=times&filter.genero=masculino",
+                    "name": "America-RJ",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/atlético-mg?map=times&filter.genero=masculino",
+                    "name": "Atlético-MG",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/bangu?map=times&filter.genero=masculino",
+                    "name": "Bangu",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/botafogo?map=times&filter.genero=masculino",
+                    "name": "Botafogo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/coritiba?map=times&filter.genero=masculino",
+                    "name": "Coritiba",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "fluminense?map=times&filter.genero=masculino",
+                    "name": "Fluminense",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/internacional?map=times&filter.genero=masculino",
+                    "name": "Internacional",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "vasco?map=times&filter.genero=masculino",
+                    "name": "Vasco",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/clubes-nacionais?filter.genero=masculino",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ],
+                "image": null
+              },
+              {
+                "url": "/masculino?filter.clubes=internacionais",
+                "name": "Clubes Internacionais",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/bastia?map=times&filter.genero=masculino",
+                    "name": "Bastia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/estrela-vermelha?map=times&filter.genero=masculino",
+                    "name": "Estrela Vermelha",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/fc-karl-marx-stadt?map=times&filter.genero=masculino",
+                    "name": "Karl Marx Stadt",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/napoli?map=times&filter.genero=masculino",
+                    "name": "Napoli",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/olympiacos?map=times&filter.genero=masculino",
+                    "name": "Olympiacos",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/racing?map=times&filter.genero=masculino",
+                    "name": "Racing",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/san-lorenzo?map=times&filter.genero=masculino",
+                    "name": "San Lorenzo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/torino?map=times&filter.genero=masculino",
+                    "name": "Torino",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/clubes-internacionais?filter.genero=masculino",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              },
+              {
+                "url": "/selecoes?filter.genero=masculino",
+                "name": "Seleções",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "argentina?map=selecao&filter.genero=masculino",
+                    "name": "Argentina",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/brasil?map=selecao&filter.genero=masculino",
+                    "name": "Brasil",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/cccp?map=selecao&filter.genero=masculino",
+                    "name": "CCCP",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/camarões?map=selecao&filter.genero=masculino",
+                    "name": "Camarões",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/catar?map=selecao&filter.genero=masculino",
+                    "name": "Catar",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/chile?map=selecao&filter.genero=masculino",
+                    "name": "Chile",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/croacia?map=selecao&filter.genero=masculino",
+                    "name": "Croácia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/espanha?map=selecao&filter.genero=masculino",
+                    "name": "Espanha",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/franca?map=selecao&filter.genero=masculino",
+                    "name": "França",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/holanda?map=selecao&filter.genero=masculino",
+                    "name": "Holanda",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/inglaterra?map=selecao&filter.genero=masculino",
+                    "name": "Inglaterra",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/italia?map=selecao&filter.genero=masculino",
+                    "name": "Itália",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/jamaica?map=selecao&filter.genero=masculino",
+                    "name": "Jamaica",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/japao?map=selecao&filter.genero=masculino",
+                    "name": "Japão",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/portugal?map=selecao&filter.genero=masculino",
+                    "name": "Portugal",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/suecia?map=selecao&filter.genero=masculino",
+                    "name": "Suécia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/uruguai?map=selecao&filter.genero=masculino",
+                    "name": "Uruguai",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/selecoes?filter.genero=masculino",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              },
+              {
+                "url": "/masculino?filter.esporte=baseball&filter.esporte=volei&filter.esporte=futebol-americano&filter.esporte=basquete&filter.esporte=rugby&filter.esporte=remo",
+                "name": "Outros Esportes",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/masculino?filter.esporte=basquete",
+                    "name": "Basquete",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/masculino?filter.esporte=rugby",
+                    "name": "Rugby",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/masculino?filter.esporte=volei",
+                    "name": "Vôlei",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/masculino?filter.esporte=baseball",
+                    "name": "Negro League Baseball",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/masculino?filter.esporte=futebol-americano",
+                    "name": "Futebol Americano",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/masculino?filter.esporte=remo",
+                    "name": "Remo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "url": "/s?q=agasalhos",
+                "name": "Agasalhos",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/s?q=agasalhos",
+                    "name": "Casacos, Jaquetas & Moletons",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              }
+            ],
+            "identifier": "Masculino"
+          },
+          {
+            "name": "Feminino",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/feminino?filter.clubes=nacionais",
+                "name": "Clubes ",
+                "@type": "SiteNavigationElement",
+                "children": [
+                  {
+                    "url": "/atlético-mg?map=times&filter.genero=feminino",
+                    "name": "Atlético-MG",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/bangu?map=times&filter.genero=feminino",
+                    "name": "Bangu",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/botafogo?map=times&filter.genero=feminino",
+                    "name": "Botafogo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/coritiba?map=times&filter.genero=feminino",
+                    "name": "Coritiba",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "fluminense?map=times&filter.genero=feminino",
+                    "name": "Fluminense",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/internacional?map=times&filter.genero=feminino",
+                    "name": "Internacional",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "vasco?map=times&filter.genero=feminino",
+                    "name": "Vasco",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/clubes-nacionais?filter.genero=feminino",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ],
+                "image": null
+              },
+              {
+                "url": "/selecoes?filter.genero=feminino",
+                "name": "Seleções",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/brasil?map=selecao&filter.genero=feminino",
+                    "name": "Brasil",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/cccp?map=selecao&filter.genero=feminino",
+                    "name": "CCCP",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/espanha?map=selecao&filter.genero=feminino",
+                    "name": "Espanha",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/italia?map=selecao&filter.genero=feminino",
+                    "name": "Itália",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/portugal?map=selecao&filter.genero=feminino",
+                    "name": "Portugal",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/selecoes?filter.genero=feminino",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              },
+              {
+                "url": "/feminino?filter.esporte=volei&filter.esporte=rugby",
+                "name": "Outros Esportes",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/feminino?filter.esporte=rugby",
+                    "name": "Rugby",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=wimbledon",
+                    "name": "Tênis",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/feminino?filter.esporte=volei",
+                    "name": "Vôlei",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "url": "/feminino?filter.ocasião=comemorativa",
+                "name": "Comemorativas",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/camisa-1977-feminina--listrado-listrado/p?skuId=464",
+                    "name": "1977",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/camisa-democracia-82-feminina--listrado-listrado/p?skuId=2411",
+                    "name": "Democracia",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/camisa-pepe-branca-feminino-63--branca-branca/p?skuId=688",
+                    "name": "Pepe",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/camisa-tele-santana-sp-feminino-93--branca-branca/p?skuId=922",
+                    "name": "Telê Santana",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              }
+            ],
+            "identifier": "Feminino"
+          },
+          {
+            "name": "Infantil",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/infantil?filter=times",
+                "name": "Clubes ",
+                "@type": "SiteNavigationElement",
+                "children": [
+                  {
+                    "url": "/infantil?filter.times=atlético-mg",
+                    "name": "Atlético-MG",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.times=bangu",
+                    "name": "Bangu",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.times=botafogo",
+                    "name": "Botafogo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.times=fluminense",
+                    "name": "Fluminense",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.times=internacional",
+                    "name": "Internacional",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.times=vasco",
+                    "name": "Vasco",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter=times",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ],
+                "image": null
+              },
+              {
+                "url": "/selecoes?filter.genero=unissex",
+                "name": "Seleções",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "infantil?filter.selecao=brasil",
+                    "name": "Brasil",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "infantil?filter.selecao=cccp",
+                    "name": "CCCP",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "infantil?filter.selecao=itália",
+                    "name": "Itália",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "infantil?filter.selecao=portugal",
+                    "name": "Portugal",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/selecoes?filter.genero=unissex",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              },
+              {
+                "url": "/infantil?filter.esporte=volei&filter.esporte=rugby",
+                "name": "Outros Esportes",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/infantil?filter.esporte=rugby",
+                    "name": "Rugby",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.esporte=volei",
+                    "name": "Vôlei",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "url": "/infantil?filter.ocasião=comemorativa",
+                "name": "Comemorativas",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/infantil?filter.comemorativo=1977",
+                    "name": "1977",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.comemorativo=democracia",
+                    "name": "Democracia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.ídolos=dirceu-lopes",
+                    "name": "Dirceu Lopes",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.ídolos=pepe",
+                    "name": "Pepe ",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.ídolos=telê-santana",
+                    "name": "Telê Santana ",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/infantil?filter.ocasião=comemorativa",
+                    "name": "+ VER TODOS",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Clubes",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/clubes-nacionais",
+                "name": "Clubes Nacionais",
+                "@type": "SiteNavigationElement",
+                "children": [
+                  {
+                    "url": "/america?map=times",
+                    "name": "America-RJ",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/atlético-mg?map=times",
+                    "name": "Atlético-MG",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/bangu?map=times",
+                    "name": "Bangu",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/botafogo?map=times",
+                    "name": "Botafogo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/coritiba?map=times",
+                    "name": "Coritiba",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "fluminense?map=times",
+                    "name": "Fluminense",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/internacional?map=times",
+                    "name": "Internacional",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "vasco?map=times",
+                    "name": "Vasco",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/clubes-nacionais",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ],
+                "image": null
+              },
+              {
+                "url": "/clubes-internacionais",
+                "name": "Clubes Internacionais",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/bastia?map=times",
+                    "name": "Bastia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/estrela-vermelha?map=times",
+                    "name": "Estrela Vermelha",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/fc-karl-marx-stadt?map=times",
+                    "name": "Karl Marx Stadt",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/napoli?map=times",
+                    "name": "Napoli",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/olympiacos?map=times",
+                    "name": "Olympiacos",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/racing?map=times",
+                    "name": "Racing",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/san-lorenzo?map=times",
+                    "name": "San Lorenzo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/torino?map=times",
+                    "name": "Torino",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/clubes-internacionais",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Seleções",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/selecoes",
+                "name": "Seleções",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/alemanha?map=selecao",
+                    "name": "Alemanha",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/argentina?map=selecao",
+                    "name": "Argentina",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/bélgica?map=selecao",
+                    "name": "Bélgica",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/brasil?map=selecao",
+                    "name": "Brasil",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/camarões?map=selecao",
+                    "name": "Camarões",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/canadá?map=selecao",
+                    "name": "Canadá",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/catar?map=selecao",
+                    "name": "Catar",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/cccp?map=selecao",
+                    "name": "CCCP",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/chile?map=selecao",
+                    "name": "Chile",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/china?map=selecao",
+                    "name": "China",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/colômbia?map=selecao",
+                    "name": "Colômbia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/congo?map=selecao",
+                    "name": "Congo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/croácia?map=selecao",
+                    "name": "Croácia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/cuba?map=selecao",
+                    "name": "Cuba",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/ddr?map=selecao",
+                    "name": "DDR",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/dinamarca?map=selecao",
+                    "name": "Dinamarca",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/equador?map=selecao",
+                    "name": "Equador",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/escócia?map=selecao",
+                    "name": "Escócia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/espanha?map=selecao",
+                    "name": "Espanha",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/estados-unidos?map=selecao",
+                    "name": "EUA",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/frança?map=selecao",
+                    "name": "França",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/frança?map=selecao",
+                    "name": "França",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/honduras?map=selecao",
+                    "name": "Honduras",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/inglaterra?map=selecao",
+                    "name": "Inglaterra",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/irlanda?map=selecao",
+                    "name": "Irlanda",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/irlanda-do-norte?map=selecao",
+                    "name": "Irlanda do Norte",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/itália?map=selecao",
+                    "name": "Itália",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/jamaica?map=selecao",
+                    "name": "Jamaica",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/japão?map=selecao",
+                    "name": "Japão",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/méxico?map=selecao",
+                    "name": "México",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/panamá?map=selecao",
+                    "name": "Panamá",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/paraguai?map=selecao",
+                    "name": "Paraguai",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/perú?map=selecao",
+                    "name": "Perú",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/senegal?map=selecao",
+                    "name": "Senegal",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/suécia?map=selecao",
+                    "name": "Suécia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/suíça?map=selecao",
+                    "name": "Suíça",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/tchecoslováquia?map=selecao",
+                    "name": "Tchecoslováquia",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/uganda?map=selecao",
+                    "name": "Uganda",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/uruguai?map=selecao",
+                    "name": "Uruguai",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/zaire?map=selecao",
+                    "name": "Zaire",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/selecoes",
+                    "name": "+ VER TODOS",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Outros Esportes",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/outros-esportes",
+                "name": "Outros Esportes",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/masculino?filter.esporte=baseball",
+                    "name": "Negro League Baseball",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=basquete",
+                    "name": "Basquete",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/masculino?filter.esporte=futebol-americano",
+                    "name": "Futebol Americano",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=vôlei",
+                    "name": "Vôlei",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Comemorativas",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/comemorativas",
+                "name": "Comemorativas",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/s?q=style",
+                    "name": "1970's Style",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas?filter.comemorativo=1977",
+                    "name": "1977",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas?filter.comemorativo=alvianil-pa",
+                    "name": "Alvianil",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas?filter.comemorativo=bicolor",
+                    "name": "Bicolor",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas?filter.ídolos=dirceu-lopes",
+                    "name": "Dirceu Lopes",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas?filter.ídolos=pepe",
+                    "name": "Pepe",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas?filter.ídolos=telê-santana",
+                    "name": "Telê Santana",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas?filter.comemorativo=tricolor",
+                    "name": "Tricolor",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/comemorativas",
+                    "name": "+ VER TODOS",
+                    "image": [],
+                    "children": [],
+                    "additionalType": "show_all"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Acessórios",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/acessorios",
+                "name": "Acessórios",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/s?q=boné",
+                    "name": "Bonés",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=fuleco",
+                    "name": "Bonecos",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=chaveiro",
+                    "name": "Chaveiros",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=gorro",
+                    "name": "Gorros",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=livro",
+                    "name": "Livros",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Agasalhos",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/s?q=agasalhos",
+                "name": "Moletons",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/agasalho-moletom-alemanha--branca-branca/p?skuId=2447",
+                    "name": "Alemanha",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-moletom-argentina--branca-branca/p?skuId=2457",
+                    "name": "Argentina",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "https://www.ligaretro.com.br/agasalho-moletom-brasil--verde-verde/p?skuId=2432",
+                    "name": "Brasil",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-moletom-camaroes--verde-verde/p?skuId=2462",
+                    "name": "Camarões",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-cccp--uniao-sovietica---vermelho-vermelho/p?skuId=2467",
+                    "name": "CCCP",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-moletom-flamengo-81--listrado-listrado/p?skuId=2537",
+                    "name": "Flamengo",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-moletom-franca--azul-marinho-azul-marinho/p?skuId=2477",
+                    "name": "França",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-moletom-italia--azul-royal-azul-royal/p?skuId=2442",
+                    "name": "Itália",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-moletom-jamaica--preto-preto/p?skuId=2452",
+                    "name": "Jamaica",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-moletom-portugal--vermelho-vermelho/p?skuId=2472",
+                    "name": "Portugal",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "url": "/s?q=raglan",
+                "name": "Agasalhos Raglan",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/agasalho-america-raglan--vermelho-bordeaux-vermelho-bordeaux/p?skuId=2182",
+                    "name": "America RJ",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-brasil-raglan--branca-branca/p?skuId=2177",
+                    "name": "Brasil ",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-italia-raglan--azul-azul/p?skuId=2167",
+                    "name": "Itália",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-liga-retro-branco-raglan--branca-branca/p?skuId=2172",
+                    "name": "Liga Retrô Branco",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-liga-retro-preto-raglan--preto-preto/p?skuId=2162",
+                    "name": "Liga Retrô Preto",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/agasalho-liga-retro-vermelho-raglan--vermelho-bordeaux-vermelho-bordeaux/p?skuId=2157",
+                    "name": "Liga Retrô Vermelho",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Casual",
+            "@type": "SiteNavigationElement",
+            "image": [
+              {
+                "@type": "ImageObject"
+              }
+            ],
+            "children": [
+              {
+                "url": "/casual",
+                "name": "Casual",
+                "@type": "SiteNavigationElement",
+                "image": [],
+                "children": [
+                  {
+                    "url": "/s?q=defender",
+                    "name": "Polo/Rugby",
+                    "@type": "SiteNavigationElement",
+                    "image": [],
+                    "children": []
+                  },
+                  {
+                    "url": "/s?q=t-shirt",
+                    "name": "T-shirts",
+                    "image": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "__resolveType": "commerce/loaders/navbar.ts"
+      },
+      "products": [],
+      "hideAlert": false,
+      "searchbar": {
+        "name": "q",
+        "action": "/s",
+        "loader": {
+          "data": {
+            "__resolveType": "vtex/loaders/intelligentSearch/suggestions.ts"
+          },
+          "__resolveType": "resolved"
+        },
+        "placeholder": "O que está procurando?"
+      },
+      "alertLinks": {
+        "firstLink": {
+          "href": "#",
+          "text": "Clube de Assinatura"
+        },
+        "secondLink": {
+          "href": "/revenda",
+          "text": "Revenda"
+        },
+        "hideFirstLink": true,
+        "hideSecondLink": false
+      },
+      "suggestions": {
+        "products": [],
+        "searches": []
+      },
+      "freeShippingTarget": 400
+    },
+    {
+      "page": {
+        "data": {
+          "sort": "orders:desc",
+          "count": 20,
+          "fuzzy": "automatic",
+          "__resolveType": "vtex/loaders/intelligentSearch/productListingPage.ts",
+          "selectedFacets": [
+            {
+              "key": "infantil",
+              "value": "sim"
+            }
+          ]
+        },
+        "extensions": [
+          {
+            "__resolveType": "vtex/loaders/product/extensions/listingPage.ts"
+          }
+        ],
+        "__resolveType": "commerce/loaders/product/extensions/listingPage.ts"
+      },
+      "layout": {
+        "columns": {
+          "mobile": 2,
+          "desktop": 5
+        },
+        "variant": "aside",
+        "pagination": "show-more"
+      },
+      "styles": [
+        {
+          "matcher": {
+            "0": "/",
+            "1": "v",
+            "2": "e",
+            "3": "s",
+            "4": "t",
+            "5": "u",
+            "6": "a",
+            "7": "r",
+            "8": "i",
+            "9": "o",
+            "search": "?sort=&filter.category-1=vestuario&filter.genero=masculino",
+            "pathName": "/vestuario"
+          },
+          "topBanner": {},
+          "coverImage": {
+            "alt": "Cover cruzeiro banner",
+            "link": "#",
+            "mobile": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/0d1bb552-1896-4124-a3ff-2400de9c9a5c",
+            "desktop": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/89cbebe5-ee8a-46c6-bf8a-c27d4940959a"
+          },
+          "titleStyle": {
+            "titleBgColor": "\"bg-gradient-to-r from-1D3D8F to-transparent\"",
+            "titleTextColor": "#FFFFFF"
+          },
+          "bottomBanner": {
+            "alt": "banner campanha",
+            "link": "/infantil",
+            "mobile": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/51f7fe9a-160e-4545-b595-52271383f053",
+            "desktop": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/eacd1e6f-6ff4-4f93-9b40-ce9bb09e604e"
+          },
+          "darkBackground": true,
+          "backgroundColor": "#1D3D8F"
+        },
+        {
+          "matcher": {
+            "0": "/",
+            "1": "f",
+            "2": "e",
+            "3": "m",
+            "4": "i",
+            "5": "n",
+            "6": "i",
+            "7": "n",
+            "8": "o",
+            "pathName": "/acessorios"
+          },
+          "topBanner": {
+            "alt": "Banner adidas",
+            "link": "#",
+            "mobile": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/77a6587f-be1c-4f88-9c28-7e34c95b78bd",
+            "desktop": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/538557ba-c506-4bf9-a99c-3d39ca1f2400"
+          },
+          "coverImage": {},
+          "titleStyle": {
+            "logo": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/3562/aab02938-88af-42e3-b650-a9963f0c3e42",
+            "titleBgColor": "#1D3D8F",
+            "titleTextColor": "#FFFFFF"
+          },
+          "darkBackground": false
+        }
+      ],
+      "pageTitle": "Infantil",
+      "cardLayout": {
+        "__resolveType": "Product Card Layout - 01"
+      },
+      "startingPage": 1,
+      "__resolveType": "site/sections/Product/SearchResult.tsx"
+    },
+    {
+      "__resolveType": "Footer - 01"
+    },
+    {
+      "__resolveType": "Whatsapp Liga Retrô"
+    }
+  ],
+  "__resolveType": "website/pages/Page.tsx"
+}
